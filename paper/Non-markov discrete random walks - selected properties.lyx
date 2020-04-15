@@ -6,6 +6,9 @@
 \origin unavailable
 \textclass article
 \use_default_options true
+\begin_modules
+theorems-ams
+\end_modules
 \maintain_unincluded_children false
 \language english
 \language_package default
@@ -29,6 +32,7 @@
 \bibtex_command default
 \index_command default
 \paperfontsize default
+\spacing single
 \use_hyperref false
 \papersize default
 \use_geometry false
@@ -44,6 +48,7 @@
 \use_package undertilde 1
 \cite_engine basic
 \cite_engine_type default
+\biblio_style plain
 \use_bibtopic false
 \use_indices false
 \paperorientation portrait
@@ -88,6 +93,212 @@ This paper elaborates the newly introduced model of discrete random walks
 .
  It follows on the recent work of the authors and further examines the theoretic
 al properties of the model.
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+Sumar vysledku a proc to delat, podobne jako vzdycky.
+\end_layout
+
+\begin_layout Section
+Random walks with memory - overview
+\end_layout
+
+\begin_layout Standard
+Shrnuti dosavadnich vysledku a vypoctenych vzorcu
+\end_layout
+
+\begin_layout Section
+Random walks with memory - properties
+\end_layout
+
+\begin_layout Standard
+Dukazy novych veci, hlavni cast clanku
+\end_layout
+
+\begin_layout Proposition
+For all 
+\begin_inset Formula $t\ge2$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+Var\,S_{t}=neco.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+From the definition of variance 
+\begin_inset Formula 
+\[
+Var\,S_{t}=ES_{t}^{2}-E^{2}S_{t}
+\]
+
+\end_inset
+
+and XXXXES_t vzorecXXX follows that to prove the proposition it is enough
+ to prove that 
+\begin_inset Formula 
+\[
+ES_{t}^{2}=neco.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+First of all, let us express 
+\begin_inset Formula $E(S_{t}^{2})$
+\end_inset
+
+ from the knowledge of past walk development.
+ From the denition of the expected value and the denition of the walk XXXXXX
+ it follows
+\begin_inset Formula 
+\[
+ES_{t}^{2}=E[E(S_{t}^{2}|P_{t-1})]=E[E((S_{t-1}+X_{t})^{2}|P_{t-1})]=E(S_{t-1}^{2}+2(2P_{t-1}-1)S_{t-1}+(2P_{t-1}-1)^{2})=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=E(S_{t-1}^{2}+4P_{t-1}S_{t-1}-2S_{t-1}+4P_{t-1}^{2}+4P_{t-1}-1).
+\]
+
+\end_inset
+
+The values of 
+\begin_inset Formula $ES_{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $EP_{t}$
+\end_inset
+
+ are given by XXXXXXX and 
+\begin_inset Formula 
+\[
+EP_{t}^{2}=(3\lambda^{2}-2\lambda)^{t}p_{0}^{2}+\sum_{i=1}^{t}K(i-1)(3\lambda^{2}-2\lambda)^{t-i},
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula 
+\[
+K(t)=k(t)\cdot(-3\lambda^{2}+4\lambda-1)+(1-\lambda)^{2}
+\]
+
+\end_inset
+
+ and 
+\begin_inset Formula 
+\[
+k(t)=EP_{t}=(2\lambda-1)^{t}p_{0}+\frac{1-(2\lambda-1)^{t}}{2},
+\]
+
+\end_inset
+
+wich follows form the proof of Proposition 2.5 in CITE-AMISTAT.
+ The only unknown element (clen rovnice - jak se to rekne anglicky?) is
+ the mixed one.
+ Let us again express it from the knowledge of past steps as
+\begin_inset Formula 
+\[
+E(P_{t}S_{t})=E[E(P_{t}S_{t}|P_{t-1})]=E[E((\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1-X_{t}))(S_{t-1}+X_{t})|P_{t-1})]=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=E[(\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1-(2P_{t-1}-1)))(S_{t-1}+(2P_{t-1}-1))]=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=E[(\lambda P_{t-1}+(1-\lambda)(1-P_{t-1}))(S_{t-1}+2P_{t-1}-1)]=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=E[(\lambda P_{t-1}+1-P_{t-1}-\lambda+\lambda P_{t-1})(S_{t-1}+2P_{t-1}-1)]=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=E[(\lambda P_{t-1}S_{t-1}+S_{t-1}-P_{t-1}S_{t-1}-\lambda S_{t-1}+\lambda P_{t-1}S_{t-1}+2\lambda P_{t-1}^{2}+2P_{t-1}-2P_{t-1}^{2}-2\lambda P_{t-1}+2\lambda P_{t-1}^{2}-
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+-\lambda P_{t-1}-1+P_{t-1}+\lambda-\lambda P_{t-1})]=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=E((2\lambda-1)P_{t-1}S_{t-1}+(1-\lambda)S_{t-1}+2(2\lambda-1)P_{t-1}^{2}+(3-4\lambda)P_{t-1}-1+\lambda).
+\]
+
+\end_inset
+
+Together we get
+\begin_inset Formula 
+\[
+ES_{t}^{2}=E(S_{t-1}^{2}+4((2\lambda-1)P_{t-2}S_{t-2}+(1-\lambda)S_{t-2}+2(2\lambda-1)P_{t-2}^{2}+(3-4\lambda)P_{t-2}-1+\lambda)-
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+-2S_{t-1}+4P_{t-1}^{2}+4P_{t-1}-1)=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=E(S_{t-1}^{2}+4((2\lambda-1)P_{t-2}S_{t-2}+(1-\lambda)S_{t-2}+2(2\lambda-1)P_{t-2}^{2}+(3-4\lambda)P_{t-2}))-2S_{t-1}+4P_{t-1}^{2}+4P_{t-1})-5+4\lambda.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Conclusion
 \end_layout
 
 \end_body
