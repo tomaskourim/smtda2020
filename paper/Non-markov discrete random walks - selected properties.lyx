@@ -100,11 +100,52 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-Sumar vysledku a proc to delat, podobne jako vzdycky.
+Modelling sporting events and reliability analysis are two seemingly very
+ different areas of mathematics, yet they offer many similarities.
+ The key factor in both domains is a certain probability measure determining
+ the development of observed phenomenon.
+ This probability measure is called ``hazard rate'' in reliability analysis
+ and simply ``probability of scoring'' in modelling of sport events.
+ It is altered either continuously with time according to some underlying
+ probability function or suddenly as a reaction to an event.
+ Breakage or repair of a given machine in reliability analysis or scoring
+ (goal, point, basket etc.) in sports modelling.
+ The most prominent tool in reliability analysis is the Cox's model ZDROJ
+ expressing the changes of a hazard rate with a base hazard rate and a covariate
+ vector.
+ This model, operating with continuous time, is often used for sports modelling
+ as well.
+ Many types of sport such as tennis or volleyball, however, are played in
+ a strictly discrete matter with steps divided by individual 
+\emph on
+points
+\emph default
+,
+\emph on
+ games 
+\emph default
+or 
+\emph on
+sets
+\emph default
+.
+ Other real life situations with similar properties can be found as well,
+ including the recurrence of diseases or recidivism in crime.
+ Thus authors thus recently presented a novel discrete time random process
+ model - discrete random walk with varying probabilities - which aims to
+ serve as a discrete alternative to the standard Cox's model.
+ In this paper selected properties of the model are presented and possible
+ real life implementations of the model are discussed.
+\end_layout
+
+\begin_layout Standard
+The rest of the paper is organized as follows.
+ Next section....
+ The last section concludes this work.
 \end_layout
 
 \begin_layout Section
-Random walks with memory - overview
+Random walk with varying probability - overview
 \end_layout
 
 \begin_layout Standard
@@ -112,7 +153,7 @@ Shrnuti dosavadnich vysledku a vypoctenych vzorcu
 \end_layout
 
 \begin_layout Section
-Random walks with memory - properties
+Random walk with varying probability - properties
 \end_layout
 
 \begin_layout Standard
