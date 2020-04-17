@@ -162,11 +162,11 @@ First of all, let us express
 \end_inset
 
  from the knowledge of past walk development.
- From the denition of the expected value and the denition of the walk XXXXXX
- it follows
+ From the definition of the expected value and the definition of the walk
+ XXXXXX it follows
 \begin_inset Formula 
 \[
-ES_{t}^{2}=E[E(S_{t}^{2}|P_{t-1})]=E[E((S_{t-1}+X_{t})^{2}|P_{t-1})]=E(S_{t-1}^{2}+2(2P_{t-1}-1)S_{t-1}+(2P_{t-1}-1)^{2})=
+ES_{t}^{2}=E[E(S_{t}^{2}|P_{t-1})]=E[E((S_{t-1}+X_{t})^{2}|P_{t-1})]=E(S_{t-1}^{2}+2(2P_{t-1}-1)S_{t-1}+1)=
 \]
 
 \end_inset
@@ -174,7 +174,7 @@ ES_{t}^{2}=E[E(S_{t}^{2}|P_{t-1})]=E[E((S_{t-1}+X_{t})^{2}|P_{t-1})]=E(S_{t-1}^{
 
 \begin_inset Formula 
 \[
-=E(S_{t-1}^{2}+4P_{t-1}S_{t-1}-2S_{t-1}+4P_{t-1}^{2}+4P_{t-1}-1).
+=E(S_{t-1}^{2}+4P_{t-1}S_{t-1}-2S_{t-1}+1).
 \]
 
 \end_inset
@@ -187,31 +187,7 @@ The values of
 \begin_inset Formula $EP_{t}$
 \end_inset
 
- are given by XXXXXXX and 
-\begin_inset Formula 
-\[
-EP_{t}^{2}=(3\lambda^{2}-2\lambda)^{t}p_{0}^{2}+\sum_{i=1}^{t}K(i-1)(3\lambda^{2}-2\lambda)^{t-i},
-\]
-
-\end_inset
-
-with 
-\begin_inset Formula 
-\[
-K(t)=k(t)\cdot(-3\lambda^{2}+4\lambda-1)+(1-\lambda)^{2}
-\]
-
-\end_inset
-
- and 
-\begin_inset Formula 
-\[
-k(t)=EP_{t}=(2\lambda-1)^{t}p_{0}+\frac{1-(2\lambda-1)^{t}}{2},
-\]
-
-\end_inset
-
-wich follows form the proof of Proposition 2.5 in CITE-AMISTAT.
+ are given by XXXXXXX.
  The only unknown element (clen rovnice - jak se to rekne anglicky?) is
  the mixed one.
  Let us again express it from the knowledge of past steps as
@@ -273,7 +249,7 @@ E(P_{t}S_{t})=E[E(P_{t}S_{t}|P_{t-1})]=E[E((\lambda P_{t-1}+\frac{1}{2}(1-\lambd
 Together we get
 \begin_inset Formula 
 \[
-ES_{t}^{2}=E(S_{t-1}^{2}+4((2\lambda-1)P_{t-2}S_{t-2}+(1-\lambda)S_{t-2}+2(2\lambda-1)P_{t-2}^{2}+(3-4\lambda)P_{t-2}-1+\lambda)-
+ES_{t}^{2}=E(S_{t-1}^{2}+4((2\lambda-1)P_{t-2}S_{t-2}+(1-\lambda)S_{t-2}+2(2\lambda-1)P_{t-2}^{2}+(3-4\lambda)P_{t-2}-1+\lambda)-2S_{t-1}+1)
 \]
 
 \end_inset
@@ -281,15 +257,7 @@ ES_{t}^{2}=E(S_{t-1}^{2}+4((2\lambda-1)P_{t-2}S_{t-2}+(1-\lambda)S_{t-2}+2(2\lam
 
 \begin_inset Formula 
 \[
--2S_{t-1}+4P_{t-1}^{2}+4P_{t-1}-1)=
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-=E(S_{t-1}^{2}+4((2\lambda-1)P_{t-2}S_{t-2}+(1-\lambda)S_{t-2}+2(2\lambda-1)P_{t-2}^{2}+(3-4\lambda)P_{t-2}))-2S_{t-1}+4P_{t-1}^{2}+4P_{t-1})-5+4\lambda.
+=E(S_{t-1}^{2}+4((2\lambda-1)P_{t-2}S_{t-2}+(1-\lambda)S_{t-2}+2(2\lambda-1)P_{t-2}^{2}+(3-4\lambda)P_{t-2}))-2S_{t-1})-3+4\lambda.
 \]
 
 \end_inset
