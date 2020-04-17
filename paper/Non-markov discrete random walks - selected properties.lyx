@@ -149,10 +149,6 @@ Random walk with varying probability - overview
 \end_layout
 
 \begin_layout Standard
-Shrnuti dosavadnich vysledku a vypoctenych vzorcu
-\end_layout
-
-\begin_layout Standard
 The original motivation of the model comes from modelling of sport events
  where the probability of a success (i.e.
  scoring a goal, achieving a point etc.) is at the center of interest.
@@ -213,13 +209,13 @@ Let
 \end_inset
 
  and for 
-\begin_inset Formula $i\ge1$
+\begin_inset Formula $t\ge1$
 \end_inset
 
 
 \begin_inset Formula 
 \[
-P(X_{i}=1|P_{i-1}=p_{i-1})=p_{i-1},\,\,\,P(X_{i}=-1|P_{i-1}=p_{i-1})=1-p_{i-1},
+P(X_{t}=1|P_{t-1}=p_{t-1})=p_{t-1},\,\,\,P(X_{t}=-1|P_{t-1}=p_{t-1})=1-p_{t-1},
 \]
 
 \end_inset
@@ -253,7 +249,7 @@ success punishing)
 
 \begin_inset Formula 
 \[
-P_{i}=\lambda P_{i-1}+\frac{1}{2}(1-\lambda)(1-X_{i})
+P_{t}=\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1-X_{t})
 \]
 
 \end_inset
@@ -274,7 +270,7 @@ or (
 success rewarding)
 \begin_inset Formula 
 \[
-P_{i}=\lambda P_{i-1}+\frac{1}{2}(1-\lambda)(1+X_{i}).
+P_{t}=\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1+X_{t}).
 \]
 
 \end_inset
@@ -339,7 +335,7 @@ Success punishing model
 \begin_layout Standard
 The basic properties of the 
 \emph on
-success rewarding 
+success punishing 
 \emph default
 version of the walk are presented in this section.
  They are presented as a set of expressions, the reader is kindly asked
@@ -347,7 +343,7 @@ version of the walk are presented in this section.
 \end_layout
 
 \begin_layout Standard
-For the expected value and variance of the step size in the 
+For the expected value and variance of the step size for the 
 \begin_inset Formula $t\ge1$
 \end_inset
 
@@ -355,7 +351,7 @@ For the expected value and variance of the step size in the
 \begin_inset Formula $X_{t}$
 \end_inset
 
- it holds
+ it holds AMISTAT
 \begin_inset Formula 
 \[
 EX_{t}=(2\lambda-1)^{t-1}(2p_{0}-1),
@@ -374,12 +370,180 @@ Var\,X_{t}=1-(2\lambda-1)^{2(t-1)}(2p_{0}-1)^{2}.
 
 \end_layout
 
+\begin_layout Standard
+For the expected value and variance of the transition probability or the
+ 
+\begin_inset Formula $t\ge1$
+\end_inset
+
+ iteration of the walk 
+\begin_inset Formula $P_{t}$
+\end_inset
+
+ it holds DDNY/TEZE, AMISTAT
+\begin_inset Formula 
+\[
+EP_{t}=(2\lambda-1)^{t}p_{0}+\frac{1-(2\lambda-1)^{t}}{2},
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Var\,P_{t}=(3\lambda^{2}-2\lambda)^{t}p_{0}^{2}+\sum_{i=0}^{t-1}K(i)(3\lambda^{2}-2\lambda)^{t-1-i}-k(t)^{2},
+\]
+
+\end_inset
+
+where
+\begin_inset Formula 
+\[
+k(t)=EP_{t}=(2\lambda-1)^{t}p_{0}+\frac{1-(2\lambda-1)^{t}}{2}
+\]
+
+\end_inset
+
+and
+\begin_inset Formula 
+\[
+K(t)=k(t)\cdot(-3\lambda^{2}+4\lambda-1)+(1-\lambda)^{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally, the expected position of the walker 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ after 
+\begin_inset Formula $t\geq1$
+\end_inset
+
+ iterations can be expressed as DDNY/TEZE
+\begin_inset Formula 
+\[
+ES_{t}=S_{0}+(2p_{0}-1)\frac{1-(2\lambda-1)^{t}}{2(1-\lambda)}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Success rewarding model
+\end_layout
+
+\begin_layout Standard
+Similar formulas can be derived for the 
+\emph on
+success rewarding 
+\emph default
+model.
+ Once again only the formulas are presented with proofs in the referred
+ literature.
+ For the sake of clarity the set of expressions is presented in the same
+ manner as in the previous section.
+\end_layout
+
+\begin_layout Standard
+For the expected value and variance of the step size for the 
+\begin_inset Formula $t\ge1$
+\end_inset
+
+ iteration of the walk 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ it holds AMISTAT
+\begin_inset Formula 
+\[
+EX_{t}=2p_{0}-1,
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Var\,X_{t}=4p_{0}(1-p_{0}).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For the expected value and variance of the transition probability or the
+ 
+\begin_inset Formula $t\ge1$
+\end_inset
+
+ iteration of the walk 
+\begin_inset Formula $P_{t}$
+\end_inset
+
+ it holds AMISTAT
+\begin_inset Formula 
+\[
+EP_{t}=p_{0},
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Var\,P_{t}=(2\lambda-\lambda^{2})^{t}p_{0}^{2}+p_{0}(1-\lambda)^{2}\sum_{i=0}^{t-1}(2\lambda-\lambda^{2})^{i}-p_{0}^{2}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally, the expected position of the walker 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ after 
+\begin_inset Formula $t\geq1$
+\end_inset
+
+ iterations can be expressed as AMISTAT
+\begin_inset Formula 
+\[
+ES_{t}=S_{0}+t(2p_{0}-1).
+\]
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Random walk with varying probability - properties
 \end_layout
 
 \begin_layout Standard
-Dukazy novych veci, hlavni cast clanku
+The last formula missing in the previous section is the variance of the
+ position of the walker 
+\begin_inset Formula $Var\,S_{t}$
+\end_inset
+
+.
+ Let us prove the formulas now, starting with the 
+\emph on
+success punishing
+\emph default
+ model.
 \end_layout
 
 \begin_layout Proposition
