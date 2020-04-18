@@ -2,7 +2,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-from common import expected_p_t_array, var_p_t_array, log_time, create_logger
+from common import exp_p_t_array, var_p_t_array, log_time, create_logger, exp_s_t_array
 from config import MODEL_TYPES, REPETITIONS_OF_WALK_S, \
     C_LAMBDAS_TESTING, START_PROBABILITIES_TESTING, STEP_COUNTS_TESTING, C_LAMBDA_PAIRS_TESTING
 from data_generation import generate_random_walks, list_walks2list_lists
@@ -14,15 +14,19 @@ def main(simulated_property="probability"):
     mean_styles = ['g.', 'r.', 'b.']
     var_styles = ['g-.', 'r-.', 'b-.']
     expected_styles = ['g-', 'r-', 'b-']
+    model_min_y = [-2.5, -30, -25, -100]
+    model_max_y = [30, 100, 25, 200]
     for step_count in STEP_COUNTS_TESTING:
-        for model_type in MODEL_TYPES:
+        for model_index, model_type in enumerate(MODEL_TYPES):
+            # if model_type != 'success_rewarded_two_lambdas':
+            #     continue
             if 'two_lambdas' in model_type:
                 two_lambda = True
             else:
                 two_lambda = False
             # TODO handle with dignity
-            min_y = 0 if simulated_property == "probability" else -3
-            max_y = 1 if simulated_property == "probability" else 30
+            min_y = 0 if simulated_property == "probability" else model_min_y[model_index]
+            max_y = 1 if simulated_property == "probability" else model_max_y[model_index]
             for p_index, starting_probability in enumerate(START_PROBABILITIES_TESTING):
                 plt.subplot(plt_rows, plt_columns, p_index + 1)
                 plt.title(r'$p_{0}=%.2f$' % starting_probability, fontsize=20)
@@ -51,11 +55,19 @@ def main(simulated_property="probability"):
                         raise Exception("unexpected property type")
                     plt.plot(mean, mean_styles[index], label=label)
                     plt.plot(variance, var_styles[index])
-                    if not two_lambda and simulated_property == "probability":
-                        plt.plot(expected_p_t_array(step_count, float(starting_probability), c_lambda, model_type),
-                                 expected_styles[index], linewidth=0.7)
-                        plt.plot(var_p_t_array(step_count, float(starting_probability), c_lambda, model_type),
-                                 expected_styles[index], linewidth=0.7)
+                    if not two_lambda:
+                        if simulated_property == "probability":
+                            plt.plot(exp_p_t_array(step_count, starting_probability, c_lambda, model_type),
+                                     expected_styles[index], linewidth=0.7)
+                            plt.plot(var_p_t_array(step_count, starting_probability, c_lambda, model_type),
+                                     expected_styles[index], linewidth=0.7)
+                        elif simulated_property == "position":
+                            s0 = 0
+                            plt.plot(exp_s_t_array(step_count, starting_probability, c_lambda, s0, model_type),
+                                     expected_styles[index], linewidth=0.7)
+                            # plt.plot(var_S_t_array(step_count, starting_probability, c_lambda, s0, model_type),
+                            #          expected_styles[index], linewidth=0.7)
+                            # plt.plot([starting_probability * (1 - starting_probability)] * (step_count + 1), 'k:')
                     plt.legend(loc='best', fontsize='xx-large', markerscale=3)
 
             fig = plt.gcf()
@@ -68,6 +80,6 @@ def main(simulated_property="probability"):
 
 if __name__ == '__main__':
     start_time, logger = create_logger()
-    # main(simulated_property="position")
-    main(simulated_property="probability")
+    main(simulated_property="position")
+    # main(simulated_property="probability")
     log_time(start_time, logger)

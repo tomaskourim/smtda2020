@@ -53,7 +53,7 @@ class CompleteWalk:
         self.development = development
 
 
-def expected_p_t_array(step_count: int, p0: float, c_lambda: float, model_type: str) -> List[float]:
+def exp_p_t_array(step_count: int, p0: float, c_lambda: float, model_type: str) -> List[float]:
     e_array = []
     for step in range(0, step_count + 1):
         e_array.append(expected_p_t(step, p0, c_lambda, model_type))
@@ -129,6 +129,40 @@ def var_p_t_array(step_count: int, p0: float, c_lambda: float, model_type: str) 
         ep = expected_p_t(step, p0, c_lambda, model_type)
         var_array.append(ep2 - ep ** 2)
     return var_array
+
+
+def exp_s_t(step: int, p0: float, c_lambda: float, s0: int, model_type: str) -> float:
+    """
+    Computes expected value of the position of the walker according to theoretical results.
+    :param step:
+    :param p0:
+    :param c_lambda:
+    :param s0:
+    :param model_type:
+    :return:
+    """
+    if model_type == 'success_punished':
+        e = s0 + (2 * p0 - 1) * (1 - (2 * c_lambda - 1) ** step) / (2 * (1 - c_lambda)) if c_lambda != 0.5 else 0
+    elif model_type == 'success_rewarded':
+        e = s0 + step * (2 * p0 - 1)
+    elif model_type == 'success_punished_two_lambdas':
+        e = 0
+    elif model_type == 'success_rewarded_two_lambdas':
+        e = 0
+    else:
+        raise Exception(f'Unexpected walk type: {model_type}')
+    return e
+
+
+def exp_s_t_array(step_count: int, p0: float, c_lambda: float, s0: int, model_type: str) -> List[float]:
+    e_array = []
+    for step in range(0, step_count + 1):
+        e_array.append(exp_s_t(step, p0, c_lambda, s0, model_type))
+    return e_array
+
+
+def var_S_t_array(step_count: int, p0: float, c_lambda: float, s0: int, model_type: str) -> List[float]:
+    pass
 
 
 def create_logger():
