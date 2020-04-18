@@ -585,7 +585,7 @@ ES_{t}^{2}=neco.
 
 \begin_layout Proof
 First of all, let us express 
-\begin_inset Formula $E(S_{t}^{2})$
+\begin_inset Formula $ES_{t}^{2}$
 \end_inset
 
  from the knowledge of past walk development.
@@ -601,23 +601,26 @@ ES_{t}^{2}=E[E(S_{t}^{2}|P_{t-1})]=E[E((S_{t-1}+X_{t})^{2}|P_{t-1})]=E(S_{t-1}^{
 
 \begin_inset Formula 
 \[
-=E(S_{t-1}^{2}+4P_{t-1}S_{t-1}-2S_{t-1}+1).
+=E(S_{t-1}^{2}+4P_{t-1}S_{t-1}-2S_{t-1}+1),
 \]
 
 \end_inset
 
-The values of 
+where the fact that 
+\begin_inset Formula $EX_{t}^{2}=1$
+\end_inset
+
+ was used.
+ The value of 
 \begin_inset Formula $ES_{t}$
 \end_inset
 
- and 
-\begin_inset Formula $EP_{t}$
+ is given by XXXXXXX.
+ Now let us again express the value of 
+\begin_inset Formula $E(P_{t}S_{t})$
 \end_inset
 
- are given by XXXXXXX.
- The only unknown element (clen rovnice - jak se to rekne anglicky?) is
- the mixed one.
- Let us again express it from the knowledge of past steps as
+ from the knowledge of past steps as
 \begin_inset Formula 
 \[
 E(P_{t}S_{t})=E[E(P_{t}S_{t}|P_{t-1})]=E[E((\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1-X_{t}))(S_{t-1}+X_{t})|P_{t-1})]=
