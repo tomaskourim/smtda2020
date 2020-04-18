@@ -55,9 +55,9 @@ def main(simulated_property="probability"):
                     plt.plot(mean, mean_styles[index], label=label)
                     plt.plot(variance, var_styles[index])
                     if not two_lambda and simulated_property == "probability":
-                        plt.plot(expected_p_t_array(step_count, starting_probability, c_lambda, model_type),
+                        plt.plot(expected_p_t_array(step_count, float(starting_probability), c_lambda, model_type),
                                  expected_styles[index], linewidth=0.7)
-                        plt.plot(var_p_t_array(step_count, starting_probability, c_lambda, model_type),
+                        plt.plot(var_p_t_array(step_count, float(starting_probability), c_lambda, model_type),
                                  expected_styles[index], linewidth=0.7)
                     plt.legend(loc='best', fontsize='xx-large', markerscale=3)
 
@@ -99,7 +99,7 @@ if __name__ == '__main__':
     logger.addHandler(error_handler)
     logger.addHandler(stdout_handler)
 
-    main(simulated_property="position")
+    # main(simulated_property="position")
     main(simulated_property="probability")
     end_time = datetime.now()
     logging.info(f"Duration: {(end_time - start_time)}")
