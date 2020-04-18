@@ -520,7 +520,15 @@ Var\,P_{t}=(2\lambda-\lambda^{2})^{t}p_{0}^{2}+p_{0}(1-\lambda)^{2}\frac{1-(2\la
 
 \begin_inset Formula 
 \[
-=p_{0}[(2\lambda-\lambda^{2})^{t}(p_{0}-1)+1]-p_{0}^{2}=p_{0}[(1-p_{0})(1-(2\lambda-\lambda^{2})^{t})].
+=p_{0}[(2\lambda-\lambda^{2})^{t}(p_{0}-1)+1]-p_{0}^{2},
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Var\,P_{t}=p_{0}[(1-p_{0})(1-(2\lambda-\lambda^{2})^{t})].
 \]
 
 \end_inset
