@@ -1,5 +1,6 @@
 # support functions
-from decimal import *
+import logging
+from datetime import datetime
 from typing import List
 
 
@@ -20,7 +21,7 @@ def bernoulli2ising(bernoulli: int) -> int:
         raise Exception(f'Unexpected value of Bernoulli distribution: {bernoulli}')
 
 
-def get_current_probability(c_lambdas: List[float], last_probability: Decimal, step: int, walk_type: str) -> Decimal:
+def get_current_probability(c_lambdas: List[float], last_probability: float, step: int, walk_type: str) -> float:
     """
     Computes the transition probability for the next step according to the respective definition as in the paper.
     :param c_lambdas:
@@ -32,15 +33,15 @@ def get_current_probability(c_lambdas: List[float], last_probability: Decimal, s
     if step == '' or step == 0:  # at the beginning of the walk just return p0
         return last_probability
     if walk_type == 'success_punished':
-        return Decimal(c_lambdas[0]) * last_probability + Decimal(0.5 * (1 - c_lambdas[0]) * (1 - step))
+        return (c_lambdas[0]) * last_probability + (0.5 * (1 - c_lambdas[0]) * (1 - step))
     elif walk_type == 'success_rewarded':
-        return Decimal(c_lambdas[0]) * last_probability + Decimal(0.5 * (1 - c_lambdas[0]) * (1 + step))
+        return (c_lambdas[0]) * last_probability + (0.5 * (1 - c_lambdas[0]) * (1 + step))
     elif walk_type == 'success_punished_two_lambdas':
-        return Decimal(0.5) * (Decimal((1 + step) * c_lambdas[0]) * last_probability + (1 - step) * (
-                Decimal(1) - Decimal(c_lambdas[1]) * (Decimal(1) - last_probability)))
+        return (0.5) * (((1 + step) * c_lambdas[0]) * last_probability + (1 - step) * (
+                (1) - (c_lambdas[1]) * ((1) - last_probability)))
     elif walk_type == 'success_rewarded_two_lambdas':
-        return Decimal(0.5) * (Decimal((1 - step) * c_lambdas[0]) * last_probability + Decimal((1 + step) * (
-                Decimal(1) - Decimal(c_lambdas[1]) * (Decimal(1) - last_probability))))
+        return (0.5) * (((1 - step) * c_lambdas[0]) * last_probability + ((1 + step) * (
+                (1) - (c_lambdas[1]) * ((1) - last_probability))))
     else:
         raise Exception(f'Unexpected walk type: {walk_type}')
 
