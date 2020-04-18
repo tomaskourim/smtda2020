@@ -92,12 +92,6 @@ def expected_p_t_squared_support_sum(step: int, p0: float, c_lambda: float, mode
     for i in range(0, step):
         if model_type == 'success_punished':
             summand = support_k(i, p0, c_lambda) * (3 * c_lambda ** 2 - 2 * c_lambda) ** (step - 1 - i)
-        elif model_type == 'success_rewarded':
-            summand = (2 * c_lambda - c_lambda ** 2) ** i
-        elif model_type == 'success_punished_two_lambdas':
-            summand = 0
-        elif model_type == 'success_rewarded_two_lambdas':
-            summand = 0
         else:
             raise Exception(f'Unexpected walk type: {model_type}')
         e = e + summand
@@ -114,12 +108,11 @@ def expected_p_t_squared(step: int, p0: float, c_lambda: float, model_type: str)
     :return:
     """
 
-    support_sum = expected_p_t_squared_support_sum(step, p0, c_lambda, model_type)
-
     if model_type == 'success_punished':
+        support_sum = expected_p_t_squared_support_sum(step, p0, c_lambda, model_type)
         e = (3 * c_lambda ** 2 - 2 * c_lambda) ** step + support_sum if c_lambda != 2 / 3 else 0
     elif model_type == 'success_rewarded':
-        e = (2 * c_lambda - c_lambda ** 2) ** step * p0 ** 2 + p0 * (1 - c_lambda) ** 2 * support_sum
+        e = p0 * ((2 * c_lambda - c_lambda ** 2) ** step * (p0 - 1) + 1)
     elif model_type == 'success_punished_two_lambdas':
         e = 0
     elif model_type == 'success_rewarded_two_lambdas':
