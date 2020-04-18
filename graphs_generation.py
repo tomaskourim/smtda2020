@@ -26,7 +26,7 @@ def main(simulated_property="probability"):
             for p_index, starting_probability in enumerate(START_PROBABILITIES_TESTING):
                 plt.subplot(plt_rows, plt_columns, p_index + 1)
                 plt.title(r'$p_{0}=%.2f$' % starting_probability, fontsize=20)
-                plt.axis([0, step_count, min_y, max_y])
+                plt.axis([1, step_count, min_y, max_y])
                 plt.xlabel('steps', fontsize=18)
                 plt.xticks(fontsize=14)
                 plt.yticks(fontsize=14)
