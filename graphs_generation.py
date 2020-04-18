@@ -1,11 +1,8 @@
 # used to generate useful graphics
-import logging
-from datetime import datetime
-
 import matplotlib.pyplot as plt
 import numpy as np
 
-from common import expected_p_t_array, var_p_t_array
+from common import expected_p_t_array, var_p_t_array, log_time, create_logger
 from config import MODEL_TYPES, REPETITIONS_OF_WALK_S, \
     C_LAMBDAS_TESTING, START_PROBABILITIES_TESTING, STEP_COUNTS_TESTING, C_LAMBDA_PAIRS_TESTING
 from data_generation import generate_random_walks, list_walks2list_lists
@@ -70,36 +67,7 @@ def main(simulated_property="probability"):
 
 
 if __name__ == '__main__':
-    start_time = datetime.now()
-    # Create a custom logger
-    logger = logging.getLogger()
-    logger.setLevel('DEBUG')
-
-    # Create handlers
-    total_handler = logging.FileHandler('logfile_total.log', mode='w')
-    info_handler = logging.FileHandler('logfile_info.log')
-    error_handler = logging.FileHandler('logfile_error.log')
-    stdout_handler = logging.StreamHandler()
-
-    total_handler.setLevel(logging.DEBUG)
-    info_handler.setLevel(logging.INFO)
-    error_handler.setLevel(logging.WARNING)
-    stdout_handler.setLevel(logging.INFO)
-
-    # Create formatters and add it to handlers
-    logging_format = logging.Formatter('%(asctime)s - %(process)d - %(levelname)s - %(name)s - %(message)s')
-    total_handler.setFormatter(logging_format)
-    info_handler.setFormatter(logging_format)
-    error_handler.setFormatter(logging_format)
-    stdout_handler.setFormatter(logging_format)
-
-    # Add handlers to the logger
-    logger.addHandler(total_handler)
-    logger.addHandler(info_handler)
-    logger.addHandler(error_handler)
-    logger.addHandler(stdout_handler)
-
+    start_time, logger = create_logger()
     # main(simulated_property="position")
     main(simulated_property="probability")
-    end_time = datetime.now()
-    logging.info(f"Duration: {(end_time - start_time)}")
+    log_time(start_time, logger)

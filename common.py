@@ -136,3 +136,42 @@ def var_p_t_array(step_count: int, p0: float, c_lambda: float, model_type: str) 
         ep = expected_p_t(step, p0, c_lambda, model_type)
         var_array.append(ep2 - ep ** 2)
     return var_array
+
+
+def create_logger():
+    start_time = datetime.now()
+
+    # Create a custom logger
+    logger = logging.getLogger()
+    logger.setLevel('DEBUG')
+
+    # Create handlers
+    total_handler = logging.FileHandler('logfile_total.log', mode='w')
+    info_handler = logging.FileHandler('logfile_info.log')
+    error_handler = logging.FileHandler('logfile_error.log')
+    stdout_handler = logging.StreamHandler()
+
+    total_handler.setLevel(logging.DEBUG)
+    info_handler.setLevel(logging.INFO)
+    error_handler.setLevel(logging.WARNING)
+    stdout_handler.setLevel(logging.INFO)
+
+    # Create formatters and add it to handlers
+    logging_format = logging.Formatter('%(asctime)s - %(process)d - %(levelname)s - %(name)s - %(message)s')
+    total_handler.setFormatter(logging_format)
+    info_handler.setFormatter(logging_format)
+    error_handler.setFormatter(logging_format)
+    stdout_handler.setFormatter(logging_format)
+
+    # Add handlers to the logger
+    logger.addHandler(total_handler)
+    logger.addHandler(info_handler)
+    logger.addHandler(error_handler)
+    logger.addHandler(stdout_handler)
+
+    return start_time, logger
+
+
+def log_time(starting_time, logger):
+    end_time = datetime.now()
+    logger.info(f"Duration: {(end_time - starting_time)}")
