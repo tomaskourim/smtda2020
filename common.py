@@ -89,11 +89,11 @@ def support_k(i: int, p0: float, c_lambda: float):
 
 def expected_p_t_squared_support_sum(step: int, p0: float, c_lambda: float, model_type: str) -> float:
     e = 0
-    for i in range(1, step + 1):
+    for i in range(0, step):
         if model_type == 'success_punished':
-            summand = support_k(i - 1, p0, c_lambda) * (3 * c_lambda ** 2 - 2 * c_lambda) ** (step - i)
+            summand = support_k(i, p0, c_lambda) * (3 * c_lambda ** 2 - 2 * c_lambda) ** (step - 1 - i)
         elif model_type == 'success_rewarded':
-            summand = (2 * c_lambda - c_lambda ** 2) ** (step - i)
+            summand = (2 * c_lambda - c_lambda ** 2) ** i
         elif model_type == 'success_punished_two_lambdas':
             summand = 0
         elif model_type == 'success_rewarded_two_lambdas':
