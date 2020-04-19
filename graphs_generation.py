@@ -2,7 +2,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-from common import exp_p_t_array, var_p_t_array, log_time, create_logger, exp_s_t_array
+from common import exp_p_t_array, var_p_t_array, log_time, create_logger, exp_s_t_array, exp_p_s_t_array
 from config import MODEL_TYPES, REPETITIONS_OF_WALK_S, \
     C_LAMBDAS_TESTING, START_PROBABILITIES_TESTING, STEP_COUNTS_TESTING, C_LAMBDA_PAIRS_TESTING
 from data_generation import generate_random_walks, list_walks2list_lists
@@ -14,12 +14,12 @@ def main(simulated_property="probability"):
     mean_styles = ['g.', 'r.', 'b.']
     var_styles = ['g-.', 'r-.', 'b-.']
     expected_styles = ['g-', 'r-', 'b-']
-    model_min_y = [-2.5, -30, -25, -100]
-    model_max_y = [30, 100, 25, 200]
+    model_min_y = [-2, -30, -25, -100]
+    model_max_y = [6, 100, 25, 200]
     for step_count in STEP_COUNTS_TESTING:
         for model_index, model_type in enumerate(MODEL_TYPES):
-            # if model_type != 'success_rewarded_two_lambdas':
-            #     continue
+            if model_type != 'success_punished':
+                continue
             if 'two_lambdas' in model_type:
                 two_lambda = True
             else:
