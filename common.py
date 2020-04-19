@@ -82,9 +82,9 @@ def expected_p_t(step: int, p0: float, c_lambda: float, model_type: str) -> floa
     return e
 
 
-def support_k(i: int, p0: float, c_lambda: float):
-    return (expected_p_t(i, p0, c_lambda, "success_punished") * (-3 * c_lambda ** 2 + 4 * c_lambda - 1) + (
-            1 - c_lambda) ** 2)
+# def support_k(i: int, p0: float, c_lambda: float):
+#     return (expected_p_t(i, p0, c_lambda, "success_punished") * (-3 * c_lambda ** 2 + 4 * c_lambda - 1) + (
+#             1 - c_lambda) ** 2)
 
 
 # def expected_p_t_squared_support_sum(step: int, p0: float, c_lambda: float, model_type: str) -> float:
