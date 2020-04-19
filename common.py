@@ -110,7 +110,45 @@ def expected_p_t_squared(step: int, p0: float, c_lambda: float, model_type: str)
 
     if model_type == 'success_punished':
         support_sum = expected_p_t_squared_support_sum(step, p0, c_lambda, model_type)
-        e = (3 * c_lambda ** 2 - 2 * c_lambda) ** step + support_sum if c_lambda != 2 / 3 else 0
+        e = p0 ** 2 * (3 * c_lambda ** 2 - 2 * c_lambda) ** step + support_sum if c_lambda != 2 / 3 else 0
+    elif model_type == 'success_rewarded':
+        e = p0 * ((2 * c_lambda - c_lambda ** 2) ** step * (p0 - 1) + 1)
+    elif model_type == 'success_punished_two_lambdas':
+        e = 0
+    elif model_type == 'success_rewarded_two_lambdas':
+        e = 0
+    else:
+        raise Exception(f'Unexpected walk type: {model_type}')
+    return e
+
+
+def expected_p_t_squared_support_sum2(step, c_lambda, model_type):
+    support_sum = 0
+    for i in range(0, step):
+        if model_type == 'success_punished':
+            summand = (2 * c_lambda - 1) ** i * (3 * c_lambda ** 2 - 2 * c_lambda) ** (step - 1 - i)
+        else:
+            raise Exception(f'Unexpected walk type: {model_type}')
+        support_sum = support_sum + summand
+    return support_sum
+    pass
+
+
+def expected_p_t_squared2(step: int, p0: float, c_lambda: float, model_type: str) -> float:
+    """
+    Support function to get the variance
+    :param step:
+    :param p0:
+    :param c_lambda:
+    :param model_type:
+    :return:
+    """
+
+    if model_type == 'success_punished':
+        support_sum = expected_p_t_squared_support_sum2(step, c_lambda, model_type)
+        e = p0 ** 2 * (3 * c_lambda ** 2 - 2 * c_lambda) ** step + (1 - (3 * c_lambda ** 2 - 2 * c_lambda) ** step) / (
+                    3 * c_lambda + 1) * (c_lambda + 1) / 2 - (p0 - 1 / 2) * (3 * c_lambda - 1) * (
+                        c_lambda - 1) * support_sum if c_lambda != -1 / 3 else p0 ** 2
     elif model_type == 'success_rewarded':
         e = p0 * ((2 * c_lambda - c_lambda ** 2) ** step * (p0 - 1) + 1)
     elif model_type == 'success_punished_two_lambdas':
