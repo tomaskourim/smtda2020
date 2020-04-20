@@ -163,9 +163,6 @@ def var_p_t_array(step_count: int, p0: float, c_lambda: float, model_type: str) 
     var_array = [p0 * (1 - p0)]  # VarP(0)
     for step in range(1, step_count + 1):
         ep2 = expected_p_t_squared(step, p0, c_lambda, model_type)
-        # ep2_2 = expected_p_t_squared2(step, p0, c_lambda, model_type)
-        # if abs(ep2 - ep2_2) > 1e-15:
-        #     print(f"err {ep2 - ep2_2}")
         ep = expected_p_t(step, p0, c_lambda, model_type)
         var_array.append(ep2 - ep ** 2)
     return var_array
@@ -218,7 +215,8 @@ def exp_p_s_t(step: int, p0: float, c_lambda: float, s0: int, model_type: str) -
         sup_sum = e_p_s_t_support_sum(step, p0, c_lambda, s0, model_type)
         e = p0 * s0 * (2 * c_lambda - 1) ** step + sup_sum
     elif model_type == 'success_rewarded':
-        e = 0
+        a = 2 * c_lambda * p0 * (p0 - 1) / (1 - c_lambda) ** 2
+        e = p0 * s0 + a * (1 - (2 * c_lambda - c_lambda ** 2) ** step) + p0 * step
     elif model_type == 'success_punished_two_lambdas':
         e = 0
     elif model_type == 'success_rewarded_two_lambdas':

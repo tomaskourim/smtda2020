@@ -14,8 +14,8 @@ def main(simulated_property="probability"):
     mean_styles = ['g.', 'r.', 'b.']
     var_styles = ['g-.', 'r-.', 'b-.']
     expected_styles = ['g-', 'r-', 'b-']
-    model_min_y = [-5, -30, -25, -100]
-    model_max_y = [40, 100, 25, 200]
+    model_min_y = [-3, -30, -25, -100]
+    model_max_y = [20, 100, 25, 200]
     for step_count in STEP_COUNTS_TESTING:
         for model_index, model_type in enumerate(MODEL_TYPES):
             if model_type != 'success_rewarded':
@@ -93,7 +93,7 @@ def main(simulated_property="probability"):
 
 if __name__ == '__main__':
     start_time, logger = create_logger()
-    main(simulated_property="position")
+    # main(simulated_property="position")
     # main(simulated_property="probability")
-    # main(simulated_property="p_s")
+    main(simulated_property="p_s")
     log_time(start_time, logger)
