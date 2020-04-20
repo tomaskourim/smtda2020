@@ -243,9 +243,9 @@ def exp_s_t_squared(step: int, p0: float, c_lambda: float, s0: int, model_type: 
         sup_sum = e_s2_t_support_sum(step, p0, c_lambda, s0, model_type)
         e = s0 ** 2 + step * (1 - 2 * s0) + sup_sum
     elif model_type == 'success_rewarded':
-        a = (8 * c_lambda * p0 * (p0 - 1)) / ((1 - c_lambda) ** 4)
-        b = a * (1 - c_lambda) ** 2
-        e = step ** 2 + b * step - a * (1 - (2 * c_lambda - c_lambda ** 2) ** step)
+        a = (8 * c_lambda * p0 * (p0 - 1)) / ((1 - c_lambda) ** 2)
+        b = s0 ** 2 - 2 * step * s0 + 4 * step * p0 * s0
+        e = step ** 2 + a * step - a * (1 - (2 * c_lambda - c_lambda ** 2) ** step) / (1 - c_lambda) ** 2 + b
     elif model_type == 'success_punished_two_lambdas':
         e = 0
     elif model_type == 'success_rewarded_two_lambdas':

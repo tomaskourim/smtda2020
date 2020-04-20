@@ -497,9 +497,9 @@ For the expected value and variance of the transition probability or the
 
  it holds AMISTAT
 \begin_inset Formula 
-\[
-EP_{t}=p_{0},
-\]
+\begin{equation}
+EP_{t}=p_{0},\label{eq:e_p_t_sr}
+\end{equation}
 
 \end_inset
 
@@ -684,13 +684,17 @@ E(P_{t}S_{t})=E[E(P_{t}S_{t}|P_{t-1})]=E[E((\lambda P_{t-1}+\frac{1}{2}(1-\lambd
 
 \begin_inset Formula 
 \[
-=E[E(\lambda P_{t-1}S_{t-1}+\frac{1-\lambda}{2}S_{t-1}-\frac{1-\lambda}{2}X_{t}S_{t-1}+\lambda X_{t}P_{t-1}+\frac{1-\lambda}{2}X_{t}-\frac{1-\lambda}{2}|P_{t-1})]
+=E[E(\lambda P_{t-1}S_{t-1}+\frac{1-\lambda}{2}S_{t-1}-\frac{1-\lambda}{2}X_{t}S_{t-1}+\lambda X_{t}P_{t-1}+\frac{1-\lambda}{2}X_{t}-\frac{1-\lambda}{2}X_{t}^{2}|P_{t-1})]
 \]
 
 \end_inset
 
 and using 
 \begin_inset Formula $E(X_{t}|P_{t-1})=2P_{t-1}-1$
+\end_inset
+
+ and 
+\begin_inset Formula $EX_{t}^{2}=1$
 \end_inset
 
  finally
@@ -857,8 +861,14 @@ E(P_{t+1}S_{t+1})=(2\lambda-1)E(P_{t}S_{t})+(1-\lambda)ES_{t}+2\lambda EP_{t}^{2
 \end_layout
 
 \begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:VarSt_sp"
+
+\end_inset
+
 For all 
-\begin_inset Formula $t\ge2$
+\begin_inset Formula $t\ge1$
 \end_inset
 
  
@@ -1121,6 +1131,457 @@ noprefix "false"
 \end_inset
 
  then proves the theorem.
+\end_layout
+
+\begin_layout Standard
+For the 
+\emph on
+success rewarding 
+\emph default
+model is the procedure similar.
+ First let us prove a support proposition.
+\end_layout
+
+\begin_layout Proposition
+For all 
+\begin_inset Formula $t\ge1$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+E(P_{t}S_{t})=p_{0}S_{0}+p_{0}t+2\lambda p_{0}(p_{0}-1)\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}}.\label{eq:e_p_s_t_sr}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+We will once again start with expressing 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula $E(P_{t}S_{t})$
+\end_inset
+
+ from the knowledge of the past step.
+\begin_inset Formula 
+\[
+E(P_{t}S_{t})=E(E(P_{t-1}S_{t-1}|P_{t-1})=E[E((\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1+X_{t}))(S_{t-1}+X_{t})|P_{t-1})]=
+\]
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+
+\begin_inset Formula 
+\[
+=E[E(\lambda P_{t-1}S_{t-1}+\frac{1-\lambda}{2}S_{t-1}+\frac{1-\lambda}{2}X_{t}S_{t-1}+\lambda X_{t}P_{t-1}+\frac{1-\lambda}{2}X_{t}+\frac{1-\lambda}{2}X_{t}^{2}|P_{t-1})]
+\]
+
+\end_inset
+
+and using 
+\begin_inset Formula $E(X_{t}|P_{t-1})=2P_{t-1}-1$
+\end_inset
+
+ and 
+\begin_inset Formula $EX_{t}^{2}=1$
+\end_inset
+
+ finally
+\begin_inset Formula 
+\begin{equation}
+E(P_{t}S_{t})=E(P_{t-1}S_{t-1})+2\lambda EP_{t-1}^{2}-(2\lambda-1)EP_{t-1}.\label{eq:e_p_s_t-1_t_sr}
+\end{equation}
+
+\end_inset
+
+Further we will continue using mathematical induction.
+ For 
+\begin_inset Formula $t=1$
+\end_inset
+
+ using the definition of the walk it holds that
+\begin_inset Formula 
+\[
+E(P_{1}S_{1})=p_{0}(1-(1-p_{0})\lambda)(S_{0}+1)+(1-p_{0})\lambda p_{0}(S_{0}-1)=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=p_{0}S_{0}+2\lambda p_{0}^{2}-(2\lambda-1)p_{0}.
+\]
+
+\end_inset
+
+When substituting
+\begin_inset Formula $t=1$
+\end_inset
+
+ into 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:e_p_s_t_sr"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ we obtain
+\begin_inset Formula 
+\[
+E(P_{1}S_{1})=p_{0}S_{0}+p_{0}+2\lambda p_{0}(p_{0}-1)\frac{1-(2\lambda-\lambda^{2})^{0}}{(1-\lambda)^{2}}=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=p_{0}S_{0}+p_{0}+2\lambda p_{0}(p_{0}-1)
+\]
+
+\end_inset
+
+and finally 
+\begin_inset Formula 
+\[
+E(P_{1}S_{1})=p_{0}S_{0}+2\lambda p_{0}^{2}-(2\lambda-1)p_{0}.
+\]
+
+\end_inset
+
+Equation 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:e_p_s_t_sr"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ thus holds 
+\begin_inset Formula $t=1$
+\end_inset
+
+.
+ Now for the induction step 
+\begin_inset Formula $t\rightarrow t+1$
+\end_inset
+
+ we get by substituting
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:e_p_s_t_sr"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ into 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:e_p_s_t-1_t_sr"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+E(P_{t+1}S_{t+1})=E(P_{t}S_{t})+2\lambda EP_{t}^{2}-(2\lambda-1)EP_{t}
+\]
+
+\end_inset
+
+and further using 
+\begin_inset Formula 
+\[
+EP_{t}^{2}=p_{0}((2\lambda-\lambda^{2})^{t}(p_{0}-1)+1),
+\]
+
+\end_inset
+
+which follows from the proof of Proposition 3.7 in AMISTAT, and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:e_p_t_sr"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+E(P_{t+1}S_{t+1})=p_{0}S_{0}+p_{0}t+2\lambda p_{0}(p_{0}-1)\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}}+2\lambda p_{0}((2\lambda-\lambda^{2})^{t}(p_{0}-1)+1)-(2\lambda-1)p_{0}=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=p_{0}S_{0}+p_{0}(t+1)+2\lambda p_{0}(p_{0}-1)[\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}}+(2\lambda-\lambda^{2})^{t}]=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=p_{0}S_{0}+p_{0}(t+1)+2\lambda p_{0}(p_{0}-1)\frac{1-(2\lambda-\lambda^{2})^{t+1}}{(1-\lambda)^{2}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+For all 
+\begin_inset Formula $t\ge1$
+\end_inset
+
+ holds
+\begin_inset Formula 
+\[
+Var\,S_{t}=4p_{0}(1-p_{0})t^{2}+a(p_{0},\lambda)t-a(p_{0},\lambda)\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}},
+\]
+
+\end_inset
+
+where
+\begin_inset Formula 
+\[
+a(p_{0},\lambda)=\frac{8p_{0}(1-p_{0})}{(1-\lambda)^{2}}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Proof
+As clearly the value 
+\begin_inset Formula $S_{0}$
+\end_inset
+
+ does not affect the variance, let us from now assume 
+\begin_inset Formula $S_{0}=0$
+\end_inset
+
+.
+ From the definition of variance and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:e_s_t_sr"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ follows that to prove the theorem it is enough to prove that 
+\begin_inset Formula 
+\begin{equation}
+ES_{t}^{2}=t^{2}+a(p_{0},\lambda)t-a(p_{0},\lambda)\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}}.\label{eq:e_s2_t_sr}
+\end{equation}
+
+\end_inset
+
+First of all let us recall that formula 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:e_s2_t-1_t_sp"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ holds for the 
+\emph on
+success rewarding
+\emph default
+ type of the model as well.
+ The theorem will be once again proved using mathematical induction.
+ For 
+\begin_inset Formula $t=1$
+\end_inset
+
+ the definition of the walk yields the same result as in the proof of Theorem
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "thm:VarSt_sp"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Substituting 
+\begin_inset Formula $t=1$
+\end_inset
+
+ into 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:e_s2_t_sr"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ we obtain
+\begin_inset Formula 
+\[
+ES_{1}^{2}=1+a(p_{0},\lambda)t-a(p_{0},\lambda)=1
+\]
+
+\end_inset
+
+and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:e_s2_t_sr"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ thus holds for 
+\begin_inset Formula $t=1$
+\end_inset
+
+.
+ Now for the induction step 
+\begin_inset Formula $t\rightarrow t+1$
+\end_inset
+
+ we get by substituting 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:e_s2_t_sr"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:e_p_s_t_sr"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:e_s_t_sr"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ into 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:e_s2_t-1_t_sp"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+ES_{t+1}^{2}=ES_{t}^{2}+4E(P_{t}S_{t})-2ES_{t}+1=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=t^{2}+a(p_{0},\lambda)t-a(p_{0},\lambda)\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}}+4(p_{0}t+2\lambda p_{0}(p_{0}-1)\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}})-2t(2p_{0}-1)+1=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=(t+1)^{2}+a(p_{0},\lambda)(t+1)-a(p_{0},\lambda)\frac{1-(2\lambda-\lambda^{2})^{t+1}}{(1-\lambda)^{2}}.
+\]
+
+\end_inset
+
+Substituting 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:e_s2_t_sr"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:e_s_t_sr"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ into the definition of variance then proves the theorem.
 \end_layout
 
 \begin_layout Section
