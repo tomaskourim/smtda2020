@@ -228,6 +228,33 @@ def exp_p_s_t(step: int, p0: float, c_lambda: float, s0: int, model_type: str) -
     return e
 
 
+def e_s2_t_support_sum(step: int, p0: float, c_lambda: float, s0: int, model_type: str):
+    support_sum = 0
+    for i in range(0, step):
+        if model_type == 'success_punished':
+            summand = 4 * exp_p_s_t(i, p0, c_lambda, s0, model_type) - ((2 * p0 - 1) * (
+                    1 - (2 * c_lambda - 1) ** i) / (1 - c_lambda) if c_lambda != 1 else 0)
+        else:
+            raise Exception(f'Unexpected walk type: {model_type}')
+        support_sum = support_sum + summand
+    return support_sum
+
+
+def exp_s_t_squared(step: int, p0: float, c_lambda: float, s0: int, model_type: str) -> float:
+    if model_type == 'success_punished':
+        sup_sum = e_s2_t_support_sum(step, p0, c_lambda, s0, model_type)
+        e = s0 ** 2 + step * (1 - 2 * s0) + sup_sum
+    elif model_type == 'success_rewarded':
+        e = 0
+    elif model_type == 'success_punished_two_lambdas':
+        e = 0
+    elif model_type == 'success_rewarded_two_lambdas':
+        e = 0
+    else:
+        raise Exception(f'Unexpected walk type: {model_type}')
+    return e
+
+
 def exp_s_t_array(step_count: int, p0: float, c_lambda: float, s0: int, model_type: str) -> List[float]:
     e_array = []
     for step in range(0, step_count + 1):
@@ -243,7 +270,13 @@ def exp_p_s_t_array(step_count: int, p0: float, c_lambda: float, s0: int, model_
 
 
 def var_s_t_array(step_count: int, p0: float, c_lambda: float, s0: int, model_type: str) -> List[float]:
-    pass
+    var_array = [0]  # VarS(0) = 0
+    for step in range(1, step_count + 1):
+        es2 = exp_s_t_squared(step, p0, c_lambda, s0, model_type)
+        es = exp_s_t(step, p0, c_lambda, s0, model_type)
+        var_array.append(es2 - es ** 2)
+        print(step)
+    return var_array
 
 
 def create_logger():

@@ -2,7 +2,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-from common import exp_p_t_array, var_p_t_array, log_time, create_logger, exp_s_t_array, exp_p_s_t_array
+from common import exp_p_t_array, var_p_t_array, log_time, create_logger, exp_s_t_array, exp_p_s_t_array, var_s_t_array
 from config import MODEL_TYPES, REPETITIONS_OF_WALK_S, \
     C_LAMBDAS_TESTING, START_PROBABILITIES_TESTING, STEP_COUNTS_TESTING, C_LAMBDA_PAIRS_TESTING
 from data_generation import generate_random_walks, list_walks2list_lists
@@ -10,15 +10,15 @@ from data_generation import generate_random_walks, list_walks2list_lists
 
 def main(simulated_property="probability"):
     plt_rows = 1
-    plt_columns = 3
+    plt_columns = len(START_PROBABILITIES_TESTING)
     mean_styles = ['g.', 'r.', 'b.']
     var_styles = ['g-.', 'r-.', 'b-.']
     expected_styles = ['g-', 'r-', 'b-']
-    model_min_y = [-2, -30, -25, -100]
-    model_max_y = [6, 100, 25, 200]
+    model_min_y = [-5, -30, -25, -100]
+    model_max_y = [40, 100, 25, 200]
     for step_count in STEP_COUNTS_TESTING:
         for model_index, model_type in enumerate(MODEL_TYPES):
-            if model_type != 'success_punished':
+            if model_type != 'success_rewarded':
                 continue
             if 'two_lambdas' in model_type:
                 two_lambda = True
@@ -51,6 +51,16 @@ def main(simulated_property="probability"):
                     elif simulated_property == "position":
                         mean = np.mean(developments, axis=0)
                         variance = np.var(developments, axis=0)
+                    elif simulated_property == "p_s":
+                        ps_all = []
+                        for observation in range(0, REPETITIONS_OF_WALK_S[0]):
+                            ps_single = []
+                            for walk_step in range(0, step_count + 1):
+                                ps_single.append(
+                                    probabilities[observation][walk_step] * developments[observation][walk_step])
+                            ps_all.append(ps_single)
+                        mean = np.mean(ps_all, axis=0)
+                        variance = np.var(ps_all, axis=0)
                     else:
                         raise Exception("unexpected property type")
                     plt.plot(mean, mean_styles[index], label=label)
@@ -65,9 +75,12 @@ def main(simulated_property="probability"):
                             s0 = 0
                             plt.plot(exp_s_t_array(step_count, starting_probability, c_lambda, s0, model_type),
                                      expected_styles[index], linewidth=0.7)
-                            # plt.plot(var_S_t_array(step_count, starting_probability, c_lambda, s0, model_type),
-                            #          expected_styles[index], linewidth=0.7)
-                            # plt.plot([starting_probability * (1 - starting_probability)] * (step_count + 1), 'k:')
+                            plt.plot(var_s_t_array(step_count, starting_probability, c_lambda, s0, model_type),
+                                     expected_styles[index], linewidth=0.7)
+                        elif simulated_property == "p_s":
+                            s0 = 0
+                            plt.plot(exp_p_s_t_array(step_count, starting_probability, c_lambda, s0, model_type),
+                                     expected_styles[index], linewidth=0.7)
                     plt.legend(loc='best', fontsize='xx-large', markerscale=3)
 
             fig = plt.gcf()
@@ -82,4 +95,5 @@ if __name__ == '__main__':
     start_time, logger = create_logger()
     main(simulated_property="position")
     # main(simulated_property="probability")
+    # main(simulated_property="p_s")
     log_time(start_time, logger)
