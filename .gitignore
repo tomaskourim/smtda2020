@@ -5,3 +5,5 @@ __pycache__/
 logfile_error.log
 logfile_info.log
 logfile_total.log
+venv/
+paper/aux_files

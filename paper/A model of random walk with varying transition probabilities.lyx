@@ -81,18 +81,25 @@ theorems-ams
 \begin_body
 
 \begin_layout Title
-Non-markov discrete random walks - selected properties
+A model of random walk with varying transition probabilities
 \end_layout
 
 \begin_layout Abstract
-This paper elaborates the newly introduced model of discrete random walks
- with memory implemented through a memory coefficient 
-\begin_inset Formula $\lambda$
-\end_inset
-
-.
- It follows on the recent work of the authors and further examines the theoretic
-al properties of the model.
+This paper considers a model of the one-dimensional discrete time random
+ walk in which the position of the walker is controlled by a varying transition
+ probabilities.
+ Namely, these probabilities depend on the last walker moves.
+ Hence, transition probabilities evolve in time, they depend on the walk
+ history, thus making the walk a non-Markovian stochastic process.
+ The paper follows on the recent work of the authors.
+ Two basic version of the model are introduced, some their properties are
+ recalled and new theoretical results derived.
+ Then, more complex variants of models are presented.
+ Development of walks themselves as well as the properties of connected
+ sequences of transition probabilities are illustrated also with the aid
+ of simulation.
+ Application to tennis results prediction is mentioned (described in short?),
+ too.
 \end_layout
 
 \begin_layout Section
@@ -357,7 +364,7 @@ For the expected value and variance of the step size for the
 \begin_inset Formula $X_{t}$
 \end_inset
 
- it holds AMISTAT
+ it holds AMISTAT111
 \begin_inset Formula 
 \[
 EX_{t}=(2\lambda-1)^{t-1}(2p_{0}-1),
@@ -1594,14 +1601,156 @@ The model is especially well suited for simulation of random processes where
  development.
  An example such a process can be found in sports modelling.
  The authors recently presented a study where the model was used for modelling
- of men tennis Grand Slam matches with rather convinving results.
- The historical results show that the development of a tennis match follows
- the 
+ the men tennis Grand Slam matches with results suggesting the model might
+ provide precious insight when modelling tennis.
+ Here is a brief summary of the modelling approach.
+\end_layout
+
+\begin_layout Standard
+The 
 \emph on
 success rewarding
 \emph default
- version of the model.
+ version of the model was selected as the historical results show that the
+ development of a tennis match follows such pattern.
+ The 
+\begin_inset Formula $p_{0}$
+\end_inset
+
+ was found using input bookmaker odds from 
+\emph on
+Pinnacle Sports
+\emph default
+, an industry leading bookmaker.
+ The appropriate 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ parameter was then found from historical data using the maximal likelihood
+ estimate.
+ The model was tested on a database consisting of 
+\begin_inset Formula $4255$
+\end_inset
+
+ tennis matches that took place between 2009 and 2018 and the results suggest
+ that such a model could be used for 
+\emph on
+in-play
+\emph default
+ odds prediction.
+ For full details of the model derivation and testing, see the original
+ paper.
+ PROCEEDINGSATHENY
+\end_layout
+
+\begin_layout Standard
+The model was implemented and tested in real life setup where it actively
+ bet 
+\emph on
+in-play
+\emph default
+ against Tipsport, the biggest bookmaker in the Czech Republic.
+ The test was set up in the following manner.
  
+\end_layout
+
+\begin_layout Standard
+An automated betting and odds scraping tool developed using the Python programmi
+ng language and Selenium framework running on a remote server (Digital Ocean)
+ was developed and deployed.
+ The tool operates with Tipsport’s website and scrapes it for both pre-match
+ as well as in-play odds.
+ It was set up to continuously observe Tipsport’s odds offerings for 
+\begin_inset Formula $2019$
+\end_inset
+
+ men tennis US Open, especially the set winning odds, and store the odds
+ together with some general information about the match, such as the respective
+ players, starting time etc., into a database (Postgresql database).
+ To test the model, Tipsport’s starting odds were used to obtain parameter
+ 
+\begin_inset Formula $p_{0}$
+\end_inset
+
+ and optimized 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ trained on the 
+\begin_inset Formula $2018$
+\end_inset
+
+ tennis season was chosen as the second necessary model parameter in a same
+ way se in PROCEEDINGSATHENY.
+ Every match was observed individually and after each finished set next
+ set winning probabilities were computed using the presented model.
+ Whenever the actual set winning odds offered by Tipsport for one of the
+ players 
+\begin_inset Formula $a_{i}$
+\end_inset
+
+ were higher than the probability implied set winning odds for that player
+ computed by the model, i.e.
+ 
+\begin_inset Formula $a_{i}>\frac{1}{p}$
+\end_inset
+
+ , a bet was made.
+ The amount bet was computed as 
+\begin_inset Formula $p_{i}U$
+\end_inset
+
+, where 
+\begin_inset Formula $U$
+\end_inset
+
+ is a base bankroll-dependent betting unit.
+ This amount was further rounded with precision CZK 
+\begin_inset Formula $1$
+\end_inset
+
+ (due to betting limitations of Tipsport).
+ Overall, 
+\begin_inset Formula $128$
+\end_inset
+
+ bets were made (and 
+\begin_inset Formula $3$
+\end_inset
+
+ additional bets that were cancelled due to one of the players forfeiting
+ the match because of injury) with the total amount 
+\begin_inset Formula $59.85U$
+\end_inset
+
+ bet.
+ The expected number of wins among these bets was 
+\begin_inset Formula $59.85$
+\end_inset
+
+ whereas the actual number of wins was 
+\begin_inset Formula $57$
+\end_inset
+
+.
+ The minimal account balance over the entire US Open was 
+\begin_inset Formula $−0.52U$
+\end_inset
+
+ and the final balance 
+\begin_inset Formula $2.24U$
+\end_inset
+
+, creating a theoretical return on investment (ROI) of 
+\begin_inset Formula $430\%$
+\end_inset
+
+ within only 2 weeks, which is an outstanding performance.
+\end_layout
+
+\begin_layout Standard
+This study just briefly shows the posibilities of the presented model.
+ The 
 \end_layout
 
 \begin_layout Section
