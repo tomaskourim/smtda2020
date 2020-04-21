@@ -5,6 +5,9 @@
 \save_transient_properties true
 \origin unavailable
 \textclass article
+\begin_preamble
+
+\end_preamble
 \use_default_options true
 \begin_modules
 theorems-ams
@@ -12,7 +15,7 @@ theorems-ams
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding auto
+\inputencoding utf8-plain
 \fontencoding global
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -333,11 +336,61 @@ success rewarding
 \end_layout
 
 \begin_layout Standard
-The model was first introduced in DDNY and a more thorough description was
- provided in TEZE.
- More properties were then presented in AMISTAT and a practical implementation
- of the model in modelling tennis matches was presented in IMAMAN+ProceedingsAte
-ny.
+The model was first introduced in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{ja2017ddny}
+\end_layout
+
+\end_inset
+
+ and a more thorough description was provided in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{ja2019teze}
+\end_layout
+
+\end_inset
+
+.
+ More properties were then presented in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{ja2019apmat}
+\end_layout
+
+\end_inset
+
+ and a practical implementation of the model in modelling tennis matches
+ was presented in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{ja2019mathsport_proc}
+\end_layout
+
+\end_inset
+
+.
  Next let us recall the results of the previous work.
 \end_layout
 
@@ -364,7 +417,20 @@ For the expected value and variance of the step size for the
 \begin_inset Formula $X_{t}$
 \end_inset
 
- it holds AMISTAT111
+ it holds 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{ja2019apmat}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula 
 \[
 EX_{t}=(2\lambda-1)^{t-1}(2p_{0}-1),
@@ -393,7 +459,20 @@ For the expected value and variance of the transition probability or the
 \begin_inset Formula $P_{t}$
 \end_inset
 
- it holds DDNY/TEZE, AMISTAT
+ it holds 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{ja2017ddny, ja2019apmat}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula 
 \begin{equation}
 EP_{t}=(2\lambda-1)^{t}p_{0}+\frac{1-(2\lambda-1)^{t}}{2},\label{eq:e_p_t_sp}
@@ -437,7 +516,20 @@ Finally, the expected position of the walker
 \begin_inset Formula $t\geq1$
 \end_inset
 
- iterations can be expressed as DDNY/TEZE
+ iterations can be expressed as 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{ja2017ddny}
+\end_layout
+
+\end_inset
+
+ 
 \begin_inset Formula 
 \begin{equation}
 ES_{t}=S_{0}+(2p_{0}-1)\frac{1-(2\lambda-1)^{t}}{2(1-\lambda)}.\label{eq:e_s_t_sp}
@@ -535,7 +627,20 @@ The formula for
 \begin_inset Formula $EP_{t}^{2}$
 \end_inset
 
- follows from the proof of Proposition 2.5 in AMISTAT.
+ follows from the proof of Proposition 2.5 in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{ja2019apmat}
+\end_layout
+
+\end_inset
+
+.
  To prove 
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -1039,7 +1144,20 @@ For the expected value and variance of the step size for the
 \begin_inset Formula $X_{t}$
 \end_inset
 
- it holds AMISTAT
+ it holds 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{ja2019apmat}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula 
 \[
 EX_{t}=2p_{0}-1,
@@ -1068,7 +1186,20 @@ For the expected value and variance of the transition probability or the
 \begin_inset Formula $P_{t}$
 \end_inset
 
- it holds AMISTAT
+ it holds 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{ja2019apmat}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula 
 \begin{equation}
 EP_{t}=p_{0},\label{eq:e_p_t_sr}
@@ -1124,7 +1255,20 @@ Finally, the expected position of the walker
 \begin_inset Formula $t\geq1$
 \end_inset
 
- iterations can be expressed as AMISTAT
+ iterations can be expressed as 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{ja2019apmat}
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula 
 \begin{equation}
 ES_{t}=S_{0}+t(2p_{0}-1).\label{eq:e_s_t_sr}
@@ -1333,7 +1477,20 @@ EP_{t}^{2}=p_{0}((2\lambda-\lambda^{2})^{t}(p_{0}-1)+1),
 
 \end_inset
 
-which follows from the proof of Proposition 3.7 in AMISTAT, and 
+which follows from the proof of Proposition 3.7 in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{ja2019apmat}
+\end_layout
+
+\end_inset
+
+, and 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:e_p_t_sr"
@@ -1630,8 +1787,21 @@ in-play
 \emph default
  odds prediction.
  For full details of the model derivation and testing, see the original
- paper.
- PROCEEDINGSATHENY
+ paper 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{ja2019mathsport_proc}
+\end_layout
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1672,7 +1842,20 @@ ng language and Selenium framework running on a remote server (Digital Ocean)
 \end_inset
 
  tennis season was chosen as the second necessary model parameter in a same
- way se in PROCEEDINGSATHENY.
+ way se in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{ja2019mathsport_proc}
+\end_layout
+
+\end_inset
+
+.
  Every match was observed individually and after each finished set next
  set winning probabilities were computed using the presented model.
  Whenever the actual set winning odds offered by Tipsport for one of the
@@ -1759,6 +1942,18 @@ A specific model of a random walk with varying probabilities was considered
  A model application from previous study was recalled and the model was
  tested on a new, real life dataset with convincing results.
  
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+btprint "btPrintCited"
+bibfiles "doktknih"
+options "plain"
+
+\end_inset
+
+
 \end_layout
 
 \end_body
