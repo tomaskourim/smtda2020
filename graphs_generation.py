@@ -18,8 +18,8 @@ def main(simulated_property="probability"):
     model_max_y = [20, 30, 25, 200]
     for step_count in STEP_COUNTS_TESTING:
         for model_index, model_type in enumerate(MODEL_TYPES):
-            if model_type != 'success_rewarded':
-                continue
+            # if model_type != 'success_rewarded':
+            #     continue
             if 'two_lambdas' in model_type:
                 two_lambda = True
             else:

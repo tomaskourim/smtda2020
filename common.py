@@ -275,7 +275,6 @@ def var_s_t_array(step_count: int, p0: float, c_lambda: float, s0: int, model_ty
         es2 = exp_s_t_squared(step, p0, c_lambda, s0, model_type)
         es = exp_s_t(step, p0, c_lambda, s0, model_type)
         var_array.append(es2 - es ** 2)
-        print(step)
     return var_array
 
 

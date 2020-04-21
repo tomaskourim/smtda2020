@@ -1585,6 +1585,26 @@ noprefix "false"
 \end_layout
 
 \begin_layout Section
+Model application
+\end_layout
+
+\begin_layout Standard
+The model is especially well suited for simulation of random processes where
+ a single or just a few events significantly affect the process's future
+ development.
+ An example such a process can be found in sports modelling.
+ The authors recently presented a study where the model was used for modelling
+ of men tennis Grand Slam matches with rather convinving results.
+ The historical results show that the development of a tennis match follows
+ the 
+\emph on
+success rewarding
+\emph default
+ version of the model.
+ 
+\end_layout
+
+\begin_layout Section
 Conclusion
 \end_layout
 
