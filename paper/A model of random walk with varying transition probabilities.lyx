@@ -152,7 +152,7 @@ The rest of the paper is organized as follows.
 \end_layout
 
 \begin_layout Section
-Random walk with varying probability - overview
+Theoretical properties
 \end_layout
 
 \begin_layout Standard
@@ -351,8 +351,8 @@ The basic properties of the
 success punishing 
 \emph default
 version of the walk are presented in this section.
- They are presented as a set of expressions, the reader is kindly asked
- to see referred papers for full proves of those expressions.
+ Previous results are presented as a set of expressions only, the reader
+ is kindly asked to see referred papers for full proves of those expressions.
 \end_layout
 
 \begin_layout Standard
@@ -448,144 +448,14 @@ ES_{t}=S_{0}+(2p_{0}-1)\frac{1-(2\lambda-1)^{t}}{2(1-\lambda)}.\label{eq:e_s_t_s
 
 \end_layout
 
-\begin_layout Subsection
-Success rewarding model
-\end_layout
-
 \begin_layout Standard
-Similar formulas can be derived for the 
-\emph on
-success rewarding 
-\emph default
-model.
- Once again only the formulas are presented with proofs in the referred
- literature.
- For the sake of clarity the set of expressions is presented in the same
- manner as in the previous section.
-\end_layout
-
-\begin_layout Standard
-For the expected value and variance of the step size for the 
-\begin_inset Formula $t\ge1$
-\end_inset
-
- iteration of the walk 
-\begin_inset Formula $X_{t}$
-\end_inset
-
- it holds AMISTAT
-\begin_inset Formula 
-\[
-EX_{t}=2p_{0}-1,
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-Var\,X_{t}=4p_{0}(1-p_{0}).
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-For the expected value and variance of the transition probability or the
- 
-\begin_inset Formula $t\ge1$
-\end_inset
-
- iteration of the walk 
-\begin_inset Formula $P_{t}$
-\end_inset
-
- it holds AMISTAT
-\begin_inset Formula 
-\begin{equation}
-EP_{t}=p_{0},\label{eq:e_p_t_sr}
-\end{equation}
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-Var\,P_{t}=(2\lambda-\lambda^{2})^{t}p_{0}^{2}+p_{0}(1-\lambda)^{2}\sum_{i=0}^{t-1}(2\lambda-\lambda^{2})^{i}-p_{0}^{2}.
-\]
-
-\end_inset
-
-As the sum in the formula equals 
-\begin_inset Formula $\frac{1-(2\lambda-\lambda^{2})^{t}}{1-(2\lambda-\lambda^{2})}$
-\end_inset
-
-, it can be further simplified as
-\begin_inset Formula 
-\[
-Var\,P_{t}=(2\lambda-\lambda^{2})^{t}p_{0}^{2}+p_{0}(1-\lambda)^{2}\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}}-p_{0}^{2}=
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-=p_{0}[(2\lambda-\lambda^{2})^{t}(p_{0}-1)+1]-p_{0}^{2},
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-Var\,P_{t}=p_{0}[(1-p_{0})(1-(2\lambda-\lambda^{2})^{t})].
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-Finally, the expected position of the walker 
-\begin_inset Formula $S_{t}$
-\end_inset
-
- after 
-\begin_inset Formula $t\geq1$
-\end_inset
-
- iterations can be expressed as AMISTAT
-\begin_inset Formula 
-\begin{equation}
-ES_{t}=S_{0}+t(2p_{0}-1).\label{eq:e_s_t_sr}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Random walk with varying probability - properties
-\end_layout
-
-\begin_layout Standard
-The last formulas missing in the previous section are those expressing the
- variance of the position of the walker 
+The last formula missing is the one expressing the variance of the position
+ of the walker 
 \begin_inset Formula $Var\,S_{t}$
 \end_inset
 
 .
- They will be proved in this section.
- Let us starting with the 
-\emph on
-success punishing
-\emph default
- model and first prove a support proposition.
+ Before it is presented, let us first prove a support proposition.
 \end_layout
 
 \begin_layout Proposition
@@ -733,7 +603,7 @@ E(P_{1}S_{1})=p_{0}(p_{0}\lambda(S_{0}+1))+(1-p_{0})[(1-(1-p_{0})\lambda)(S_{0}-
 
 \end_inset
 
-When substituting
+When substituting 
 \begin_inset Formula $t=1$
 \end_inset
 
@@ -881,7 +751,7 @@ For all
  
 \begin_inset Formula 
 \[
-Var\,S_{t}=t(1-2S_{0})+4\sum_{i=0}^{t-1}\sigma(i;p_{0},S_{0},\lambda)-a(t;p_{0},S_{0},\lambda),
+Var\,S_{t}=t+4\sum_{i=0}^{t-1}\sigma(i;p_{0},0,\lambda)-a(t;p_{0},\lambda),
 \]
 
 \end_inset
@@ -903,7 +773,7 @@ noprefix "false"
  and
 \begin_inset Formula 
 \[
-a(t;p_{0},S_{0},\lambda)=(2p_{0}-1)\sum_{i=0}^{t-1}\frac{1-(2\lambda-1)^{i}}{1-\lambda}+S_{0}(2p_{0}-1)\frac{1-(2\lambda-1)^{t}}{1-\lambda}+(2p_{0}-1)^{2}\frac{(1-(2\lambda-1)^{t})^{2}}{4(1-\lambda)^{2}}.
+a(t;p_{0},\lambda)=(2p_{0}-1)\sum_{i=0}^{t-1}\frac{1-(2\lambda-1)^{i}}{1-\lambda}+(2p_{0}-1)^{2}\frac{(1-(2\lambda-1)^{t})^{2}}{4(1-\lambda)^{2}}.
 \]
 
 \end_inset
@@ -912,7 +782,16 @@ a(t;p_{0},S_{0},\lambda)=(2p_{0}-1)\sum_{i=0}^{t-1}\frac{1-(2\lambda-1)^{i}}{1-\
 \end_layout
 
 \begin_layout Proof
-From the definition of variance 
+As clearly the value 
+\begin_inset Formula $S_{0}$
+\end_inset
+
+ does not affect the variance, let us from now assume 
+\begin_inset Formula $S_{0}=0$
+\end_inset
+
+.
+ From the definition of variance 
 \begin_inset Formula 
 \begin{equation}
 Var\,S_{t}=ES_{t}^{2}-E^{2}S_{t}\label{eq:var_s_t_rozepsano_sp}
@@ -933,7 +812,7 @@ noprefix "false"
  follows that to prove the proposition it is enough to prove that 
 \begin_inset Formula 
 \begin{equation}
-ES_{t}^{2}=S_{0}^{2}+t(1-2S_{0})+4\sum_{i=0}^{t-1}\sigma(i;p_{0},S_{0},\lambda)-(2p_{0}-1)\sum_{i=0}^{t-1}\frac{1-(2\lambda-1)^{i}}{1-\lambda}.\label{eq:e_s2_t_sp}
+ES_{t}^{2}=t+4\sum_{i=0}^{t-1}\sigma(i;p_{0},0,\lambda)-(2p_{0}-1)\sum_{i=0}^{t-1}\frac{1-(2\lambda-1)^{i}}{1-\lambda}.\label{eq:e_s2_t_sp}
 \end{equation}
 
 \end_inset
@@ -980,9 +859,9 @@ where the fact that
 \begin_inset Formula $t=1$
 \end_inset
 
- we get using the definition of the walk (Def 
+ we get using the definition of the walk (Definition 
 \begin_inset CommandInset ref
-LatexCommand eqref
+LatexCommand ref
 reference "eq:def_p_sp"
 plural "false"
 caps "false"
@@ -993,15 +872,7 @@ noprefix "false"
 )
 \begin_inset Formula 
 \[
-ES_{1}^{2}=p_{0}(S_{0}+1)^{2}+(1-p_{0})(S_{0}-1)^{2}=
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-=S_{0}^{2}-2S_{0}+4p_{0}S_{0}+1.
+ES_{1}^{2}=p_{0}(S_{0}+1)^{2}+(1-p_{0})(S_{0}-1)^{2}=1.
 \]
 
 \end_inset
@@ -1023,15 +894,7 @@ noprefix "false"
  we obtain
 \begin_inset Formula 
 \[
-ES_{1}^{2}=S_{0}^{2}+1-2S_{0}+4\sigma(0;p_{0},S_{0},\lambda)-(2p_{0}-1)\frac{1-(2\lambda-1)^{0}}{1-\lambda}=
-\]
-
-\end_inset
-
-
-\begin_inset Formula 
-\[
-=S_{0}^{2}+1-2S_{0}+4p_{0}S_{0}
+ES_{1}^{2}=1+4\sigma(0;p_{0},0,\lambda)-(2p_{0}-1)\frac{1-(2\lambda-1)^{0}}{1-\lambda}=1
 \]
 
 \end_inset
@@ -1086,7 +949,7 @@ ES_{t+1}^{2}=ES_{t}^{2}+4E(P_{t}S_{t})-2ES_{t}+1=
 
 \begin_inset Formula 
 \[
-=S_{0}^{2}+t(1-2S_{0})+4\sum_{i=0}^{t-1}\sigma(i;p_{0},S_{0},\lambda)-(2p_{0}-1)\sum_{i=0}^{t-1}\frac{1-(2\lambda-1)^{i}}{1-\lambda}+
+=t+4\sum_{i=0}^{t-1}\sigma(i;p_{0},0,\lambda)-(2p_{0}-1)\sum_{i=0}^{t-1}\frac{1-(2\lambda-1)^{i}}{1-\lambda}+
 \]
 
 \end_inset
@@ -1094,7 +957,7 @@ ES_{t+1}^{2}=ES_{t}^{2}+4E(P_{t}S_{t})-2ES_{t}+1=
 
 \begin_inset Formula 
 \[
-+4\sigma(t;p_{0},S_{0},\lambda)-2(S_{0}+(2p_{0}-1)\frac{1-(2\lambda-1)^{t}}{2(1-\lambda)})+1=
++4\sigma(t;p_{0},0,\lambda)-2(2p_{0}-1)\frac{1-(2\lambda-1)^{t}}{2(1-\lambda)}+1=
 \]
 
 \end_inset
@@ -1102,12 +965,23 @@ ES_{t+1}^{2}=ES_{t}^{2}+4E(P_{t}S_{t})-2ES_{t}+1=
 
 \begin_inset Formula 
 \[
-S_{0}^{2}+(t+1)(1-2S_{0})+4\sum_{i=0}^{t}\sigma(i;p_{0},S_{0},\lambda)-(2p_{0}-1)\sum_{i=0}^{t}\frac{1-(2\lambda-1)^{i}}{1-\lambda}.
+(t+1)+4\sum_{i=0}^{t}\sigma(i;p_{0},0,\lambda)-(2p_{0}-1)\sum_{i=0}^{t}\frac{1-(2\lambda-1)^{i}}{1-\lambda},
 \]
 
 \end_inset
 
-Substituting 
+which proves 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:e_s2_t_sp"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Substituting 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:e_s2_t_sp"
@@ -1140,13 +1014,130 @@ noprefix "false"
  then proves the theorem.
 \end_layout
 
+\begin_layout Subsection
+Success rewarding model
+\end_layout
+
 \begin_layout Standard
-For the 
+Similar formulas can be derived for the 
 \emph on
 success rewarding 
 \emph default
-model is the procedure similar.
- First let us prove a support proposition.
+model.
+ Once again for previous results only the formulas are presented with proofs
+ in the referred literature.
+ For the sake of clarity the set of expressions is presented in the same
+ manner as in the previous section.
+\end_layout
+
+\begin_layout Standard
+For the expected value and variance of the step size for the 
+\begin_inset Formula $t\ge1$
+\end_inset
+
+ iteration of the walk 
+\begin_inset Formula $X_{t}$
+\end_inset
+
+ it holds AMISTAT
+\begin_inset Formula 
+\[
+EX_{t}=2p_{0}-1,
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Var\,X_{t}=4p_{0}(1-p_{0}).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For the expected value and variance of the transition probability or the
+ 
+\begin_inset Formula $t\ge1$
+\end_inset
+
+ iteration of the walk 
+\begin_inset Formula $P_{t}$
+\end_inset
+
+ it holds AMISTAT
+\begin_inset Formula 
+\begin{equation}
+EP_{t}=p_{0},\label{eq:e_p_t_sr}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Var\,P_{t}=(2\lambda-\lambda^{2})^{t}p_{0}^{2}+p_{0}(1-\lambda)^{2}\sum_{i=0}^{t-1}(2\lambda-\lambda^{2})^{i}-p_{0}^{2}.
+\]
+
+\end_inset
+
+As the sum in the formula equals 
+\begin_inset Formula $\frac{1-(2\lambda-\lambda^{2})^{t}}{1-(2\lambda-\lambda^{2})}$
+\end_inset
+
+, it can be further simplified as
+\begin_inset Formula 
+\[
+Var\,P_{t}=(2\lambda-\lambda^{2})^{t}p_{0}^{2}+p_{0}(1-\lambda)^{2}\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}}-p_{0}^{2}=
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=p_{0}[(2\lambda-\lambda^{2})^{t}(p_{0}-1)+1]-p_{0}^{2},
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Var\,P_{t}=p_{0}[(1-p_{0})(1-(2\lambda-\lambda^{2})^{t})].
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Finally, the expected position of the walker 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ after 
+\begin_inset Formula $t\geq1$
+\end_inset
+
+ iterations can be expressed as AMISTAT
+\begin_inset Formula 
+\begin{equation}
+ES_{t}=S_{0}+t(2p_{0}-1).\label{eq:e_s_t_sr}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+To prove a formula allowing to compute the variance of the position of the
+ walker, let us again start with a support proposition.
 \end_layout
 
 \begin_layout Proposition
@@ -1750,11 +1741,24 @@ ng language and Selenium framework running on a remote server (Digital Ocean)
 
 \begin_layout Standard
 This study just briefly shows the posibilities of the presented model.
- The 
+ The testing dataset, consisting of only 128 bets, is too small to provide
+ a strong evidence favoring the model over bookmaker's ods, but the results
+ are more than convincing.
+ A more conclusive test on a bigger dataset will be subject of further study.
 \end_layout
 
 \begin_layout Section
 Conclusion
+\end_layout
+
+\begin_layout Standard
+A specific model of a random walk with varying probabilities was considered
+ in this paper.
+ New properties of the model were derived and proved in Section XXX, providing
+ another insight into the model behaivor.
+ A model application from previous study was recalled and the model was
+ tested on a new, real life dataset with convincing results.
+ 
 \end_layout
 
 \end_body
