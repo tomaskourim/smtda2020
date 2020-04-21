@@ -1,0 +1,449 @@
+%% LyX 2.3.2-2 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\theoremstyle{plain}
+\newtheorem{thm}{\protect\theoremname}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{\protect\definitionname}
+\theoremstyle{plain}
+\newtheorem{prop}[thm]{\protect\propositionname}
+
+\makeatother
+
+\usepackage{babel}
+\providecommand{\definitionname}{Definition}
+\providecommand{\propositionname}{Proposition}
+\providecommand{\theoremname}{Theorem}
+
+\begin{document}
+\title{Non-markov discrete random walks - selected properties}
+\maketitle
+\begin{abstract}
+This paper elaborates the newly introduced model of discrete random
+walks with memory implemented through a memory coefficient $\lambda$.
+It follows on the recent work of the authors and further examines
+the theoretical properties of the model.
+\end{abstract}
+
+\section{Introduction}
+
+Modelling sporting events and reliability analysis are two seemingly
+very different areas of mathematics, yet they offer many similarities.
+The key factor in both domains is a certain probability measure determining
+the development of observed phenomenon. This probability measure is
+called ``hazard rate'' in reliability analysis and simply ``probability
+of scoring'' in modelling of sport events. It is altered either continuously
+with time according to some underlying probability function or suddenly
+as a reaction to an event. Breakage or repair of a given machine in
+reliability analysis or scoring (goal, point, basket etc.) in sports
+modelling. The most prominent tool in reliability analysis is the
+Cox's model ZDROJ expressing the changes of a hazard rate with a base
+hazard rate and a covariate vector. This model, operating with continuous
+time, is often used for sports modelling as well. Many types of sport
+such as tennis or volleyball, however, are played in a strictly discrete
+matter with steps divided by individual \emph{points},\emph{ games
+}or \emph{sets}. Other real life situations with similar properties
+can be found as well, including the recurrence of diseases or recidivism
+in crime. Thus authors thus recently presented a novel discrete time
+random process model - discrete random walk with varying probabilities
+- which aims to serve as a discrete alternative to the standard Cox's
+model ZDROJ. In this paper selected properties of the model are presented
+and possible real life implementations of the model are discussed.
+
+The rest of the paper is organized as follows. Next section.... The
+last section concludes this work.
+
+\section{Random walk with varying probability - overview}
+
+The original motivation of the model comes from modelling of sport
+events where the probability of a success (i.e. scoring a goal, achieving
+a point etc.) is at the center of interest. After each occurrence
+of such success this probability either decreases or increases, and
+thus two basic model alternatives exist - \emph{success punishing
+}and \emph{success rewarding}. The basic version of the model has
+$2$ parameters, starting success probability $p_{0}$ and a memory
+coefficient $\lambda$ affecting the severity of probability change
+after a success. Formally the walk is defined as follows:
+\begin{defn}
+\label{def:walk_definition}Let $\ensuremath{p_{0},\lambda\in(0,\,1)}$
+be constant parameters, ${\{P_{n}\}}_{n=0}^{\infty}$ and ${\{X_{n}\}}_{n=1}^{\infty}$
+sequences of discrete random variables with $P_{0}=p_{0}$ and for
+$t\ge1$
+\[
+P(X_{t}=1|P_{t-1}=p_{t-1})=p_{t-1},\,\,\,P(X_{t}=-1|P_{t-1}=p_{t-1})=1-p_{t-1},
+\]
+and (\emph{success punishing)}
+\begin{equation}
+P_{t}=\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1-X_{t})\label{eq:def_p_sp}
+\end{equation}
+or (\emph{success rewarding)
+\[
+P_{t}=\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1+X_{t}).
+\]
+}
+
+The sequence ${\{S_{n}\}}{}_{n=0}^{\infty},\;S_{N}=S_{0}+\sum_{i=1}^{N}X_{i}$
+for $n\in\mathbb{N}$, with $S_{0}\in\mathbb{R}$ some given starting
+position, is called a \emph{random walk with varying probabilities},
+with ${\{X_{n}\}}_{n=1}^{\infty}$ being the steps of the walker and
+${\{P_{n}\}}_{n=0}^{\infty}$ transition probabilities. Depending
+on the chosen formula to calculate $P_{i}$ the walk type is either
+\emph{success punishing} REF or \emph{success rewarding} REF.
+\end{defn}
+
+The model was first introduced in DDNY and a more thorough description
+was provided in TEZE. More properties were then presented in AMISTAT
+and a practical implementation of the model in modelling tennis matches
+was presented in IMAMAN+ProceedingsAteny. Next let us recall the results
+of the previous work.
+
+\subsection{Success punishing model}
+
+The basic properties of the \emph{success punishing }version of the
+walk are presented in this section. They are presented as a set of
+expressions, the reader is kindly asked to see referred papers for
+full proves of those expressions.
+
+For the expected value and variance of the step size for the $t\ge1$
+iteration of the walk $X_{t}$ it holds AMISTAT
+\[
+EX_{t}=(2\lambda-1)^{t-1}(2p_{0}-1),
+\]
+\[
+Var\,X_{t}=1-(2\lambda-1)^{2(t-1)}(2p_{0}-1)^{2}.
+\]
+
+For the expected value and variance of the transition probability
+or the $t\ge1$ iteration of the walk $P_{t}$ it holds DDNY/TEZE,
+AMISTAT
+\begin{equation}
+EP_{t}=(2\lambda-1)^{t}p_{0}+\frac{1-(2\lambda-1)^{t}}{2},\label{eq:e_p_t_sp}
+\end{equation}
+\[
+Var\,P_{t}=(3\lambda^{2}-2\lambda)^{t}p_{0}^{2}+\sum_{i=0}^{t-1}K(i)(3\lambda^{2}-2\lambda)^{t-1-i}-k(t)^{2},
+\]
+where
+\[
+k(t)=EP_{t}=(2\lambda-1)^{t}p_{0}+\frac{1-(2\lambda-1)^{t}}{2}
+\]
+and
+\[
+K(t)=k(t)\cdot(-3\lambda^{2}+4\lambda-1)+(1-\lambda)^{2}.
+\]
+
+Finally, the expected position of the walker $S_{t}$ after $t\geq1$
+iterations can be expressed as DDNY/TEZE
+\begin{equation}
+ES_{t}=S_{0}+(2p_{0}-1)\frac{1-(2\lambda-1)^{t}}{2(1-\lambda)}.\label{eq:e_s_t_sp}
+\end{equation}
+
+
+\subsection{Success rewarding model}
+
+Similar formulas can be derived for the \emph{success rewarding }model.
+Once again only the formulas are presented with proofs in the referred
+literature. For the sake of clarity the set of expressions is presented
+in the same manner as in the previous section.
+
+For the expected value and variance of the step size for the $t\ge1$
+iteration of the walk $X_{t}$ it holds AMISTAT
+\[
+EX_{t}=2p_{0}-1,
+\]
+\[
+Var\,X_{t}=4p_{0}(1-p_{0}).
+\]
+
+For the expected value and variance of the transition probability
+or the $t\ge1$ iteration of the walk $P_{t}$ it holds AMISTAT
+\begin{equation}
+EP_{t}=p_{0},\label{eq:e_p_t_sr}
+\end{equation}
+\[
+Var\,P_{t}=(2\lambda-\lambda^{2})^{t}p_{0}^{2}+p_{0}(1-\lambda)^{2}\sum_{i=0}^{t-1}(2\lambda-\lambda^{2})^{i}-p_{0}^{2}.
+\]
+As the sum in the formula equals $\frac{1-(2\lambda-\lambda^{2})^{t}}{1-(2\lambda-\lambda^{2})}$,
+it can be further simplified as
+\[
+Var\,P_{t}=(2\lambda-\lambda^{2})^{t}p_{0}^{2}+p_{0}(1-\lambda)^{2}\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}}-p_{0}^{2}=
+\]
+\[
+=p_{0}[(2\lambda-\lambda^{2})^{t}(p_{0}-1)+1]-p_{0}^{2},
+\]
+\[
+Var\,P_{t}=p_{0}[(1-p_{0})(1-(2\lambda-\lambda^{2})^{t})].
+\]
+
+Finally, the expected position of the walker $S_{t}$ after $t\geq1$
+iterations can be expressed as AMISTAT
+\begin{equation}
+ES_{t}=S_{0}+t(2p_{0}-1).\label{eq:e_s_t_sr}
+\end{equation}
+
+
+\section{Random walk with varying probability - properties}
+
+The last formulas missing in the previous section are those expressing
+the variance of the position of the walker $Var\,S_{t}$. They will
+be proved in this section. Let us starting with the \emph{success
+punishing} model and first prove a support proposition.
+\begin{prop}
+For all $t\ge1$
+\begin{equation}
+E(P_{t}S_{t})=(2\lambda-1)^{t}p_{0}S_{0}+\sum_{i=0}^{t-1}(2\lambda-1)^{i}q(t-1-i;p_{0},S_{0},\lambda),\label{eq:e_p_s_t_sp}
+\end{equation}
+where
+\[
+q(j;p_{0},S_{0},\lambda)=(1-\lambda)s(j;p_{0},S_{0},\lambda)+2\lambda\pi(j;p_{0},\lambda)+(1-2\lambda)p(j;p_{0},\lambda)+\lambda-1
+\]
+and $p(j;p_{0},\lambda)=EP_{j}$ given by (\ref{eq:e_p_t_sp}), $s(j;p_{0},S_{0},\lambda)=ES_{j}$
+given by (\ref{eq:e_s_t_sp}) and $\pi(j;p_{0},\lambda)=EP_{j}^{2}$
+given as 
+\begin{equation}
+EP_{t}^{2}=(3\lambda^{2}-2\lambda)^{t}p_{0}^{2}+\frac{1-(3\lambda^{2}-2\lambda)^{t}}{3\lambda+1}\frac{(\lambda+1)}{2}-(p_{0}-\frac{1}{2})(3\lambda-1)(\lambda-1)M(t-1;\lambda),\label{eq:e_p2_t_sp}
+\end{equation}
+where 
+\[
+M(t;\lambda)=\sum_{i=0}^{t-1}(3\lambda^{2}-2\lambda)^{t-1-i}(2\lambda-1)^{i}.
+\]
+\end{prop}
+
+\begin{proof}
+The formula for $EP_{t}^{2}$ follows from the proof of Proposition
+2.5 in AMISTAT. To prove (\ref{eq:e_p_s_t_sp}) let us start with
+expressing the value of $E(P_{t}S_{t})$ from the knowledge of past
+steps as
+\[
+E(P_{t}S_{t})=E[E(P_{t}S_{t}|P_{t-1})]=E[E((\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1-X_{t}))(S_{t-1}+X_{t})|P_{t-1})]=
+\]
+\[
+=E[E(\lambda P_{t-1}S_{t-1}+\frac{1-\lambda}{2}S_{t-1}-\frac{1-\lambda}{2}X_{t}S_{t-1}+\lambda X_{t}P_{t-1}+\frac{1-\lambda}{2}X_{t}-\frac{1-\lambda}{2}X_{t}^{2}|P_{t-1})]
+\]
+and using $E(X_{t}|P_{t-1})=2P_{t-1}-1$ and $EX_{t}^{2}=1$ finally
+\begin{equation}
+E(P_{t}S_{t})=(2\lambda-1)E(P_{t-1}S_{t-1})+(1-\lambda)ES_{t-1}+2\lambda EP_{t-1}^{2}+(2\lambda-1)EP_{t-1}+\lambda-1.\label{eq:e_p_s_t-1_t_sp}
+\end{equation}
+Further we will continue using mathematical induction. For $t=1$
+using the definition of the walk it holds that
+\[
+E(P_{1}S_{1})=p_{0}(p_{0}\lambda(S_{0}+1))+(1-p_{0})[(1-(1-p_{0})\lambda)(S_{0}-1)]=
+\]
+\[
+=(2\lambda-1)p_{0}S_{0}+(1-\lambda)S_{0}+2\lambda p_{0}^{2}-(2\lambda-1)p_{0}+\lambda-1.
+\]
+When substituting$t=1$ into (\ref{eq:e_p_s_t_sp}) we obtain
+\[
+E(P_{1}S_{1})=(2\lambda-1)p_{0}S_{0}+\sum_{i=0}^{0}(2\lambda-1)^{i}q(0-i;p_{0},S_{0},\lambda)=
+\]
+\[
+=(2\lambda-1)p_{0}S_{0}+(1-\lambda)s(0;p_{0},\lambda)+2\lambda\pi(0;p_{0},\lambda)+(1-2\lambda)p(0;p_{0},\lambda)+\lambda-1
+\]
+and finally using (\ref{eq:e_p_t_sp}), (\ref{eq:e_s_t_sp}) and (\ref{eq:e_p2_t_sp})
+\[
+E(P_{1}S_{1})=(2\lambda-1)p_{0}S_{0}+(1-\lambda)S_{0}+2\lambda p_{0}^{2}+(1-2\lambda)p_{0}+\lambda-1.
+\]
+Equation (\ref{eq:e_p_s_t_sp}) thus holds $t=1$. Now for the induction
+step $t\rightarrow t+1$ we get by substituting(\ref{eq:e_p_s_t_sp})
+into (\ref{eq:e_p_s_t-1_t_sp})
+\[
+E(P_{t+1}S_{t+1})=(2\lambda-1)E(P_{t}S_{t})+(1-\lambda)ES_{t}+2\lambda EP_{t}^{2}+(2\lambda-1)EP_{t}+\lambda-1=
+\]
+\[
+(2\lambda-1)[(2\lambda-1)^{t}p_{0}S_{0}+\sum_{i=0}^{t-1}(2\lambda-1)^{i}q(t-1-i)]+(1-\lambda)s(t)+2\lambda\pi(t)+(2\lambda-1)p(t)+\lambda-1=
+\]
+\[
+(2\lambda-1)^{t+1}p_{0}S_{0}+\sum_{i=0}^{t}(2\lambda-1)^{i}q(t-i).
+\]
+\end{proof}
+\begin{thm}
+\label{thm:VarSt_sp}For all $t\ge1$ 
+\[
+Var\,S_{t}=t(1-2S_{0})+4\sum_{i=0}^{t-1}\sigma(i;p_{0},S_{0},\lambda)-a(t;p_{0},S_{0},\lambda),
+\]
+with $\sigma(i;p_{0},S_{0},\lambda)=E(P_{t}S_{t})$ given by (\ref{eq:e_p_s_t_sp})
+and
+\[
+a(t;p_{0},S_{0},\lambda)=(2p_{0}-1)\sum_{i=0}^{t-1}\frac{1-(2\lambda-1)^{i}}{1-\lambda}+S_{0}(2p_{0}-1)\frac{1-(2\lambda-1)^{t}}{1-\lambda}+(2p_{0}-1)^{2}\frac{(1-(2\lambda-1)^{t})^{2}}{4(1-\lambda)^{2}}.
+\]
+\end{thm}
+
+\begin{proof}
+From the definition of variance 
+\begin{equation}
+Var\,S_{t}=ES_{t}^{2}-E^{2}S_{t}\label{eq:var_s_t_rozepsano_sp}
+\end{equation}
+and (\ref{eq:e_s_t_sp}) follows that to prove the proposition it
+is enough to prove that 
+\begin{equation}
+ES_{t}^{2}=S_{0}^{2}+t(1-2S_{0})+4\sum_{i=0}^{t-1}\sigma(i;p_{0},S_{0},\lambda)-(2p_{0}-1)\sum_{i=0}^{t-1}\frac{1-(2\lambda-1)^{i}}{1-\lambda}.\label{eq:e_s2_t_sp}
+\end{equation}
+First of all, let us express $ES_{t}^{2}$ from the knowledge of past
+walk development. From the definition of the expected value and the
+definition of the walk (Definition \ref{def:walk_definition}) it
+follows
+\[
+ES_{t}^{2}=E[E(S_{t}^{2}|P_{t-1})]=E[E((S_{t-1}+X_{t})^{2}|P_{t-1})]=E(S_{t-1}^{2}+2(2P_{t-1}-1)S_{t-1}+1)=
+\]
+\begin{equation}
+=ES_{t-1}^{2}+4E(P_{t-1}S_{t-1})-2ES_{t-1}+1,\label{eq:e_s2_t-1_t_sp}
+\end{equation}
+where the fact that $EX_{t}^{2}=1$ was used. The theorem will be
+once again proved using mathematical induction. For $t=1$ we get
+using the definition of the walk (Def (\ref{eq:def_p_sp}))
+\[
+ES_{1}^{2}=p_{0}(S_{0}+1)^{2}+(1-p_{0})(S_{0}-1)^{2}=
+\]
+\[
+=S_{0}^{2}-2S_{0}+4p_{0}S_{0}+1.
+\]
+Substituting $t=1$ into (\ref{eq:e_s2_t_sp}) we obtain
+\[
+ES_{1}^{2}=S_{0}^{2}+1-2S_{0}+4\sigma(0;p_{0},S_{0},\lambda)-(2p_{0}-1)\frac{1-(2\lambda-1)^{0}}{1-\lambda}=
+\]
+\[
+=S_{0}^{2}+1-2S_{0}+4p_{0}S_{0}
+\]
+and (\ref{eq:e_s2_t_sp}) thus holds for $t=1$. Now for the induction
+step $t\rightarrow t+1$ we get by substituting (\ref{eq:e_s2_t_sp})
+into (\ref{eq:e_s2_t-1_t_sp})
+\[
+ES_{t+1}^{2}=ES_{t}^{2}+4E(P_{t}S_{t})-2ES_{t}+1=
+\]
+\[
+=S_{0}^{2}+t(1-2S_{0})+4\sum_{i=0}^{t-1}\sigma(i;p_{0},S_{0},\lambda)-(2p_{0}-1)\sum_{i=0}^{t-1}\frac{1-(2\lambda-1)^{i}}{1-\lambda}+
+\]
+\[
++4\sigma(t;p_{0},S_{0},\lambda)-2(S_{0}+(2p_{0}-1)\frac{1-(2\lambda-1)^{t}}{2(1-\lambda)})+1=
+\]
+\[
+S_{0}^{2}+(t+1)(1-2S_{0})+4\sum_{i=0}^{t}\sigma(i;p_{0},S_{0},\lambda)-(2p_{0}-1)\sum_{i=0}^{t}\frac{1-(2\lambda-1)^{i}}{1-\lambda}.
+\]
+Substituting (\ref{eq:e_s2_t_sp}) and (\ref{eq:e_s_t_sp}) into (\ref{eq:var_s_t_rozepsano_sp})
+then proves the theorem.
+\end{proof}
+For the \emph{success rewarding }model is the procedure similar. First
+let us prove a support proposition.
+\begin{prop}
+For all $t\ge1$
+\begin{equation}
+E(P_{t}S_{t})=p_{0}S_{0}+p_{0}t+2\lambda p_{0}(p_{0}-1)\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}}.\label{eq:e_p_s_t_sr}
+\end{equation}
+\end{prop}
+
+\begin{proof}
+We will once again start with expressing $E(P_{t}S_{t})$ from the
+knowledge of the past step.
+\[
+E(P_{t}S_{t})=E(E(P_{t-1}S_{t-1}|P_{t-1})=E[E((\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1+X_{t}))(S_{t-1}+X_{t})|P_{t-1})]=
+\]
+\[
+=E[E(\lambda P_{t-1}S_{t-1}+\frac{1-\lambda}{2}S_{t-1}+\frac{1-\lambda}{2}X_{t}S_{t-1}+\lambda X_{t}P_{t-1}+\frac{1-\lambda}{2}X_{t}+\frac{1-\lambda}{2}X_{t}^{2}|P_{t-1})]
+\]
+and using $E(X_{t}|P_{t-1})=2P_{t-1}-1$ and $EX_{t}^{2}=1$ finally
+\begin{equation}
+E(P_{t}S_{t})=E(P_{t-1}S_{t-1})+2\lambda EP_{t-1}^{2}-(2\lambda-1)EP_{t-1}.\label{eq:e_p_s_t-1_t_sr}
+\end{equation}
+Further we will continue using mathematical induction. For $t=1$
+using the definition of the walk it holds that
+\[
+E(P_{1}S_{1})=p_{0}(1-(1-p_{0})\lambda)(S_{0}+1)+(1-p_{0})\lambda p_{0}(S_{0}-1)=
+\]
+\[
+=p_{0}S_{0}+2\lambda p_{0}^{2}-(2\lambda-1)p_{0}.
+\]
+When substituting$t=1$ into (\ref{eq:e_p_s_t_sr}) we obtain
+\[
+E(P_{1}S_{1})=p_{0}S_{0}+p_{0}+2\lambda p_{0}(p_{0}-1)\frac{1-(2\lambda-\lambda^{2})^{0}}{(1-\lambda)^{2}}=
+\]
+\[
+=p_{0}S_{0}+p_{0}+2\lambda p_{0}(p_{0}-1)
+\]
+and finally 
+\[
+E(P_{1}S_{1})=p_{0}S_{0}+2\lambda p_{0}^{2}-(2\lambda-1)p_{0}.
+\]
+Equation (\ref{eq:e_p_s_t_sr}) thus holds $t=1$. Now for the induction
+step $t\rightarrow t+1$ we get by substituting(\ref{eq:e_p_s_t_sr})
+into (\ref{eq:e_p_s_t-1_t_sr})
+\[
+E(P_{t+1}S_{t+1})=E(P_{t}S_{t})+2\lambda EP_{t}^{2}-(2\lambda-1)EP_{t}
+\]
+and further using 
+\[
+EP_{t}^{2}=p_{0}((2\lambda-\lambda^{2})^{t}(p_{0}-1)+1),
+\]
+which follows from the proof of Proposition 3.7 in AMISTAT, and (\ref{eq:e_p_t_sr})
+\[
+E(P_{t+1}S_{t+1})=p_{0}S_{0}+p_{0}t+2\lambda p_{0}(p_{0}-1)\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}}+2\lambda p_{0}((2\lambda-\lambda^{2})^{t}(p_{0}-1)+1)-(2\lambda-1)p_{0}=
+\]
+\[
+=p_{0}S_{0}+p_{0}(t+1)+2\lambda p_{0}(p_{0}-1)[\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}}+(2\lambda-\lambda^{2})^{t}]=
+\]
+\[
+=p_{0}S_{0}+p_{0}(t+1)+2\lambda p_{0}(p_{0}-1)\frac{1-(2\lambda-\lambda^{2})^{t+1}}{(1-\lambda)^{2}}.
+\]
+\end{proof}
+\begin{thm}
+For all $t\ge1$ holds
+\[
+Var\,S_{t}=4p_{0}(1-p_{0})t^{2}+a(p_{0},\lambda)t-a(p_{0},\lambda)\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}},
+\]
+where
+\[
+a(p_{0},\lambda)=\frac{8p_{0}(1-p_{0})}{(1-\lambda)^{2}}.
+\]
+\end{thm}
+
+\begin{proof}
+As clearly the value $S_{0}$ does not affect the variance, let us
+from now assume $S_{0}=0$. From the definition of variance and (\ref{eq:e_s_t_sr})
+follows that to prove the theorem it is enough to prove that 
+\begin{equation}
+ES_{t}^{2}=t^{2}+a(p_{0},\lambda)t-a(p_{0},\lambda)\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}}.\label{eq:e_s2_t_sr}
+\end{equation}
+First of all let us recall that formula (\ref{eq:e_s2_t-1_t_sp})
+holds for the \emph{success rewarding} type of the model as well.
+The theorem will be once again proved using mathematical induction.
+For $t=1$ the definition of the walk yields the same result as in
+the proof of Theorem (\ref{thm:VarSt_sp}). Substituting $t=1$ into
+(\ref{eq:e_s2_t_sr}) we obtain
+\[
+ES_{1}^{2}=1+a(p_{0},\lambda)t-a(p_{0},\lambda)=1
+\]
+and (\ref{eq:e_s2_t_sr}) thus holds for $t=1$. Now for the induction
+step $t\rightarrow t+1$ we get by substituting (\ref{eq:e_s2_t_sr}),
+(\ref{eq:e_p_s_t_sr}) and (\ref{eq:e_s_t_sr}) into (\ref{eq:e_s2_t-1_t_sp})
+\[
+ES_{t+1}^{2}=ES_{t}^{2}+4E(P_{t}S_{t})-2ES_{t}+1=
+\]
+\[
+=t^{2}+a(p_{0},\lambda)t-a(p_{0},\lambda)\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}}+4(p_{0}t+2\lambda p_{0}(p_{0}-1)\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}})-2t(2p_{0}-1)+1=
+\]
+\[
+=(t+1)^{2}+a(p_{0},\lambda)(t+1)-a(p_{0},\lambda)\frac{1-(2\lambda-\lambda^{2})^{t+1}}{(1-\lambda)^{2}}.
+\]
+Substituting (\ref{eq:e_s2_t_sr}) and (\ref{eq:e_s_t_sr}) into the
+definition of variance then proves the theorem.
+\end{proof}
+
+\section{Model application}
+
+The model is especially well suited for simulation of random processes
+where a single or just a few events significantly affect the process's
+future development. An example such a process can be found in sports
+modelling. The authors recently presented a study where the model
+was used for modelling of men tennis Grand Slam matches with rather
+convinving results. The historical results show that the development
+of a tennis match follows the \emph{success rewarding} version of
+the model. 
+
+\section{Conclusion}
+\end{document}
