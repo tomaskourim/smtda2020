@@ -16,8 +16,8 @@ def main(simulated_property="probability"):
     expected_styles = ['g-', 'r-', 'b-']
     model_min_y = [-3, -10, -25, -100]
     model_max_y = [20, 30, 25, 200]
-    for repetitions in REPETITIONS_OF_WALK_S:
-        for step_count in STEP_COUNTS_TESTING:
+    for step_count in STEP_COUNTS_TESTING:
+        for repetitions in REPETITIONS_OF_WALK_S:
             for model_index, model_type in enumerate(MODEL_TYPES):
                 # if model_type != 'success_rewarded':
                 #     continue
@@ -83,6 +83,8 @@ def main(simulated_property="probability"):
                                 plt.plot(exp_p_s_t_array(step_count, starting_probability, c_lambda, s0, model_type),
                                          expected_styles[index], linewidth=0.7)
                         plt.legend(loc='best', fontsize='xx-large', markerscale=3)
+                        logger.info(
+                            f"Type: {simulated_property}, steps {step_count}, reps {repetitions}, p0 {starting_probability}, lambda {c_lambda}")
 
                 fig = plt.gcf()
                 fig.set_size_inches(18.5, 10.5)
