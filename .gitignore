@@ -7,3 +7,4 @@ logfile_info.log
 logfile_total.log
 venv/
 paper/aux_files
+simulations_test

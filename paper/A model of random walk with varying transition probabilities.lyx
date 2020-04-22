@@ -285,16 +285,14 @@ or (
 \color inherit
 success rewarding)
 \begin_inset Formula 
-\[
-P_{t}=\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1+X_{t}).
-\]
+\begin{equation}
+P_{t}=\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1+X_{t}).\label{eq:def_p_sr}
+\end{equation}
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Definition
+\emph default
 The sequence 
 \begin_inset Formula ${\{S_{n}\}}{}_{n=0}^{\infty},\;S_{N}=S_{0}+\sum_{i=1}^{N}X_{i}$
 \end_inset
@@ -328,11 +326,31 @@ random walk with varying probabilities
 \emph on
 success punishing
 \emph default
- REF or 
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:def_p_sp"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ or 
 \emph on
 success rewarding
 \emph default
- REF.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:def_p_sr"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -1119,6 +1137,47 @@ noprefix "false"
  then proves the theorem.
 \end_layout
 
+\begin_layout Corollary
+For 
+\begin_inset Formula $t\rightarrow+\infty$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Var\,S_{t}=+\infty
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+\lim_{t\rightarrow+\infty}(Var\,S_{t}-(c_{1}(p_{0},\lambda)t+c_{2}(p_{0},\lambda))=0,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $c_{i}(p_{0},\lambda)$
+\end_inset
+
+ are some 
+\begin_inset Formula $t$
+\end_inset
+
+-independent constants, i.e.
+ 
+\begin_inset Formula $Var\,S_{t}$
+\end_inset
+
+ behaves as a linear function with 
+\begin_inset Formula $t\rightarrow+\infty$
+\end_inset
+
+.
+\end_layout
+
 \begin_layout Subsection
 Success rewarding model
 \end_layout
@@ -1528,6 +1587,12 @@ E(P_{t+1}S_{t+1})=p_{0}S_{0}+p_{0}t+2\lambda p_{0}(p_{0}-1)\frac{1-(2\lambda-\la
 \end_layout
 
 \begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:var_s_t_sr"
+
+\end_inset
+
 For all 
 \begin_inset Formula $t\ge1$
 \end_inset
@@ -1737,6 +1802,285 @@ noprefix "false"
 \end_inset
 
  into the definition of variance then proves the theorem.
+\end_layout
+
+\begin_layout Corollary
+For 
+\begin_inset Formula $t\rightarrow+\infty$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\lim_{t\rightarrow+\infty}Var\,S_{t}=+\infty
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+\lim_{t\rightarrow+\infty}(Var\,S_{t}-(4p_{0}(1-p_{0})t^{2}+a(p_{0},\lambda)t-\frac{a(p_{0,}\lambda)}{(1-\lambda)^{2}}))=0,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $a(p_{0},\lambda)$
+\end_inset
+
+ as in Theorem 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "thm:var_s_t_sr"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $Var\,S_{t}$
+\end_inset
+
+ behaves as a quadratic function with 
+\begin_inset Formula $t\rightarrow+\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Figure XXX shows the comparision of the theoretical value of position variance
+ with an empirical one obtained using simulated data.
+\end_layout
+
+\begin_layout Subsection
+Two-parameter models
+\end_layout
+
+\begin_layout Standard
+The presented model can be further extended by adding additional levels
+ of complexity.
+ The first option is to use two separate 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ parameters for each direction of the walk.
+ Maintaining the two basic options - 
+\emph on
+success punishing
+\emph default
+ and 
+\emph on
+success rewarding
+\emph default
+ models, this level of complexity can defined as follows 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{ja2019apmat}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $\ensuremath{p_{0},\lambda_{0},\lambda_{1}\in(0,\,1)}$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ be constant parameters, 
+\begin_inset Formula ${\{P_{n}\}}_{n=0}^{\infty}$
+\end_inset
+
+ and 
+\begin_inset Formula ${\{X_{n}\}}_{n=1}^{\infty}$
+\end_inset
+
+ sequences of discrete random variables with 
+\begin_inset Formula $P_{0}=p_{0}$
+\end_inset
+
+ and for 
+\begin_inset Formula $t\ge1$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P(X_{t}=1|P_{t-1}=p_{t-1})=p_{t-1},\,\,\,P(X_{t}=-1|P_{t-1}=p_{t-1})=1-p_{t-1},
+\]
+
+\end_inset
+
+and (
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+success punishing)
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\begin{equation}
+P_{t}=\frac{1}{2}[(1+X_{t})\lambda_{0}P_{t-1}+(1-X_{t})(1-\lambda_{1}(1-P_{t-1}))]\label{eq:def_2l_p_sp}
+\end{equation}
+
+\end_inset
+
+or (
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+success rewarding)
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\begin{equation}
+P_{t}=\frac{1}{2}[(1-X_{t})\lambda_{0}P_{t-1}+(1+X_{t})(1-\lambda_{1}(1-P_{t-1}))].\label{eq:def_2l_p_sr}
+\end{equation}
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+The sequence 
+\begin_inset Formula ${\{S_{n}\}}{}_{n=0}^{\infty},\;S_{N}=S_{0}+\sum_{i=1}^{N}X_{i}$
+\end_inset
+
+ for 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+, with 
+\begin_inset Formula $S_{0}\in\mathbb{R}$
+\end_inset
+
+ some given starting position, is called a 
+\emph on
+random walk with varying probabilities - two-parameter model
+\emph default
+, with 
+\begin_inset Formula ${\{X_{n}\}}_{n=1}^{\infty}$
+\end_inset
+
+ being the steps of the walker and 
+\begin_inset Formula ${\{P_{n}\}}_{n=0}^{\infty}$
+\end_inset
+
+ transition probabilities.
+ Depending on the chosen formula to calculate 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+ the walk type is either 
+\emph on
+success punishing
+\emph default
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:def_2l_p_sp"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ or 
+\emph on
+success rewarding
+\emph default
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:def_2l_p_sr"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+The derivation of exact model properties is not so straightforward as in
+ the case with single lambda.
+ The properties were thus studied with the help of simulations.
+ They are presented on Figure XXX.
+ It seems that...
 \end_layout
 
 \begin_layout Section
