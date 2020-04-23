@@ -217,12 +217,10 @@ are then provided with full proves and all necessary details.
 
 For the expected value and variance of the step size for the $t\ge1$
 iteration of the walk $X_{t}$ it holds~\cite{ja2019apmat}
-\[
-EX_{t}=(2\lambda-1)^{t-1}(2p_{0}-1),
-\]
-\[
-Var\,X_{t}=1-(2\lambda-1)^{2(t-1)}(2p_{0}-1)^{2}.
-\]
+\begin{gather*}
+    EX_{t}=(2\lambda-1)^{t-1}(2p_{0}-1),\\
+    Var\,X_{t}=1-(2\lambda-1)^{2(t-1)}(2p_{0}-1)^{2}.\\
+\end{gather*}
 
 For the expected value and variance of the transition probability
 or the $t\ge1$ iteration of the walk $P_{t}$ it holds~\cite{ja2017ddny,ja2019apmat}
@@ -291,19 +289,15 @@ E(P_{t}S_{t})=(2\lambda-1)E(P_{t-1}S_{t-1})+(1-\lambda)ES_{t-1}+2\lambda EP_{t-1
 Further we will continue using mathematical induction.
 For $t=1$
 using the definition of the walk it holds that
-\[
-E(P_{1}S_{1})=p_{0}(p_{0}\lambda(S_{0}+1))+(1-p_{0})[(1-(1-p_{0})\lambda)(S_{0}-1)]=
-\]
-\[
-=(2\lambda-1)p_{0}S_{0}+(1-\lambda)S_{0}+2\lambda p_{0}^{2}-(2\lambda-1)p_{0}+\lambda-1.
-\]
+\begin{gather*}
+    E(P_{1}S_{1})=p_{0}(p_{0}\lambda(S_{0}+1))+(1-p_{0})[(1-(1-p_{0})\lambda)(S_{0}-1)]=\\
+    =(2\lambda-1)p_{0}S_{0}+(1-\lambda)S_{0}+2\lambda p_{0}^{2}-(2\lambda-1)p_{0}+\lambda-1.\\
+\end{gather*}
 When substituting $t=1$ into~\eqref{eq:e_p_s_t_sp} we obtain
-\[
-E(P_{1}S_{1})=(2\lambda-1)p_{0}S_{0}+\sum_{i=0}^{0}(2\lambda-1)^{i}q(0-i;p_{0},S_{0},\lambda)=
-\]
-\[
-=(2\lambda-1)p_{0}S_{0}+(1-\lambda)s(0;p_{0},\lambda)+2\lambda\pi(0;p_{0},\lambda)+(1-2\lambda)p(0;p_{0},\lambda)+\lambda-1
-\]
+\begin{gather*}
+    E(P_{1}S_{1})=(2\lambda-1)p_{0}S_{0}+\sum_{i=0}^{0}(2\lambda-1)^{i}q(0-i;p_{0},S_{0},\lambda)=\\
+    =(2\lambda-1)p_{0}S_{0}+(1-\lambda)s(0;p_{0},\lambda)+2\lambda\pi(0;p_{0},\lambda)+(1-2\lambda)p(0;p_{0},\lambda)+\lambda-1\\
+\end{gather*}
 and finally using~\eqref{eq:e_p_t_sp},~\eqref{eq:e_s_t_sp} and~\eqref{eq:e_p2_t_sp}
 \[
 E(P_{1}S_{1})=(2\lambda-1)p_{0}S_{0}+(1-\lambda)S_{0}+2\lambda p_{0}^{2}+(1-2\lambda)p_{0}+\lambda-1.
@@ -371,18 +365,12 @@ and~\eqref{eq:e_s2_t_sp} thus holds for $t=1$.
 Now for the induction
 step $t\rightarrow t+1$ we get by substituting~\eqref{eq:e_s2_t_sp}
 into (\ref{eq:e_s2_t-1_t_sp})
-\[
-ES_{t+1}^{2}=ES_{t}^{2}+4E(P_{t}S_{t})-2ES_{t}+1=
-\]
-\[
-=t+4\sum_{i=0}^{t-1}\sigma(i;p_{0},0,\lambda)-(2p_{0}-1)\sum_{i=0}^{t-1}\frac{1-(2\lambda-1)^{i}}{1-\lambda}+
-\]
-\[
-+4\sigma(t;p_{0},0,\lambda)-2(2p_{0}-1)\frac{1-(2\lambda-1)^{t}}{2(1-\lambda)}+1=
-\]
-\[
-(t+1)+4\sum_{i=0}^{t}\sigma(i;p_{0},0,\lambda)-(2p_{0}-1)\sum_{i=0}^{t}\frac{1-(2\lambda-1)^{i}}{1-\lambda},
-\]
+\begin{gather*}
+    ES_{t+1}^{2}=ES_{t}^{2}+4E(P_{t}S_{t})-2ES_{t}+1=\\
+    =t+4\sum_{i=0}^{t-1}\sigma(i;p_{0},0,\lambda)-(2p_{0}-1)\sum_{i=0}^{t-1}\frac{1-(2\lambda-1)^{i}}{1-\lambda}+\\
+    +4\sigma(t;p_{0},0,\lambda)-2(2p_{0}-1)\frac{1-(2\lambda-1)^{t}}{2(1-\lambda)}+1=\\
+    (t+1)+4\sum_{i=0}^{t}\sigma(i;p_{0},0,\lambda)-(2p_{0}-1)\sum_{i=0}^{t}\frac{1-(2\lambda-1)^{i}}{1-\lambda},\\
+\end{gather*}
 which proves~\eqref{eq:e_s2_t_sp}.
 Substituting~\eqref{eq:e_s2_t_sp}
 and~\eqref{eq:e_s_t_sp} into~\eqref{eq:var_s_t_rozepsano_sp} then
@@ -428,12 +416,10 @@ presented in the same manner as in the previous section.
 
 For the expected value and variance of the step size for the $t\ge1$
 iteration of the walk $X_{t}$ it holds~\cite{ja2019apmat}
-\[
-EX_{t}=2p_{0}-1,
-\]
-\[
-Var\,X_{t}=4p_{0}(1-p_{0}).
-\]
+\begin{gather*}
+    EX_{t}=2p_{0}-1,\\
+    Var\,X_{t}=4p_{0}(1-p_{0}).\\
+\end{gather*}
 
 For the expected value and variance of the transition probability
 or the $t\ge1$ iteration of the walk $P_{t}$ it holds~\cite{ja2019apmat}
@@ -445,15 +431,11 @@ Var\,P_{t}=(2\lambda-\lambda^{2})^{t}p_{0}^{2}+p_{0}(1-\lambda)^{2}\sum_{i=0}^{t
 \]
 As the sum in the formula equals $\frac{1-(2\lambda-\lambda^{2})^{t}}{1-(2\lambda-\lambda^{2})}$,
 it can be further simplified as
-\[
-Var\,P_{t}=(2\lambda-\lambda^{2})^{t}p_{0}^{2}+p_{0}(1-\lambda)^{2}\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}}-p_{0}^{2}=
-\]
-\[
-=p_{0}[(2\lambda-\lambda^{2})^{t}(p_{0}-1)+1]-p_{0}^{2},
-\]
-\[
-Var\,P_{t}=p_{0}[(1-p_{0})(1-(2\lambda-\lambda^{2})^{t})].
-\]
+\begin{gather*}
+    Var\,P_{t}=(2\lambda-\lambda^{2})^{t}p_{0}^{2}+p_{0}(1-\lambda)^{2}\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}}-p_{0}^{2}=\\
+    =p_{0}[(2\lambda-\lambda^{2})^{t}(p_{0}-1)+1]-p_{0}^{2},\\
+    Var\,P_{t}=p_{0}[(1-p_{0})(1-(2\lambda-\lambda^{2})^{t})].\\
+\end{gather*}
 
 Finally, the expected position of the walker $S_{t}$ after $t\geq1$
 iterations can be expressed as~\cite{ja2019apmat}
@@ -486,19 +468,15 @@ E(P_{t}S_{t})=E(P_{t-1}S_{t-1})+2\lambda EP_{t-1}^{2}-(2\lambda-1)EP_{t-1}.\labe
 Further we will continue using mathematical induction.
 For $t=1$
 using the definition of the walk it holds that
-\[
-E(P_{1}S_{1})=p_{0}(1-(1-p_{0})\lambda)(S_{0}+1)+(1-p_{0})\lambda p_{0}(S_{0}-1)=
-\]
-\[
-=p_{0}S_{0}+2\lambda p_{0}^{2}-(2\lambda-1)p_{0}.
-\]
+\begin{gather*}
+    E(P_{1}S_{1})=p_{0}(1-(1-p_{0})\lambda)(S_{0}+1)+(1-p_{0})\lambda p_{0}(S_{0}-1)=\\
+    =p_{0}S_{0}+2\lambda p_{0}^{2}-(2\lambda-1)p_{0}.\\
+\end{gather*}
 When substituting $t=1$ into~\eqref{eq:e_p_s_t_sr} we obtain
-\[
-E(P_{1}S_{1})=p_{0}S_{0}+p_{0}+2\lambda p_{0}(p_{0}-1)\frac{1-(2\lambda-\lambda^{2})^{0}}{(1-\lambda)^{2}}=
-\]
-\[
-=p_{0}S_{0}+p_{0}+2\lambda p_{0}(p_{0}-1)
-\]
+\begin{gather*}
+    E(P_{1}S_{1})=p_{0}S_{0}+p_{0}+2\lambda p_{0}(p_{0}-1)\frac{1-(2\lambda-\lambda^{2})^{0}}{(1-\lambda)^{2}}=\\
+    =p_{0}S_{0}+p_{0}+2\lambda p_{0}(p_{0}-1)\\
+\end{gather*}
 and finally
 \[
 E(P_{1}S_{1})=p_{0}S_{0}+2\lambda p_{0}^{2}-(2\lambda-1)p_{0}.
