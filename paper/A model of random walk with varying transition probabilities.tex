@@ -1,11 +1,11 @@
-%% LyX 2.3.2-2 created this file.  For more info, see http://www.lyx.org/.
+%% LyX 2.3.0 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
 \documentclass[english]{article}
 \usepackage[T1]{fontenc}
-\usepackage[latin9]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amssymb}
+\usepackage{graphicx}
 
 \makeatletter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
@@ -15,63 +15,89 @@
 \newtheorem{defn}[thm]{\protect\definitionname}
 \theoremstyle{plain}
 \newtheorem{prop}[thm]{\protect\propositionname}
+\theoremstyle{plain}
+\newtheorem{cor}[thm]{\protect\corollaryname}
 
 \makeatother
 
 \usepackage{babel}
+\providecommand{\corollaryname}{Corollary}
 \providecommand{\definitionname}{Definition}
 \providecommand{\propositionname}{Proposition}
 \providecommand{\theoremname}{Theorem}
 
 \begin{document}
-\title{Non-markov discrete random walks - selected properties}
+
+\title{A model of random walk with varying transition probabilities}
 \maketitle
 \begin{abstract}
-This paper elaborates the newly introduced model of discrete random
-walks with memory implemented through a memory coefficient $\lambda$.
-It follows on the recent work of the authors and further examines
-the theoretical properties of the model.
+This paper considers a model of the one-dimensional discrete time
+random walk in which the position of the walker is controlled by a
+varying transition probabilities. Namely, these probabilities depend
+explicityly on the previous move of the walker and implicitly on the
+entire walk history. Hence, transition probabilities evolve in time
+making the walk a non-Markovian stochastic process. The paper follows
+on the recent work of the authors. Two basic version of the model
+are introduced, some their properties are recalled and new theoretical
+results derived. Then, more complex variants of models are presented.
+Development of walks themselves as well as the properties of connected
+sequences of transition probabilities are illustrated also with the
+aid of simulation. Possible application of the model in real life
+situations are discussed and briefly described, too.
 \end{abstract}
 
 \section{Introduction}
 
-Modelling sporting events and reliability analysis are two seemingly
-very different areas of mathematics, yet they offer many similarities.
-The key factor in both domains is a certain probability measure determining
-the development of observed phenomenon. This probability measure is
-called ``hazard rate'' in reliability analysis and simply ``probability
-of scoring'' in modelling of sport events. It is altered either continuously
-with time according to some underlying probability function or suddenly
-as a reaction to an event. Breakage or repair of a given machine in
-reliability analysis or scoring (goal, point, basket etc.) in sports
-modelling. The most prominent tool in reliability analysis is the
-Cox's model ZDROJ expressing the changes of a hazard rate with a base
-hazard rate and a covariate vector. This model, operating with continuous
-time, is often used for sports modelling as well. Many types of sport
-such as tennis or volleyball, however, are played in a strictly discrete
-matter with steps divided by individual \emph{points},\emph{ games
-}or \emph{sets}. Other real life situations with similar properties
-can be found as well, including the recurrence of diseases or recidivism
-in crime. Thus authors thus recently presented a novel discrete time
-random process model - discrete random walk with varying probabilities
-- which aims to serve as a discrete alternative to the standard Cox's
-model ZDROJ. In this paper selected properties of the model are presented
-and possible real life implementations of the model are discussed.
+Stochastic processes and the corresponding mathematical theory represent
+a significant part of mathematics. One of the most prominent of such
+processes is the random walk, introduced by K. Pearson over hundred
+years ago \cite{pearson1905problem}. This concept has been then further
+elaborated by many authors creating a number of different versions
+of a random walk \cite{spitzer2013principles} and there are still
+new possibilities and options how the classical random walk can be
+altered and adapted to specific application field. The model discussed
+in this paper follows on the work of Turban \cite{turban2010random}
+and represents yet another version of a random walk, walk with varying
+transition probabilities. The model falls within a rather broad class
+of processes presented in recent work of Davis and Liu \cite{davis2012theory},
+but not all assumptions from \cite{davis2012theory} are met. 
 
-The rest of the paper is organized as follows. Next section.... The
-last section concludes this work.
+The original inspiration for the model comes from one of its applications
+- modelling of sports events. Many types of sport, such as tennis
+or volleyball, are played in a strictly discrete matter with steps
+divided by individual \emph{points},\emph{ games }or \emph{sets}.
+One sport match can be thus viewed as a random walk with individual
+parts of the match representing the steps of the walk. Success, i.e.
+scoring a point or winning a set, then significantly affects further
+development of the entire walk by changing the transition probability.
+Other real life situations with similar properties can be found everywhere
+in areas where both ``successes'' or ``failures'' occur. In fact,
+also discrete time recurrent counts data occurence can be often modelled
+in a similar way, when the event probability is affected by the process
+recent history. Such cases include the recurrence of diseases, recidivism
+in crime, as well as repeated defects and maintenances of a technical
+device. 
 
-\section{Random walk with varying probability - overview}
+The present contribution continues on the recent authors' exploration
+of the models of random walk with varying probabilities. Selected
+properties of the model are presented and possible real life implementations
+of the model are discussed. The rest of the paper is organized as
+follows. Next section introduces theoretical properties of the model
+and describes in detail two main variants of the model. Section (\ref{sec:Model-application})
+presents possible applications of the model and the last section concludes
+this work.
+
+\section{Theoretical properties}
 
 The original motivation of the model comes from modelling of sport
 events where the probability of a success (i.e. scoring a goal, achieving
 a point etc.) is at the center of interest. After each occurrence
 of such success this probability either decreases or increases, and
 thus two basic model alternatives exist - \emph{success punishing
-}and \emph{success rewarding}. The basic version of the model has
-$2$ parameters, starting success probability $p_{0}$ and a memory
-coefficient $\lambda$ affecting the severity of probability change
-after a success. Formally the walk is defined as follows:
+}and \emph{success rewarding}. The basic version of the model operates
+with starting success probability $p_{0}$ and a memory coefficient
+$\lambda$ affecting the severity of probability change after a success
+as input parameters. Formally the walk is defined as follows:
 \begin{defn}
 \label{def:walk_definition}Let $\ensuremath{p_{0},\lambda\in(0,\,1)}$
 be constant parameters, ${\{P_{n}\}}_{n=0}^{\infty}$ and ${\{X_{n}\}}_{n=1}^{\infty}$
@@ -85,35 +111,36 @@ and (\emph{success punishing)}
 P_{t}=\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1-X_{t})\label{eq:def_p_sp}
 \end{equation}
 or (\emph{success rewarding)
-\[
-P_{t}=\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1+X_{t}).
-\]
-}
-
-The sequence ${\{S_{n}\}}{}_{n=0}^{\infty},\;S_{N}=S_{0}+\sum_{i=1}^{N}X_{i}$
+\begin{equation}
+P_{t}=\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1+X_{t}).\label{eq:def_p_sr}
+\end{equation}
+}The sequence ${\{S_{n}\}}{}_{n=0}^{\infty},\;S_{N}=S_{0}+\sum_{i=1}^{N}X_{i}$
 for $n\in\mathbb{N}$, with $S_{0}\in\mathbb{R}$ some given starting
 position, is called a \emph{random walk with varying probabilities},
 with ${\{X_{n}\}}_{n=1}^{\infty}$ being the steps of the walker and
 ${\{P_{n}\}}_{n=0}^{\infty}$ transition probabilities. Depending
 on the chosen formula to calculate $P_{i}$ the walk type is either
-\emph{success punishing} REF or \emph{success rewarding} REF.
+\emph{success punishing} (\ref{eq:def_p_sp}) or \emph{success rewarding}
+(\ref{eq:def_p_sr}).
 \end{defn}
 
-The model was first introduced in DDNY and a more thorough description
-was provided in TEZE. More properties were then presented in AMISTAT
-and a practical implementation of the model in modelling tennis matches
-was presented in IMAMAN+ProceedingsAteny. Next let us recall the results
-of the previous work.
+The model was first introduced in \cite{ja2017ddny} and a more thorough
+description was provided in \cite{ja2019teze}. Selected properties
+were then presented in \cite{ja2019apmat} and a practical implementation
+of the model in modelling tennis matches was presented in \cite{ja2019mathsport_proc}.
+The basic results are recalled in the following sections and then
+variance of $S_{t}$ is described in more detail.
 
 \subsection{Success punishing model}
 
 The basic properties of the \emph{success punishing }version of the
-walk are presented in this section. They are presented as a set of
-expressions, the reader is kindly asked to see referred papers for
-full proves of those expressions.
+walk are presented in this section. Previous results are presented
+as a set of expressions only, the reader is kindly asked to see referred
+papers for full proves of those expressions. Newly described properties
+are then provided with full proves and all necessary details.
 
 For the expected value and variance of the step size for the $t\ge1$
-iteration of the walk $X_{t}$ it holds AMISTAT
+iteration of the walk $X_{t}$ it holds \cite{ja2019apmat}
 \[
 EX_{t}=(2\lambda-1)^{t-1}(2p_{0}-1),
 \]
@@ -122,79 +149,31 @@ Var\,X_{t}=1-(2\lambda-1)^{2(t-1)}(2p_{0}-1)^{2}.
 \]
 
 For the expected value and variance of the transition probability
-or the $t\ge1$ iteration of the walk $P_{t}$ it holds DDNY/TEZE,
-AMISTAT
+or the $t\ge1$ iteration of the walk $P_{t}$ it holds \cite{ja2017ddny, ja2019apmat}
 \begin{equation}
 EP_{t}=(2\lambda-1)^{t}p_{0}+\frac{1-(2\lambda-1)^{t}}{2},\label{eq:e_p_t_sp}
 \end{equation}
 \[
-Var\,P_{t}=(3\lambda^{2}-2\lambda)^{t}p_{0}^{2}+\sum_{i=0}^{t-1}K(i)(3\lambda^{2}-2\lambda)^{t-1-i}-k(t)^{2},
+Var\,P_{t}=(3\lambda^{2}-2\lambda)^{t}p_{0}^{2}+\sum_{i=0}^{t-1}K(i;p_{0},\lambda)(3\lambda^{2}-2\lambda)^{t-1-i}-k(t;p_{o},\lambda)^{2},
 \]
 where
 \[
-k(t)=EP_{t}=(2\lambda-1)^{t}p_{0}+\frac{1-(2\lambda-1)^{t}}{2}
+k(t;p_{o},\lambda)^{2}=EP_{t}=(2\lambda-1)^{t}p_{0}+\frac{1-(2\lambda-1)^{t}}{2}
 \]
 and
 \[
-K(t)=k(t)\cdot(-3\lambda^{2}+4\lambda-1)+(1-\lambda)^{2}.
+K(t;p_{o},\lambda)^{2}=k(t;p_{o},\lambda)^{2}\cdot(-3\lambda^{2}+4\lambda-1)+(1-\lambda)^{2}.
 \]
 
 Finally, the expected position of the walker $S_{t}$ after $t\geq1$
-iterations can be expressed as DDNY/TEZE
+iterations can be expressed as \cite{ja2017ddny} 
 \begin{equation}
 ES_{t}=S_{0}+(2p_{0}-1)\frac{1-(2\lambda-1)^{t}}{2(1-\lambda)}.\label{eq:e_s_t_sp}
 \end{equation}
 
-
-\subsection{Success rewarding model}
-
-Similar formulas can be derived for the \emph{success rewarding }model.
-Once again only the formulas are presented with proofs in the referred
-literature. For the sake of clarity the set of expressions is presented
-in the same manner as in the previous section.
-
-For the expected value and variance of the step size for the $t\ge1$
-iteration of the walk $X_{t}$ it holds AMISTAT
-\[
-EX_{t}=2p_{0}-1,
-\]
-\[
-Var\,X_{t}=4p_{0}(1-p_{0}).
-\]
-
-For the expected value and variance of the transition probability
-or the $t\ge1$ iteration of the walk $P_{t}$ it holds AMISTAT
-\begin{equation}
-EP_{t}=p_{0},\label{eq:e_p_t_sr}
-\end{equation}
-\[
-Var\,P_{t}=(2\lambda-\lambda^{2})^{t}p_{0}^{2}+p_{0}(1-\lambda)^{2}\sum_{i=0}^{t-1}(2\lambda-\lambda^{2})^{i}-p_{0}^{2}.
-\]
-As the sum in the formula equals $\frac{1-(2\lambda-\lambda^{2})^{t}}{1-(2\lambda-\lambda^{2})}$,
-it can be further simplified as
-\[
-Var\,P_{t}=(2\lambda-\lambda^{2})^{t}p_{0}^{2}+p_{0}(1-\lambda)^{2}\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}}-p_{0}^{2}=
-\]
-\[
-=p_{0}[(2\lambda-\lambda^{2})^{t}(p_{0}-1)+1]-p_{0}^{2},
-\]
-\[
-Var\,P_{t}=p_{0}[(1-p_{0})(1-(2\lambda-\lambda^{2})^{t})].
-\]
-
-Finally, the expected position of the walker $S_{t}$ after $t\geq1$
-iterations can be expressed as AMISTAT
-\begin{equation}
-ES_{t}=S_{0}+t(2p_{0}-1).\label{eq:e_s_t_sr}
-\end{equation}
-
-
-\section{Random walk with varying probability - properties}
-
-The last formulas missing in the previous section are those expressing
-the variance of the position of the walker $Var\,S_{t}$. They will
-be proved in this section. Let us starting with the \emph{success
-punishing} model and first prove a support proposition.
+The last formula missing is the one expressing the variance of the
+position of the walker $Var\,S_{t}$. Before it is presented, let
+us first prove a support proposition.
 \begin{prop}
 For all $t\ge1$
 \begin{equation}
@@ -218,9 +197,9 @@ M(t;\lambda)=\sum_{i=0}^{t-1}(3\lambda^{2}-2\lambda)^{t-1-i}(2\lambda-1)^{i}.
 
 \begin{proof}
 The formula for $EP_{t}^{2}$ follows from the proof of Proposition
-2.5 in AMISTAT. To prove (\ref{eq:e_p_s_t_sp}) let us start with
-expressing the value of $E(P_{t}S_{t})$ from the knowledge of past
-steps as
+2.5 in \cite{ja2019apmat}. To prove (\ref{eq:e_p_s_t_sp}) let us
+start with expressing the value of $E(P_{t}S_{t})$ from the knowledge
+of past steps as
 \[
 E(P_{t}S_{t})=E[E(P_{t}S_{t}|P_{t-1})]=E[E((\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1-X_{t}))(S_{t-1}+X_{t})|P_{t-1})]=
 \]
@@ -239,7 +218,7 @@ E(P_{1}S_{1})=p_{0}(p_{0}\lambda(S_{0}+1))+(1-p_{0})[(1-(1-p_{0})\lambda)(S_{0}-
 \[
 =(2\lambda-1)p_{0}S_{0}+(1-\lambda)S_{0}+2\lambda p_{0}^{2}-(2\lambda-1)p_{0}+\lambda-1.
 \]
-When substituting$t=1$ into (\ref{eq:e_p_s_t_sp}) we obtain
+When substituting $t=1$ into (\ref{eq:e_p_s_t_sp}) we obtain
 \[
 E(P_{1}S_{1})=(2\lambda-1)p_{0}S_{0}+\sum_{i=0}^{0}(2\lambda-1)^{i}q(0-i;p_{0},S_{0},\lambda)=
 \]
@@ -250,8 +229,8 @@ and finally using (\ref{eq:e_p_t_sp}), (\ref{eq:e_s_t_sp}) and (\ref{eq:e_p2_t_s
 \[
 E(P_{1}S_{1})=(2\lambda-1)p_{0}S_{0}+(1-\lambda)S_{0}+2\lambda p_{0}^{2}+(1-2\lambda)p_{0}+\lambda-1.
 \]
-Equation (\ref{eq:e_p_s_t_sp}) thus holds $t=1$. Now for the induction
-step $t\rightarrow t+1$ we get by substituting(\ref{eq:e_p_s_t_sp})
+Equation (\ref{eq:e_p_s_t_sp}) thus holds for $t=1$. Now for the
+induction step $t\rightarrow t+1$ we get by substituting(\ref{eq:e_p_s_t_sp})
 into (\ref{eq:e_p_s_t-1_t_sp})
 \[
 E(P_{t+1}S_{t+1})=(2\lambda-1)E(P_{t}S_{t})+(1-\lambda)ES_{t}+2\lambda EP_{t}^{2}+(2\lambda-1)EP_{t}+\lambda-1=
@@ -266,24 +245,25 @@ E(P_{t+1}S_{t+1})=(2\lambda-1)E(P_{t}S_{t})+(1-\lambda)ES_{t}+2\lambda EP_{t}^{2
 \begin{thm}
 \label{thm:VarSt_sp}For all $t\ge1$ 
 \[
-Var\,S_{t}=t(1-2S_{0})+4\sum_{i=0}^{t-1}\sigma(i;p_{0},S_{0},\lambda)-a(t;p_{0},S_{0},\lambda),
+Var\,S_{t}=t+4\sum_{i=0}^{t-1}\sigma(i;p_{0},0,\lambda)-a(t;p_{0},\lambda),
 \]
 with $\sigma(i;p_{0},S_{0},\lambda)=E(P_{t}S_{t})$ given by (\ref{eq:e_p_s_t_sp})
 and
 \[
-a(t;p_{0},S_{0},\lambda)=(2p_{0}-1)\sum_{i=0}^{t-1}\frac{1-(2\lambda-1)^{i}}{1-\lambda}+S_{0}(2p_{0}-1)\frac{1-(2\lambda-1)^{t}}{1-\lambda}+(2p_{0}-1)^{2}\frac{(1-(2\lambda-1)^{t})^{2}}{4(1-\lambda)^{2}}.
+a(t;p_{0},\lambda)=(2p_{0}-1)\sum_{i=0}^{t-1}\frac{1-(2\lambda-1)^{i}}{1-\lambda}+(2p_{0}-1)^{2}\frac{(1-(2\lambda-1)^{t})^{2}}{4(1-\lambda)^{2}}.
 \]
 \end{thm}
 
 \begin{proof}
-From the definition of variance 
+As clearly the value $S_{0}$ does not affect the variance, let us
+from now assume $S_{0}=0$. From the definition of variance 
 \begin{equation}
 Var\,S_{t}=ES_{t}^{2}-E^{2}S_{t}\label{eq:var_s_t_rozepsano_sp}
 \end{equation}
 and (\ref{eq:e_s_t_sp}) follows that to prove the proposition it
 is enough to prove that 
 \begin{equation}
-ES_{t}^{2}=S_{0}^{2}+t(1-2S_{0})+4\sum_{i=0}^{t-1}\sigma(i;p_{0},S_{0},\lambda)-(2p_{0}-1)\sum_{i=0}^{t-1}\frac{1-(2\lambda-1)^{i}}{1-\lambda}.\label{eq:e_s2_t_sp}
+ES_{t}^{2}=t+4\sum_{i=0}^{t-1}\sigma(i;p_{0},0,\lambda)-(2p_{0}-1)\sum_{i=0}^{t-1}\frac{1-(2\lambda-1)^{i}}{1-\lambda}.\label{eq:e_s2_t_sp}
 \end{equation}
 First of all, let us express $ES_{t}^{2}$ from the knowledge of past
 walk development. From the definition of the expected value and the
@@ -296,20 +276,14 @@ ES_{t}^{2}=E[E(S_{t}^{2}|P_{t-1})]=E[E((S_{t-1}+X_{t})^{2}|P_{t-1})]=E(S_{t-1}^{
 =ES_{t-1}^{2}+4E(P_{t-1}S_{t-1})-2ES_{t-1}+1,\label{eq:e_s2_t-1_t_sp}
 \end{equation}
 where the fact that $EX_{t}^{2}=1$ was used. The theorem will be
-once again proved using mathematical induction. For $t=1$ we get
-using the definition of the walk (Def (\ref{eq:def_p_sp}))
+proved using mathematical induction again . For $t=1$ we get using
+the definition of the walk (Definition \ref{eq:def_p_sp})
 \[
-ES_{1}^{2}=p_{0}(S_{0}+1)^{2}+(1-p_{0})(S_{0}-1)^{2}=
-\]
-\[
-=S_{0}^{2}-2S_{0}+4p_{0}S_{0}+1.
+ES_{1}^{2}=p_{0}(S_{0}+1)^{2}+(1-p_{0})(S_{0}-1)^{2}=1.
 \]
 Substituting $t=1$ into (\ref{eq:e_s2_t_sp}) we obtain
 \[
-ES_{1}^{2}=S_{0}^{2}+1-2S_{0}+4\sigma(0;p_{0},S_{0},\lambda)-(2p_{0}-1)\frac{1-(2\lambda-1)^{0}}{1-\lambda}=
-\]
-\[
-=S_{0}^{2}+1-2S_{0}+4p_{0}S_{0}
+ES_{1}^{2}=1+4\sigma(0;p_{0},0,\lambda)-(2p_{0}-1)\frac{1-(2\lambda-1)^{0}}{1-\lambda}=1
 \]
 and (\ref{eq:e_s2_t_sp}) thus holds for $t=1$. Now for the induction
 step $t\rightarrow t+1$ we get by substituting (\ref{eq:e_s2_t_sp})
@@ -318,19 +292,90 @@ into (\ref{eq:e_s2_t-1_t_sp})
 ES_{t+1}^{2}=ES_{t}^{2}+4E(P_{t}S_{t})-2ES_{t}+1=
 \]
 \[
-=S_{0}^{2}+t(1-2S_{0})+4\sum_{i=0}^{t-1}\sigma(i;p_{0},S_{0},\lambda)-(2p_{0}-1)\sum_{i=0}^{t-1}\frac{1-(2\lambda-1)^{i}}{1-\lambda}+
+=t+4\sum_{i=0}^{t-1}\sigma(i;p_{0},0,\lambda)-(2p_{0}-1)\sum_{i=0}^{t-1}\frac{1-(2\lambda-1)^{i}}{1-\lambda}+
 \]
 \[
-+4\sigma(t;p_{0},S_{0},\lambda)-2(S_{0}+(2p_{0}-1)\frac{1-(2\lambda-1)^{t}}{2(1-\lambda)})+1=
++4\sigma(t;p_{0},0,\lambda)-2(2p_{0}-1)\frac{1-(2\lambda-1)^{t}}{2(1-\lambda)}+1=
 \]
 \[
-S_{0}^{2}+(t+1)(1-2S_{0})+4\sum_{i=0}^{t}\sigma(i;p_{0},S_{0},\lambda)-(2p_{0}-1)\sum_{i=0}^{t}\frac{1-(2\lambda-1)^{i}}{1-\lambda}.
+(t+1)+4\sum_{i=0}^{t}\sigma(i;p_{0},0,\lambda)-(2p_{0}-1)\sum_{i=0}^{t}\frac{1-(2\lambda-1)^{i}}{1-\lambda},
 \]
-Substituting (\ref{eq:e_s2_t_sp}) and (\ref{eq:e_s_t_sp}) into (\ref{eq:var_s_t_rozepsano_sp})
-then proves the theorem.
+which proves (\ref{eq:e_s2_t_sp}). Substituting (\ref{eq:e_s2_t_sp})
+and (\ref{eq:e_s_t_sp}) into (\ref{eq:var_s_t_rozepsano_sp}) then
+proves the theorem.
 \end{proof}
-For the \emph{success rewarding }model is the procedure similar. First
-let us prove a support proposition.
+\begin{cor}
+\label{cor:var_s_t_sp}For $t\rightarrow+\infty$
+\[
+Var\,S_{t}=+\infty
+\]
+and 
+\[
+\lim_{t\rightarrow+\infty}(Var\,S_{t}-(c_{1}(p_{0},\lambda)t+c_{2}(p_{0},\lambda))=0,
+\]
+where $c_{i}(p_{0},\lambda)$ are some $t$-independent constants.
+\end{cor}
+
+Corrolary \ref{cor:var_s_t_sp} shows that with $t\rightarrow+\infty$
+$Var\,S_{t}$ behaves as a linear function with respect to $t$. This
+can be seen also on Figure (\ref{fig:var_s_t_sp}) together with a
+comparison of observed and theoretical values of $Var\,S_{t}$.
+
+\begin{figure}
+\includegraphics[width=1\textwidth]{../simulations/e_position_1000_walks_20_steps_type_success_punished}
+
+\caption{\label{fig:var_s_t_sp}Observed (dash-dotted) and theoretical (solid
+lines) values of $Var\,S_{t}$ - \emph{success punishing }model. The
+data were obtained from 1000 walks generated with given parameters. }
+
+\end{figure}
+
+
+\subsection{Success rewarding model}
+
+Similar formulas can be derived for the \emph{success rewarding }model.
+Once again for previous results only the formulas are presented with
+proofs in the referred literature, new properties are derived with
+full complexity. For the sake of clarity the set of expressions is
+presented in the same manner as in the previous section.
+
+For the expected value and variance of the step size for the $t\ge1$
+iteration of the walk $X_{t}$ it holds \cite{ja2019apmat}
+\[
+EX_{t}=2p_{0}-1,
+\]
+\[
+Var\,X_{t}=4p_{0}(1-p_{0}).
+\]
+
+For the expected value and variance of the transition probability
+or the $t\ge1$ iteration of the walk $P_{t}$ it holds \cite{ja2019apmat}
+\begin{equation}
+EP_{t}=p_{0},\label{eq:e_p_t_sr}
+\end{equation}
+\[
+Var\,P_{t}=(2\lambda-\lambda^{2})^{t}p_{0}^{2}+p_{0}(1-\lambda)^{2}\sum_{i=0}^{t-1}(2\lambda-\lambda^{2})^{i}-p_{0}^{2}.
+\]
+As the sum in the formula equals $\frac{1-(2\lambda-\lambda^{2})^{t}}{1-(2\lambda-\lambda^{2})}$,
+it can be further simplified as
+\[
+Var\,P_{t}=(2\lambda-\lambda^{2})^{t}p_{0}^{2}+p_{0}(1-\lambda)^{2}\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}}-p_{0}^{2}=
+\]
+\[
+=p_{0}[(2\lambda-\lambda^{2})^{t}(p_{0}-1)+1]-p_{0}^{2},
+\]
+\[
+Var\,P_{t}=p_{0}[(1-p_{0})(1-(2\lambda-\lambda^{2})^{t})].
+\]
+
+Finally, the expected position of the walker $S_{t}$ after $t\geq1$
+iterations can be expressed as \cite{ja2019apmat}
+\begin{equation}
+ES_{t}=S_{0}+t(2p_{0}-1).\label{eq:e_s_t_sr}
+\end{equation}
+
+To prove a formula allowing to compute the variance of the position
+of the walker, let us again start with a support proposition.
 \begin{prop}
 For all $t\ge1$
 \begin{equation}
@@ -359,7 +404,7 @@ E(P_{1}S_{1})=p_{0}(1-(1-p_{0})\lambda)(S_{0}+1)+(1-p_{0})\lambda p_{0}(S_{0}-1)
 \[
 =p_{0}S_{0}+2\lambda p_{0}^{2}-(2\lambda-1)p_{0}.
 \]
-When substituting$t=1$ into (\ref{eq:e_p_s_t_sr}) we obtain
+When substituting $t=1$ into (\ref{eq:e_p_s_t_sr}) we obtain
 \[
 E(P_{1}S_{1})=p_{0}S_{0}+p_{0}+2\lambda p_{0}(p_{0}-1)\frac{1-(2\lambda-\lambda^{2})^{0}}{(1-\lambda)^{2}}=
 \]
@@ -370,8 +415,8 @@ and finally
 \[
 E(P_{1}S_{1})=p_{0}S_{0}+2\lambda p_{0}^{2}-(2\lambda-1)p_{0}.
 \]
-Equation (\ref{eq:e_p_s_t_sr}) thus holds $t=1$. Now for the induction
-step $t\rightarrow t+1$ we get by substituting(\ref{eq:e_p_s_t_sr})
+Equation (\ref{eq:e_p_s_t_sr}) thus holds for $t=1$. Now for the
+induction step $t\rightarrow t+1$ we get by substituting(\ref{eq:e_p_s_t_sr})
 into (\ref{eq:e_p_s_t-1_t_sr})
 \[
 E(P_{t+1}S_{t+1})=E(P_{t}S_{t})+2\lambda EP_{t}^{2}-(2\lambda-1)EP_{t}
@@ -380,7 +425,8 @@ and further using
 \[
 EP_{t}^{2}=p_{0}((2\lambda-\lambda^{2})^{t}(p_{0}-1)+1),
 \]
-which follows from the proof of Proposition 3.7 in AMISTAT, and (\ref{eq:e_p_t_sr})
+which follows from the proof of Proposition 3.7 in \cite{ja2019apmat},
+and (\ref{eq:e_p_t_sr})
 \[
 E(P_{t+1}S_{t+1})=p_{0}S_{0}+p_{0}t+2\lambda p_{0}(p_{0}-1)\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}}+2\lambda p_{0}((2\lambda-\lambda^{2})^{t}(p_{0}-1)+1)-(2\lambda-1)p_{0}=
 \]
@@ -392,7 +438,7 @@ E(P_{t+1}S_{t+1})=p_{0}S_{0}+p_{0}t+2\lambda p_{0}(p_{0}-1)\frac{1-(2\lambda-\la
 \]
 \end{proof}
 \begin{thm}
-For all $t\ge1$ holds
+\label{thm:var_s_t_sr}For all $t\ge1$ holds
 \[
 Var\,S_{t}=4p_{0}(1-p_{0})t^{2}+a(p_{0},\lambda)t-a(p_{0},\lambda)\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}},
 \]
@@ -413,8 +459,8 @@ First of all let us recall that formula (\ref{eq:e_s2_t-1_t_sp})
 holds for the \emph{success rewarding} type of the model as well.
 The theorem will be once again proved using mathematical induction.
 For $t=1$ the definition of the walk yields the same result as in
-the proof of Theorem (\ref{thm:VarSt_sp}). Substituting $t=1$ into
-(\ref{eq:e_s2_t_sr}) we obtain
+the proof of Theorem (\ref{thm:VarSt_sp}). By substituting $t=1$
+into (\ref{eq:e_s2_t_sr}) we obtain
 \[
 ES_{1}^{2}=1+a(p_{0},\lambda)t-a(p_{0},\lambda)=1
 \]
@@ -433,17 +479,193 @@ ES_{t+1}^{2}=ES_{t}^{2}+4E(P_{t}S_{t})-2ES_{t}+1=
 Substituting (\ref{eq:e_s2_t_sr}) and (\ref{eq:e_s_t_sr}) into the
 definition of variance then proves the theorem.
 \end{proof}
+\begin{cor}
+\label{cor:var_s_t_sr}For $t\rightarrow+\infty$ 
+\[
+\lim_{t\rightarrow+\infty}Var\,S_{t}=+\infty
+\]
+and 
+\[
+\lim_{t\rightarrow+\infty}(Var\,S_{t}-(4p_{0}(1-p_{0})t^{2}+a(p_{0},\lambda)t-\frac{a(p_{0,}\lambda)}{(1-\lambda)^{2}}))=0,
+\]
+with $a(p_{0},\lambda)$ as in Theorem (\ref{thm:var_s_t_sr}), i.e.
+$Var\,S_{t}$ behaves as a quadratic function with $t\rightarrow+\infty$.
+\end{cor}
 
-\section{Model application}
+Corrolary \ref{cor:var_s_t_sr} shows that with $t\rightarrow+\infty$
+$Var\,S_{t}$ behaves as a quadratic function with respect to $t$.
+Similarly as with the \emph{success punishing }model, such behaivor
+is illustrated on Figure (\ref{fig:var_s_t_sr}), which also shows
+the comparision of the theoretical value of position variance and
+an empirical one obtained using simulated data.
+
+\begin{figure}
+\includegraphics[width=1\textwidth]{../simulations/e_position_1000_walks_20_steps_type_success_rewarded}
+
+\caption{\label{fig:var_s_t_sr}Observed (dash-dotted) and theoretical (solid
+lines) values of $Var\,S_{t}$ - \emph{success rewarding }model. The
+data were obtained from 1000 walks generated with given parameters. }
+
+\end{figure}
+
+
+\subsection{Two-parameter models}
+
+The presented model can be further extended by adding additional levels
+of complexity. The first option is to use two separate $\lambda$
+parameters for each direction of the walk. Maintaining the two basic
+options - \emph{success punishing} and \emph{success rewarding} models,
+this level of complexity can defined as follows \cite{ja2019apmat}
+\begin{defn}
+Let $\ensuremath{p_{0},\lambda_{0},\lambda_{1}\in(0,\,1)}$ be constant
+parameters, ${\{P_{n}\}}_{n=0}^{\infty}$ and ${\{X_{n}\}}_{n=1}^{\infty}$
+sequences of discrete random variables with $P_{0}=p_{0}$ and for
+$t\ge1$
+\[
+P(X_{t}=1|P_{t-1}=p_{t-1})=p_{t-1},\,\,\,P(X_{t}=-1|P_{t-1}=p_{t-1})=1-p_{t-1},
+\]
+and (\emph{success punishing)}
+\begin{equation}
+P_{t}=\frac{1}{2}[(1+X_{t})\lambda_{0}P_{t-1}+(1-X_{t})(1-\lambda_{1}(1-P_{t-1}))]\label{eq:def_2l_p_sp}
+\end{equation}
+or (\emph{success rewarding)}
+\begin{equation}
+P_{t}=\frac{1}{2}[(1-X_{t})\lambda_{0}P_{t-1}+(1+X_{t})(1-\lambda_{1}(1-P_{t-1}))].\label{eq:def_2l_p_sr}
+\end{equation}
+The sequence ${\{S_{n}\}}{}_{n=0}^{\infty},\;S_{N}=S_{0}+\sum_{i=1}^{N}X_{i}$
+for $n\in\mathbb{N}$, with $S_{0}\in\mathbb{R}$ some given starting
+position, is called a \emph{random walk with varying probabilities
+- two-parameter model}, with ${\{X_{n}\}}_{n=1}^{\infty}$ being the
+steps of the walker and ${\{P_{n}\}}_{n=0}^{\infty}$ transition probabilities.
+Depending on the chosen formula to calculate $P_{i}$ the walk type
+is either \emph{success punishing} (\ref{eq:def_2l_p_sp}) or \emph{success
+rewarding} (\ref{eq:def_2l_p_sr}).
+
+The derivation of exact model properties is not so straightforward
+as in the case with single lambda. The properties were thus studied
+with the help of simulations. Figures (\ref{fig:var_s_t_2l_sp}) and
+(\ref{fig:var_s_t_2l_sr}) present again the variance of $S_{t}$.
+It seems that the position variance of the \emph{success punishing}
+model goes to infinity linearly and of the \emph{success rewarding}
+model quadratically, similarly as in the corresponding single parameter
+scenarios.
+
+\begin{figure}
+\includegraphics[width=1\textwidth]{../simulations/e_position_10000_walks_200_steps_type_success_punished_two_lambdas}\caption{\label{fig:var_s_t_2l_sp}The observed position variance in the \emph{two-parameter
+success punishing} model. The data were gathered from $10000$ simulations
+with given parameters.}
+
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=1\textwidth]{../simulations/e_position_10000_walks_200_steps_type_success_rewarded_two_lambdas}
+
+\caption{\label{fig:var_s_t_2l_sr}The observed position variance in the \emph{two-parameter
+success rewarding} model. The data were gathered from $10000$ simulations
+with given parameters.}
+
+\end{figure}
+\end{defn}
+
+
+\subsection{Other model alternatives}
+
+There are many possibilities how to further enhance the model. The
+model can be combined with a varying step size model from \cite{turban2010random},
+the $\lambda$ parameter can be handled as a function of time and
+position or a combination of varying probability model with regression
+part (e.g. logistic) can be considered, which seems especially promising
+from application point of view. This variations of the model will
+be subject of further study. 
+
+\section{Model application\label{sec:Model-application}}
 
 The model is especially well suited for simulation of random processes
 where a single or just a few events significantly affect the process's
 future development. An example such a process can be found in sports
-modelling. The authors recently presented a study where the model
-was used for modelling of men tennis Grand Slam matches with rather
-convinving results. The historical results show that the development
-of a tennis match follows the \emph{success rewarding} version of
-the model. 
+modelling. In such applications rather short walks occur, but they
+can be observed repetetively. For example in modelling tennis sets,
+the longest walk has only 5 steps (occurring in men Grand Slam or
+Davis Cup matches), but there are many matches played each year, which
+can be (uder some assumptions) considered as multiple observations
+of the same walk. The authors recently presented a study where the
+model was used for modelling the men tennis Grand Slam matches with
+results suggesting the model might provide precious insight when modelling
+tennis. Here is a brief summary of the modelling approach.
+
+The \emph{success rewarding} version of the model was selected as
+the historical results show that the development of a tennis match
+follows such pattern. The $p_{0}$ was obtained using input bookmaker
+odds from \emph{Pinnacle Sports}, an industry leading bookmaker. The
+appropriate $\lambda$ parameter was then found from historical data
+using the maximal likelihood estimate. The model was tested on a database
+consisting of $4255$ tennis matches that took place between 2009
+and 2018 and the results suggest that such a model could be used for
+\emph{in-play} odds prediction. For full details of the model derivation
+and testing, see the original paper \cite{ja2019mathsport_proc}. 
+
+The quality of such \emph{in-play} predictions was tested on a small
+study in real life setting with active betting against a bookmaker.
+The test was set up in the following manner. 
+
+An automated betting and odds scraping tool developed using the Python
+programming language and Selenium framework running on a remote server
+(Digital Ocean) was developed and deployed. The tool operates with
+Tipsport’s website (the biggest Czech bookmaker) and scrapes it for
+both pre-match as well as in-play odds. It was set up to continuously
+observe Tipsport’s odds offerings for $2019$ men tennis US Open,
+especially the set winning odds, and store the odds together with
+some general information about the match, such as the respective players,
+starting time etc., into a database (Postgresql database). To test
+the model, Tipsport’s starting odds were used to obtain parameter
+$p_{0}$ and optimized $\lambda$ trained on the $2018$ tennis season
+was chosen as the second necessary model parameter in a same way se
+in \cite{ja2019mathsport_proc}. 
+
+Every match was observed individually and after each finished set
+next set winning probabilities were computed using the presented model.
+Whenever the actual set winning odds offered by Tipsport for one of
+the players $a_{i}$ were higher than the probability implied set
+winning odds for that player computed by the model, i.e. $a_{i}>\frac{1}{p}$
+, a bet was made. The amount bet was computed as $p_{i}U$, where
+$U$ is a base bankroll-dependent betting unit. This amount was further
+rounded with precision CZK $1$ (due to betting limitations of Tipsport).
+Overall, $128$ bets were made (and $3$ additional bets that were
+cancelled due to one of the players forfeiting the match because of
+injury) with the total amount $59.85U$ bet. However, as the bets
+were not placed simulatenously, but rather in a consecutive manner,
+the theoretical total bankroll neede for the betting was only $0.52U$
+- the minimal actual account balnace over the entire US Open. The
+actual number of wins was $57$, slightly below the number of expected
+wins, but thanks to the average winning odds of $2.3$ the final balance
+was $2.24U$, creating a theoretical win $\frac{2.24}{0.52}=4.3$
+times the investment, which is an outstanding performance.
+
+This study just briefly shows the posibilities of the presented model.
+The testing dataset, consisting of only 128 bets, is too small to
+provide a strong evidence favoring the model over bookmaker's odds,
+but the results are more than convincing. A more conclusive test on
+a bigger dataset will be subject of further study.
 
 \section{Conclusion}
+
+The present paper continues in the research on one specific set of
+models of Bernoulli-like random walks, the models where the transition
+probabilities depend on the walk history. After rewieving basic models
+types and the results of previous studies of their properties, new
+properties of the model characterizing the variability of the walk
+were proved. These properies were explored additionally with the aid
+of simulations in order to compare derived theoretical results with
+empirical ones based on simulated data. The problem of parameters
+estimation was not addressed here, the properties of the maximum likelihood
+estimate of both $\lambda$ and $p_{0}$ were studied in depth in
+\cite{ja2019apmat} and utilized in the \cite{ja2019mathsport_proc},
+a study devoted to one of possible model applications, namely the
+modelling tennis matches development. This kind of application was
+briefly recalled also in the present contribution and partial results
+of model testing on a new dataset were reported. 
+
+\bibliographystyle{plain}
+\bibliography{doktknih}
+
 \end{document}
