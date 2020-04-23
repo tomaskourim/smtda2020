@@ -1,35 +1,84 @@
 %% LyX 2.3.0 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
-\documentclass[english]{article}
+\documentclass[runningheads]{CMSIM}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
-\usepackage{amsthm}
+%\usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{graphicx}
 
-\makeatletter
+%\makeatletter
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
-\theoremstyle{plain}
-\newtheorem{thm}{\protect\theoremname}
-\theoremstyle{definition}
-\newtheorem{defn}[thm]{\protect\definitionname}
-\theoremstyle{plain}
-\newtheorem{prop}[thm]{\protect\propositionname}
-\theoremstyle{plain}
-\newtheorem{cor}[thm]{\protect\corollaryname}
+%\theoremstyle{plain}
+%\newtheorem{thm}{\protect\theoremname}
+%\theoremstyle{definition}
+%\newtheorem{defn}[thm]{\protect\definitionname}
+%\theoremstyle{plain}
+%\newtheorem{prop}[thm]{\protect\propositionname}
+%\theoremstyle{plain}
+%\newtheorem{cor}[thm]{\protect\corollaryname}
 
-\makeatother
+%\makeatother
 
-\usepackage{babel}
-\providecommand{\corollaryname}{Corollary}
-\providecommand{\definitionname}{Definition}
-\providecommand{\propositionname}{Proposition}
-\providecommand{\theoremname}{Theorem}
+%\usepackage{babel}
+%\providecommand{\corollaryname}{Corollary}
+%\providecommand{\definitionname}{Definition}
+%\providecommand{\propositionname}{Proposition}
+%\providecommand{\theoremname}{Theorem}
 
+%\begin{document}
+%
+%\title{A model of random walk with varying transition probabilities}
+%\maketitle
+
+
+
+
+\pagestyle{empty}
+\renewcommand{\thefootnote}
+
+\setlength{\headsep}{0pt}
+
+\title*{Insert Paper Title}
+
+\titlerunning{\it Running Paper Title}
+
+\author{
+Raimondo Manca\inst{1}
+\and
+  Christos H. Skiadas\inst{2}
+  \and 
+  Jacques Janssen\inst{3}
+}
+
+\authorrunning{\it Manca et al.}
+
+\institute{
+Department of Methods and Models for Economics, Territory and Finance 
+via del Castro Laurenziano,9, Universita ``La Sapienza'', Roma, Italy\\
+(E-mail: {\tt raimondo.manca@uniroma1.it})
+\and
+  ManLab, Technical University of Crete,   University Campus,   73100 Chania, Crete, Greece\\
+  (E-mail: {\tt skiadas@cmsim.net})
+   \and 
+ EURIA (Brest) and JACAN (Tubize)
+  Universit\'e de Bretagne Occidentale
+  6 avenue le Gorgeu, CS 93837,
+  29238 BREST Cedex 3, France
+  (E-mail: {\tt cesiaf@belgacom.net})
+}
+
+
+\setcounter{page}{1}
 \begin{document}
-
-\title{A model of random walk with varying transition probabilities}
-\maketitle
+\thispagestyle{empty}
+\maketitle             
+\setlength{\leftskip}{0pt}
+\setlength{\headsep}{16pt}
+\footnote{\begin{tabular}{p{11.2cm}r}
+\small {\it $6^{th}$SMTDA Conference Proceedings, 2-5 June 2020, Barcelona, Spain} \\  
+  \small \textcopyright {} 2020 ISAST & \includegraphics[scale=0.38]{CMSIM_Logo}
+ \end{tabular}}
 \begin{abstract}
 This paper considers a model of the one-dimensional discrete time
 random walk in which the position of the walker is controlled by a
@@ -44,7 +93,10 @@ Development of walks themselves as well as the properties of connected
 sequences of transition probabilities are illustrated also with the
 aid of simulation. Possible application of the model in real life
 situations are discussed and briefly described, too.
+\keyword{Random walk, history dependent transition probabilities, success punishing/rewarding walk}
 \end{abstract}
+
+
 
 \section{Introduction}
 
@@ -98,7 +150,7 @@ thus two basic model alternatives exist - \emph{success punishing
 with starting success probability $p_{0}$ and a memory coefficient
 $\lambda$ affecting the severity of probability change after a success
 as input parameters. Formally the walk is defined as follows:
-\begin{defn}
+\begin{definition}
 \label{def:walk_definition}Let $\ensuremath{p_{0},\lambda\in(0,\,1)}$
 be constant parameters, ${\{P_{n}\}}_{n=0}^{\infty}$ and ${\{X_{n}\}}_{n=1}^{\infty}$
 sequences of discrete random variables with $P_{0}=p_{0}$ and for
@@ -122,7 +174,7 @@ ${\{P_{n}\}}_{n=0}^{\infty}$ transition probabilities. Depending
 on the chosen formula to calculate $P_{i}$ the walk type is either
 \emph{success punishing} (\ref{eq:def_p_sp}) or \emph{success rewarding}
 (\ref{eq:def_p_sr}).
-\end{defn}
+\end{definition}
 
 The model was first introduced in \cite{ja2017ddny} and a more thorough
 description was provided in \cite{ja2019teze}. Selected properties
@@ -149,7 +201,7 @@ Var\,X_{t}=1-(2\lambda-1)^{2(t-1)}(2p_{0}-1)^{2}.
 \]
 
 For the expected value and variance of the transition probability
-or the $t\ge1$ iteration of the walk $P_{t}$ it holds \cite{ja2017ddny, ja2019apmat}
+or the $t\ge1$ iteration of the walk $P_{t}$ it holds \cite{ja2017ddny,ja2019apmat}
 \begin{equation}
 EP_{t}=(2\lambda-1)^{t}p_{0}+\frac{1-(2\lambda-1)^{t}}{2},\label{eq:e_p_t_sp}
 \end{equation}
@@ -166,7 +218,7 @@ K(t;p_{o},\lambda)^{2}=k(t;p_{o},\lambda)^{2}\cdot(-3\lambda^{2}+4\lambda-1)+(1-
 \]
 
 Finally, the expected position of the walker $S_{t}$ after $t\geq1$
-iterations can be expressed as \cite{ja2017ddny} 
+iterations can be expressed as \cite{ja2017ddny}
 \begin{equation}
 ES_{t}=S_{0}+(2p_{0}-1)\frac{1-(2\lambda-1)^{t}}{2(1-\lambda)}.\label{eq:e_s_t_sp}
 \end{equation}
@@ -174,7 +226,7 @@ ES_{t}=S_{0}+(2p_{0}-1)\frac{1-(2\lambda-1)^{t}}{2(1-\lambda)}.\label{eq:e_s_t_s
 The last formula missing is the one expressing the variance of the
 position of the walker $Var\,S_{t}$. Before it is presented, let
 us first prove a support proposition.
-\begin{prop}
+\begin{proposition}
 For all $t\ge1$
 \begin{equation}
 E(P_{t}S_{t})=(2\lambda-1)^{t}p_{0}S_{0}+\sum_{i=0}^{t-1}(2\lambda-1)^{i}q(t-1-i;p_{0},S_{0},\lambda),\label{eq:e_p_s_t_sp}
@@ -185,15 +237,15 @@ q(j;p_{0},S_{0},\lambda)=(1-\lambda)s(j;p_{0},S_{0},\lambda)+2\lambda\pi(j;p_{0}
 \]
 and $p(j;p_{0},\lambda)=EP_{j}$ given by (\ref{eq:e_p_t_sp}), $s(j;p_{0},S_{0},\lambda)=ES_{j}$
 given by (\ref{eq:e_s_t_sp}) and $\pi(j;p_{0},\lambda)=EP_{j}^{2}$
-given as 
+given as
 \begin{equation}
 EP_{t}^{2}=(3\lambda^{2}-2\lambda)^{t}p_{0}^{2}+\frac{1-(3\lambda^{2}-2\lambda)^{t}}{3\lambda+1}\frac{(\lambda+1)}{2}-(p_{0}-\frac{1}{2})(3\lambda-1)(\lambda-1)M(t-1;\lambda),\label{eq:e_p2_t_sp}
 \end{equation}
-where 
+where
 \[
 M(t;\lambda)=\sum_{i=0}^{t-1}(3\lambda^{2}-2\lambda)^{t-1-i}(2\lambda-1)^{i}.
 \]
-\end{prop}
+\end{proposition}
 
 \begin{proof}
 The formula for $EP_{t}^{2}$ follows from the proof of Proposition
@@ -242,8 +294,8 @@ E(P_{t+1}S_{t+1})=(2\lambda-1)E(P_{t}S_{t})+(1-\lambda)ES_{t}+2\lambda EP_{t}^{2
 (2\lambda-1)^{t+1}p_{0}S_{0}+\sum_{i=0}^{t}(2\lambda-1)^{i}q(t-i).
 \]
 \end{proof}
-\begin{thm}
-\label{thm:VarSt_sp}For all $t\ge1$ 
+\begin{theorem}
+\label{thm:VarSt_sp}For all $t\ge1$
 \[
 Var\,S_{t}=t+4\sum_{i=0}^{t-1}\sigma(i;p_{0},0,\lambda)-a(t;p_{0},\lambda),
 \]
@@ -252,16 +304,16 @@ and
 \[
 a(t;p_{0},\lambda)=(2p_{0}-1)\sum_{i=0}^{t-1}\frac{1-(2\lambda-1)^{i}}{1-\lambda}+(2p_{0}-1)^{2}\frac{(1-(2\lambda-1)^{t})^{2}}{4(1-\lambda)^{2}}.
 \]
-\end{thm}
+\end{theorem}
 
 \begin{proof}
 As clearly the value $S_{0}$ does not affect the variance, let us
-from now assume $S_{0}=0$. From the definition of variance 
+from now assume $S_{0}=0$. From the definition of variance
 \begin{equation}
 Var\,S_{t}=ES_{t}^{2}-E^{2}S_{t}\label{eq:var_s_t_rozepsano_sp}
 \end{equation}
 and (\ref{eq:e_s_t_sp}) follows that to prove the proposition it
-is enough to prove that 
+is enough to prove that
 \begin{equation}
 ES_{t}^{2}=t+4\sum_{i=0}^{t-1}\sigma(i;p_{0},0,\lambda)-(2p_{0}-1)\sum_{i=0}^{t-1}\frac{1-(2\lambda-1)^{i}}{1-\lambda}.\label{eq:e_s2_t_sp}
 \end{equation}
@@ -304,17 +356,17 @@ which proves (\ref{eq:e_s2_t_sp}). Substituting (\ref{eq:e_s2_t_sp})
 and (\ref{eq:e_s_t_sp}) into (\ref{eq:var_s_t_rozepsano_sp}) then
 proves the theorem.
 \end{proof}
-\begin{cor}
+\begin{corollary}
 \label{cor:var_s_t_sp}For $t\rightarrow+\infty$
 \[
 Var\,S_{t}=+\infty
 \]
-and 
+and
 \[
 \lim_{t\rightarrow+\infty}(Var\,S_{t}-(c_{1}(p_{0},\lambda)t+c_{2}(p_{0},\lambda))=0,
 \]
 where $c_{i}(p_{0},\lambda)$ are some $t$-independent constants.
-\end{cor}
+\end{corollary}
 
 Corrolary \ref{cor:var_s_t_sp} shows that with $t\rightarrow+\infty$
 $Var\,S_{t}$ behaves as a linear function with respect to $t$. This
@@ -376,12 +428,12 @@ ES_{t}=S_{0}+t(2p_{0}-1).\label{eq:e_s_t_sr}
 
 To prove a formula allowing to compute the variance of the position
 of the walker, let us again start with a support proposition.
-\begin{prop}
+\begin{proposition}
 For all $t\ge1$
 \begin{equation}
 E(P_{t}S_{t})=p_{0}S_{0}+p_{0}t+2\lambda p_{0}(p_{0}-1)\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}}.\label{eq:e_p_s_t_sr}
 \end{equation}
-\end{prop}
+\end{proposition}
 
 \begin{proof}
 We will once again start with expressing $E(P_{t}S_{t})$ from the
@@ -411,7 +463,7 @@ E(P_{1}S_{1})=p_{0}S_{0}+p_{0}+2\lambda p_{0}(p_{0}-1)\frac{1-(2\lambda-\lambda^
 \[
 =p_{0}S_{0}+p_{0}+2\lambda p_{0}(p_{0}-1)
 \]
-and finally 
+and finally
 \[
 E(P_{1}S_{1})=p_{0}S_{0}+2\lambda p_{0}^{2}-(2\lambda-1)p_{0}.
 \]
@@ -421,7 +473,7 @@ into (\ref{eq:e_p_s_t-1_t_sr})
 \[
 E(P_{t+1}S_{t+1})=E(P_{t}S_{t})+2\lambda EP_{t}^{2}-(2\lambda-1)EP_{t}
 \]
-and further using 
+and further using
 \[
 EP_{t}^{2}=p_{0}((2\lambda-\lambda^{2})^{t}(p_{0}-1)+1),
 \]
@@ -437,7 +489,7 @@ E(P_{t+1}S_{t+1})=p_{0}S_{0}+p_{0}t+2\lambda p_{0}(p_{0}-1)\frac{1-(2\lambda-\la
 =p_{0}S_{0}+p_{0}(t+1)+2\lambda p_{0}(p_{0}-1)\frac{1-(2\lambda-\lambda^{2})^{t+1}}{(1-\lambda)^{2}}.
 \]
 \end{proof}
-\begin{thm}
+\begin{theorem}
 \label{thm:var_s_t_sr}For all $t\ge1$ holds
 \[
 Var\,S_{t}=4p_{0}(1-p_{0})t^{2}+a(p_{0},\lambda)t-a(p_{0},\lambda)\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}},
@@ -446,12 +498,12 @@ where
 \[
 a(p_{0},\lambda)=\frac{8p_{0}(1-p_{0})}{(1-\lambda)^{2}}.
 \]
-\end{thm}
+\end{theorem}
 
 \begin{proof}
 As clearly the value $S_{0}$ does not affect the variance, let us
 from now assume $S_{0}=0$. From the definition of variance and (\ref{eq:e_s_t_sr})
-follows that to prove the theorem it is enough to prove that 
+follows that to prove the theorem it is enough to prove that
 \begin{equation}
 ES_{t}^{2}=t^{2}+a(p_{0},\lambda)t-a(p_{0},\lambda)\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}}.\label{eq:e_s2_t_sr}
 \end{equation}
@@ -479,18 +531,18 @@ ES_{t+1}^{2}=ES_{t}^{2}+4E(P_{t}S_{t})-2ES_{t}+1=
 Substituting (\ref{eq:e_s2_t_sr}) and (\ref{eq:e_s_t_sr}) into the
 definition of variance then proves the theorem.
 \end{proof}
-\begin{cor}
-\label{cor:var_s_t_sr}For $t\rightarrow+\infty$ 
+\begin{corollary}
+\label{cor:var_s_t_sr}For $t\rightarrow+\infty$
 \[
 \lim_{t\rightarrow+\infty}Var\,S_{t}=+\infty
 \]
-and 
+and
 \[
 \lim_{t\rightarrow+\infty}(Var\,S_{t}-(4p_{0}(1-p_{0})t^{2}+a(p_{0},\lambda)t-\frac{a(p_{0,}\lambda)}{(1-\lambda)^{2}}))=0,
 \]
 with $a(p_{0},\lambda)$ as in Theorem (\ref{thm:var_s_t_sr}), i.e.
 $Var\,S_{t}$ behaves as a quadratic function with $t\rightarrow+\infty$.
-\end{cor}
+\end{corollary}
 
 Corrolary \ref{cor:var_s_t_sr} shows that with $t\rightarrow+\infty$
 $Var\,S_{t}$ behaves as a quadratic function with respect to $t$.
@@ -516,7 +568,7 @@ of complexity. The first option is to use two separate $\lambda$
 parameters for each direction of the walk. Maintaining the two basic
 options - \emph{success punishing} and \emph{success rewarding} models,
 this level of complexity can defined as follows \cite{ja2019apmat}
-\begin{defn}
+\begin{definition}
 Let $\ensuremath{p_{0},\lambda_{0},\lambda_{1}\in(0,\,1)}$ be constant
 parameters, ${\{P_{n}\}}_{n=0}^{\infty}$ and ${\{X_{n}\}}_{n=1}^{\infty}$
 sequences of discrete random variables with $P_{0}=p_{0}$ and for
@@ -565,7 +617,7 @@ success rewarding} model. The data were gathered from $10000$ simulations
 with given parameters.}
 
 \end{figure}
-\end{defn}
+\end{definition}
 
 
 \subsection{Other model alternatives}
@@ -576,7 +628,7 @@ the $\lambda$ parameter can be handled as a function of time and
 position or a combination of varying probability model with regression
 part (e.g. logistic) can be considered, which seems especially promising
 from application point of view. This variations of the model will
-be subject of further study. 
+be subject of further study.
 
 \section{Model application\label{sec:Model-application}}
 
@@ -602,11 +654,11 @@ using the maximal likelihood estimate. The model was tested on a database
 consisting of $4255$ tennis matches that took place between 2009
 and 2018 and the results suggest that such a model could be used for
 \emph{in-play} odds prediction. For full details of the model derivation
-and testing, see the original paper \cite{ja2019mathsport_proc}. 
+and testing, see the original paper \cite{ja2019mathsport_proc}.
 
 The quality of such \emph{in-play} predictions was tested on a small
 study in real life setting with active betting against a bookmaker.
-The test was set up in the following manner. 
+The test was set up in the following manner.
 
 An automated betting and odds scraping tool developed using the Python
 programming language and Selenium framework running on a remote server
@@ -620,7 +672,7 @@ starting time etc., into a database (Postgresql database). To test
 the model, Tipsport’s starting odds were used to obtain parameter
 $p_{0}$ and optimized $\lambda$ trained on the $2018$ tennis season
 was chosen as the second necessary model parameter in a same way se
-in \cite{ja2019mathsport_proc}. 
+in \cite{ja2019mathsport_proc}.
 
 Every match was observed individually and after each finished set
 next set winning probabilities were computed using the presented model.
@@ -663,7 +715,7 @@ estimate of both $\lambda$ and $p_{0}$ were studied in depth in
 a study devoted to one of possible model applications, namely the
 modelling tennis matches development. This kind of application was
 briefly recalled also in the present contribution and partial results
-of model testing on a new dataset were reported. 
+of model testing on a new dataset were reported.
 
 \bibliographystyle{plain}
 \bibliography{doktknih}
