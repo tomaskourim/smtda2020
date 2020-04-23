@@ -103,7 +103,7 @@
     \end{abstract}
 
 
-    \section{Introduction}
+    \section{Introduction}\label{sec:introduction}
 
     Stochastic processes and the corresponding mathematical theory represent
     a significant part of mathematics.
@@ -120,8 +120,7 @@
     and represents yet another version of a random walk, walk with varying
     transition probabilities.
     The model falls within a rather broad class
-    of processes presented in recent work of Davis and Liu~\cite{davis2012theory},
-    but not all assumptions from~\cite{davis2012theory} are met.
+    of processes presented in recent work of Davis and Liu~\cite{davis2012theory}, but not all assumptions from~\cite{davis2012theory} are met.
 
     The original inspiration for the model comes from one of its applications
     - modelling of sports events.
@@ -157,7 +156,7 @@
     this work.
 
 
-    \section{Theoretical properties}
+    \section{Theoretical properties}\label{sec:theoretical-properties}
 
     The original motivation of the model comes from modelling of sport
     events where the probability of a success (i.e. scoring a goal, achieving
@@ -205,7 +204,7 @@
     The basic results are recalled in the following sections and then
     variance of $S_{t}$ is described in more detail.
 
-    \subsection{Success punishing model}
+    \subsection{Success punishing model}\label{subsec:success-punishing-model}
 
     The basic properties of the \emph{success punishing }version of the
     walk are presented in this section.
@@ -404,7 +403,7 @@
 
     \end{figure}
 
-    \subsection{Success rewarding model}
+    \subsection{Success rewarding model}\label{subsec:success-rewarding-model}
 
     Similar formulas can be derived for the \emph{success rewarding }model.
     Once again for previous results only the formulas are presented with
@@ -548,7 +547,7 @@
         \]
         and
         \[
-            \lim_{t\rightarrow+\infty}(Var\,S_{t}-(4p_{0}(1-p_{0})t^{2}+a(p_{0},\lambda)t-\frac{a(p_{0,}\lambda)}{(1-\lambda)^{2}}))=0,
+            \lim_{t\rightarrow+\infty}\left(Var\,S_{t}-\left(4p_{0}(1-p_{0})t^{2}+a(p_{0},\lambda)t-\frac{a(p_{0,}\lambda)}{(1-\lambda)^{2}}\right)\right)=0,
         \]
         with $a(p_{0},\lambda)$ as in Theorem (\ref{thm:var_s_t_sr}), i.e.
         $Var\,S_{t}$ behaves as a quadratic function with $t\rightarrow+\infty$.
@@ -571,7 +570,7 @@
 
     \end{figure}
 
-    \subsection{Two-parameter models}
+    \subsection{Two-parameter models}\label{subsec:two-parameter-models}
 
     The presented model can be further extended by adding additional levels
     of complexity.
@@ -635,7 +634,7 @@
         \end{figure}
     \end{definition}
 
-    \subsection{Other model alternatives}
+    \subsection{Other model alternatives}\label{subsec:other-model-alternatives}
 
     There are many possibilities how to further enhance the model.
     The
@@ -648,43 +647,23 @@
     be subject of further study.
 
 
-    \section{Model application\label{sec:Model-application}}
+    \section{Model application}\label{sec:Model-application}
 
-    The model is especially well suited for simulation of random processes
-    where a single or just a few events significantly affect the process's
-    future development.
-    An example such a process can be found in sports
-    modelling.
-    In such applications rather short walks occur, but they
-    can be observed repetetively.
-    For example in modelling tennis sets,
-    the longest walk has only 5 steps (occurring in men Grand Slam or
-    Davis Cup matches), but there are many matches played each year, which
-    can be (uder some assumptions) considered as multiple observations
-    of the same walk.
-    The authors recently presented a study where the
-    model was used for modelling the men tennis Grand Slam matches with
-    results suggesting the model might provide precious insight when modelling
-    tennis.
+    The model is especially well suited for simulation of random processes where a single or just a few events significantly affect the process's future development.
+    An example such a process can be found in sports modelling.
+    In such applications rather short walks occur, but they can be observed repetitively.
+    For example in modelling tennis sets, the longest walk has only 5 steps (occurring in men Grand Slam or Davis Cup matches), but there are many matches played each year, which
+    can be (under some assumptions) considered as multiple observations of the same walk.
+    The authors recently presented a study where the model was used for modelling the men tennis Grand Slam matches with results suggesting the model might provide precious insight when modelling tennis.
     Here is a brief summary of the modelling approach.
 
-    The \emph{success rewarding} version of the model was selected as
-    the historical results show that the development of a tennis match
-    follows such pattern.
-    The $p_{0}$ was obtained using input bookmaker
-    odds from \emph{Pinnacle Sports}, an industry leading bookmaker.
-    The
-    appropriate $\lambda$ parameter was then found from historical data
-    using the maximal likelihood estimate.
-    The model was tested on a database
-    consisting of $4255$ tennis matches that took place between 2009
-    and 2018 and the results suggest that such a model could be used for
-    \emph{in-play} odds prediction.
-    For full details of the model derivation
-    and testing, see the original paper~\cite{ja2019mathsport_proc}.
+    The \emph{success rewarding} version of the model was selected as the historical results show that the development of a tennis match follows such pattern.
+    The $p_{0}$ was obtained using input bookmaker odds from \emph{Pinnacle Sports}, an industry leading bookmaker.
+    The appropriate $\lambda$ parameter was then found from historical data using the maximal likelihood estimate.
+    The model was tested on a database consisting of $4255$ tennis matches that took place between 2009 and 2018 and the results suggest that such a model could be used for    \emph{in-play} odds prediction.
+    For full details of the model derivation and testing, see the original paper~\cite{ja2019mathsport_proc}.
 
-    The quality of such \emph{in-play} predictions was tested on a small
-    study in real life setting with active betting against a bookmaker.
+    The quality of such \emph{in-play} predictions was tested on a small study in real life setting with active betting against a bookmaker.
     The test was set up in the following manner.
 
     An automated betting and odds scraping tool developed using the Python
@@ -735,7 +714,7 @@
     a bigger dataset will be subject of further study.
 
 
-    \section{Conclusion}
+    \section{Conclusion}\label{sec:conclusion}
 
     The present paper continues in the research on one specific set of
     models of Bernoulli-like random walks, the models where the transition
