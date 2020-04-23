@@ -39,33 +39,25 @@
 
 \setlength{\headsep}{0pt}
 
-\title*{Insert Paper Title}
+\title*{A model of random walk with varying transition probabilities}
 
-\titlerunning{\it Running Paper Title}
+\titlerunning{\it R. W. with varying transition prob.}
 
 \author{
-    Raimondo Manca\inst{1}
+    Tom\'{a}\v{s} Kou\v{r}im\inst{1}
     \and
-    Christos H. Skiadas\inst{2}
-    \and
-    Jacques Janssen\inst{3}
+    Petr Volf\inst{2}
 }
 
-\authorrunning{\it Manca et al.}
+\authorrunning{\it Kou\v{r}im and Volf}
 
 \institute{
-    Department of Methods and Models for Economics, Territory and Finance
-    via del Castro Laurenziano,9, Universita ``La Sapienza'', Roma, Italy\\
-    (E-mail: {\tt raimondo.manca@uniroma1.it})
+    Faculty of Nuclear Sciences and Physical Engineering, Czech Technical University in Prague,
+    Czech Republic\\
+    (E-mail: {\tt kourim@outlook.com})
     \and
-    ManLab, Technical University of Crete, University Campus, 73100 Chania, Crete, Greece\\
-    (E-mail: {\tt skiadas@cmsim.net})
-    \and
-    EURIA (Brest) and JACAN (Tubize)
-    Universit\'e de Bretagne Occidentale
-    6 avenue le Gorgeu, CS 93837,
-    29238 BREST Cedex 3, France
-    (E-mail: {\tt cesiaf@belgacom.net})
+    Institute of Information Theory and Automation, Academy of Sciences of the Czech Republic, Prague\\
+    (E-mail: {\tt volf@utia.cas.cz})
 }
 
 
@@ -84,14 +76,14 @@
         random walk in which the position of the walker is controlled by a
         varying transition probabilities.
         Namely, these probabilities depend
-        explicityly on the previous move of the walker and implicitly on the
+        explicitly on the previous move of the walker and implicitly on the
         entire walk history.
         Hence, transition probabilities evolve in time
         making the walk a non-Markovian stochastic process.
         The paper follows
         on the recent work of the authors.
         Two basic version of the model
-        are introduced, some their properties are recalled and new theoretical
+        are introduced, some of their properties are recalled and new theoretical
         results derived.
         Then, more complex variants of models are presented.
         Development of walks themselves as well as the properties of connected
@@ -129,17 +121,16 @@
     divided by individual \emph{points},\emph{ games }or \emph{sets}.
     One sport match can be thus viewed as a random walk with individual
     parts of the match representing the steps of the walk.
-    Success, i.e.
-    scoring a point or winning a set, then significantly affects further
+    Success, i.e.\ scoring a point or winning a set, then significantly affects further
     development of the entire walk by changing the transition probability.
     Other real life situations with similar properties can be found everywhere
     in areas where both ``successes'' or ``failures'' occur.
     In fact,
-    also discrete time recurrent counts data occurence can be often modelled
+    also discrete time recurrent counts data occurrence can be often modelled
     in a similar way, when the event probability is affected by the process
     recent history.
     Such cases include the recurrence of diseases, recidivism
-    in crime, as well as repeated defects and maintenances of a technical
+    in crime, as well as repeated defects and maintenance of a technical
     device.
 
     The present contribution continues on the recent authors' exploration
@@ -163,8 +154,7 @@
     a point etc.) is at the center of interest.
     After each occurrence
     of such success this probability either decreases or increases, and
-    thus two basic model alternatives exist - \emph{success punishing
-    }and \emph{success rewarding}.
+    thus two basic model alternatives exist - \emph{success punishing} and \emph{success rewarding}.
     The basic version of the model operates
     with starting success probability $p_{0}$ and a memory coefficient
     $\lambda$ affecting the severity of probability change after a success
@@ -295,7 +285,8 @@
         When substituting $t=1$ into~\eqref{eq:e_p_s_t_sp} we obtain
         \begin{gather*}
             E(P_{1}S_{1})=(2\lambda-1)p_{0}S_{0}+\sum_{i=0}^{0}(2\lambda-1)^{i}q(0-i;p_{0},S_{0},\lambda)=\\
-            =(2\lambda-1)p_{0}S_{0}+(1-\lambda)s(0;p_{0},\lambda)+2\lambda\pi(0;p_{0},\lambda)+(1-2\lambda)p(0;p_{0},\lambda)+\lambda-1\\
+            =(2\lambda-1)p_{0}S_{0}+(1-\lambda)s(0;p_{0},\lambda)+\\
+            +2\lambda\pi(0;p_{0},\lambda)+(1-2\lambda)p(0;p_{0},\lambda)+\lambda-1\\
         \end{gather*}
         and finally using~\eqref{eq:e_p_t_sp},~\eqref{eq:e_s_t_sp} and~\eqref{eq:e_p2_t_sp}
         \[
@@ -553,9 +544,9 @@
         $Var\,S_{t}$ behaves as a quadratic function with $t\rightarrow+\infty$.
     \end{corollary}
 
-    Corrolary~\ref{cor:var_s_t_sr} shows that with $t\rightarrow+\infty$
+    Corollary~\ref{cor:var_s_t_sr} shows that with $t\rightarrow+\infty$
     $Var\,S_{t}$ behaves as a quadratic function with respect to $t$.
-    Similarly as with the \emph{success punishing }model, such behaivor
+    Similarly as with the \emph{success punishing} model, such behavior
     is illustrated on Figure (\ref{fig:var_s_t_sr}), which also shows
     the comparision of the theoretical value of position variance and
     an empirical one obtained using simulated data.
@@ -643,8 +634,7 @@
     position or a combination of varying probability model with regression
     part (e.g. logistic) can be considered, which seems especially promising
     from application point of view.
-    This variations of the model will
-    be subject of further study.
+    These variations of the model will be subject of further study.
 
 
     \section{Model application}\label{sec:Model-application}
