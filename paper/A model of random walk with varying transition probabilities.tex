@@ -652,66 +652,28 @@
     The model is especially well suited for simulation of random processes where a single or just a few events significantly affect the process's future development.
     An example such a process can be found in sports modelling.
     In such applications rather short walks occur, but they can be observed repetitively.
-    For example in modelling tennis sets, the longest walk has only 5 steps (occurring in men Grand Slam or Davis Cup matches), but there are many matches played each year, which
-    can be (under some assumptions) considered as multiple observations of the same walk.
-    The authors recently presented a study where the model was used for modelling the men tennis Grand Slam matches with results suggesting the model might provide precious insight when modelling tennis.
+    For example in modelling tennis sets, the longest walk has only 5 steps (occurring in men Grand Slam or Davis Cup matches), but there are many matches played each year,
+    which can be (under some assumptions) considered as multiple observations of the same walk.
+    The authors recently presented a study where the model was used for modelling the men tennis Grand Slam matches with results suggesting the model might provide precious insights when modelling tennis.
     Here is a brief summary of the modelling approach.
 
     The \emph{success rewarding} version of the model was selected as the historical results show that the development of a tennis match follows such pattern.
     The $p_{0}$ was obtained using input bookmaker odds from \emph{Pinnacle Sports}, an industry leading bookmaker.
     The appropriate $\lambda$ parameter was then found from historical data using the maximal likelihood estimate.
-    The model was tested on a database consisting of $4255$ tennis matches that took place between 2009 and 2018 and the results suggest that such a model could be used for    \emph{in-play} odds prediction.
+    The model was tested on a database consisting of $4255$ tennis matches that took place between 2009 and 2018 and the results suggest that such a model could be used for \emph{in-play} odds prediction.
     For full details of the model derivation and testing, see the original paper~\cite{ja2019mathsport_proc}.
 
     The quality of such \emph{in-play} predictions was tested on a small study in real life setting with active betting against a bookmaker.
-    The test was set up in the following manner.
+    The model from ~\cite{ja2019mathsport_proc} was implemented into an automatic odds scraping and betting tool.
+    Whenever the odds provided by bookmaker $a_{i}$  were higher than the model implied odds, i.e. $a_{i}>\frac{1}{p}$, a bet was made.
+    This test was carried over the $2019$ men tennis US~Open and resulted in $128$ placed bets with the total amount $59.85$ units bet.
+    As the bets were not placed simultaneously, but rather consecutively, the theoretical total bankroll needed for the betting was only $0.52$ units - the minimal actual account balance over the entire US Open.
+    The actual number of wins was $57$, slightly below the number of expected wins, but thanks to the average winning odds of $2.3$ the final balance was plus $2.24$ units,
+    creating a theoretical win $\frac{2.24}{0.52}=4.3$ times the investment, which is an outstanding performance.
 
-    An automated betting and odds scraping tool developed using the Python
-    programming language and Selenium framework running on a remote server
-    (Digital Ocean) was developed and deployed.
-    The tool operates with
-    Tipsport’s website (the biggest Czech bookmaker) and scrapes it for
-    both pre-match as well as in-play odds.
-    It was set up to continuously
-    observe Tipsport’s odds offerings for $2019$ men tennis US Open,
-    especially the set winning odds, and store the odds together with
-    some general information about the match, such as the respective players,
-    starting time etc., into a database (Postgresql database).
-    To test
-    the model, Tipsport’s starting odds were used to obtain parameter
-    $p_{0}$ and optimized $\lambda$ trained on the $2018$ tennis season
-    was chosen as the second necessary model parameter in a same way se
-    in~\cite{ja2019mathsport_proc}.
-
-    Every match was observed individually and after each finished set
-    next set winning probabilities were computed using the presented model.
-    Whenever the actual set winning odds offered by Tipsport for one of
-    the players $a_{i}$ were higher than the probability implied set
-    winning odds for that player computed by the model, i.e. $a_{i}>\frac{1}{p}$
-    , a bet was made.
-    The amount bet was computed as $p_{i}U$, where
-    $U$ is a base bankroll-dependent betting unit.
-    This amount was further
-    rounded with precision CZK $1$ (due to betting limitations of Tipsport).
-    Overall, $128$ bets were made (and $3$ additional bets that were
-    cancelled due to one of the players forfeiting the match because of
-    injury) with the total amount $59.85U$ bet.
-    However, as the bets
-    were not placed simulatenously, but rather in a consecutive manner,
-    the theoretical total bankroll neede for the betting was only $0.52U$
-    - the minimal actual account balnace over the entire US Open.
-    The
-    actual number of wins was $57$, slightly below the number of expected
-    wins, but thanks to the average winning odds of $2.3$ the final balance
-    was $2.24U$, creating a theoretical win $\frac{2.24}{0.52}=4.3$
-    times the investment, which is an outstanding performance.
-
-    This study just briefly shows the posibilities of the presented model.
-    The testing dataset, consisting of only 128 bets, is too small to
-    provide a strong evidence favoring the model over bookmaker's odds,
-    but the results are more than convincing.
-    A more conclusive test on
-    a bigger dataset will be subject of further study.
+    This study just briefly shows the possibilities of the presented model and presents rather encouraging results.
+    The testing dataset, consisting of only 128 bets, is however too small to provide a strong evidence favoring the model over bookmaker's odds.
+    A more conclusive test on a bigger dataset will be subject of further study.
 
 
     \section{Conclusion}\label{sec:conclusion}
@@ -719,11 +681,11 @@
     The present paper continues in the research on one specific set of
     models of Bernoulli-like random walks, the models where the transition
     probabilities depend on the walk history.
-    After rewieving basic models
+    After reviewing basic models
     types and the results of previous studies of their properties, new
     properties of the model characterizing the variability of the walk
     were proved.
-    These properies were explored additionally with the aid
+    These properties were explored additionally with the aid
     of simulations in order to compare derived theoretical results with
     empirical ones based on simulated data.
     The problem of parameters
@@ -731,9 +693,7 @@
     estimate of both $\lambda$ and $p_{0}$ were studied in depth in~\cite{ja2019apmat} and utilized in the~\cite{ja2019mathsport_proc},
     a study devoted to one of possible model applications, namely the
     modelling tennis matches development.
-    This kind of application was
-    briefly recalled also in the present contribution and partial results
-    of model testing on a new dataset were reported.
+    This kind of application was briefly recalled also in the present contribution and partial results of model testing on a new dataset were reported.
 
     \bibliographystyle{plain}
     \bibliography{doktknih}
