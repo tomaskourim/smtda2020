@@ -1,37 +1,8 @@
-%% LyX 2.3.0 created this file.  For more info, see http://www.lyx.org/.
-%% Do not edit unless you really know what you are doing.
 \documentclass[runningheads]{CMSIM}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath}
-%\usepackage{amsthm}
 \usepackage{amssymb}
 \usepackage{graphicx}
-
-%\makeatletter
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
-%\theoremstyle{plain}
-%\newtheorem{thm}{\protect\theoremname}
-%\theoremstyle{definition}
-%\newtheorem{defn}[thm]{\protect\definitionname}
-%\theoremstyle{plain}
-%\newtheorem{prop}[thm]{\protect\propositionname}
-%\theoremstyle{plain}
-%\newtheorem{cor}[thm]{\protect\corollaryname}
-
-%\makeatother
-
-%\usepackage{babel}
-%\providecommand{\corollaryname}{Corollary}
-%\providecommand{\definitionname}{Definition}
-%\providecommand{\propositionname}{Proposition}
-%\providecommand{\theoremname}{Theorem}
-
-%\begin{document}
-%
-%\title{A model of random walk with varying transition probabilities}
-%\maketitle
-
-
 
 
 \pagestyle{empty}
@@ -206,19 +177,21 @@
 
     For the expected value and variance of the step size for the $t\ge1$
     iteration of the walk $X_{t}$ it holds~\cite{ja2019apmat}
-    \begin{gather*}
-        EX_{t}=(2\lambda-1)^{t-1}(2p_{0}-1),\\
-        Var\,X_{t}=1-(2\lambda-1)^{2(t-1)}(2p_{0}-1)^{2}.\\
-    \end{gather*}
+    \begin{equation}
+        EX_{t}=(2\lambda-1)^{t-1}(2p_{0}-1),\label{eq:e_x_t_sp}
+    \end{equation}
+    \begin{equation}
+        Var\,X_{t}=1-(2\lambda-1)^{2(t-1)}(2p_{0}-1)^{2}.\label{eq:var_x_t_sp}
+    \end{equation}
 
     For the expected value and variance of the transition probability
     or the $t\ge1$ iteration of the walk $P_{t}$ it holds~\cite{ja2017ddny,ja2019apmat}
     \begin{equation}
         EP_{t}=(2\lambda-1)^{t}p_{0}+\frac{1-(2\lambda-1)^{t}}{2},\label{eq:e_p_t_sp}
     \end{equation}
-    \[
-        Var\,P_{t}=(3\lambda^{2}-2\lambda)^{t}p_{0}^{2}+\sum_{i=0}^{t-1}K(i;p_{0},\lambda)(3\lambda^{2}-2\lambda)^{t-1-i}-k(t;p_{o},\lambda)^{2},
-    \]
+    \begin{equation}
+        Var\,P_{t}=(3\lambda^{2}-2\lambda)^{t}p_{0}^{2}+\sum_{i=0}^{t-1}K(i;p_{0},\lambda)(3\lambda^{2}-2\lambda)^{t-1-i}-k(t;p_{o},\lambda)^{2},\label{eq:var_p_t_sp}
+    \end{equation}
     where
     \[
         k(t;p_{o},\lambda)^{2}=EP_{t}=(2\lambda-1)^{t}p_{0}+\frac{1-(2\lambda-1)^{t}}{2}
@@ -405,19 +378,21 @@
 
     For the expected value and variance of the step size for the $t\ge1$
     iteration of the walk $X_{t}$ it holds~\cite{ja2019apmat}
-    \begin{gather*}
-        EX_{t}=2p_{0}-1,\\
-        Var\,X_{t}=4p_{0}(1-p_{0}).\\
-    \end{gather*}
+    \begin{equation}
+        EX_{t}=2p_{0}-1,\label{eq:e_x_t_sr}
+    \end{equation}
+    \begin{equation}
+        Var\,X_{t}=4p_{0}(1-p_{0}).\label{eq:var_x_t_sr}
+    \end{equation}
 
     For the expected value and variance of the transition probability
     or the $t\ge1$ iteration of the walk $P_{t}$ it holds~\cite{ja2019apmat}
     \begin{equation}
         EP_{t}=p_{0},\label{eq:e_p_t_sr}
     \end{equation}
-    \[
-        Var\,P_{t}=(2\lambda-\lambda^{2})^{t}p_{0}^{2}+p_{0}(1-\lambda)^{2}\sum_{i=0}^{t-1}(2\lambda-\lambda^{2})^{i}-p_{0}^{2}.
-    \]
+    \begin{equation}
+        Var\,P_{t}=(2\lambda-\lambda^{2})^{t}p_{0}^{2}+p_{0}(1-\lambda)^{2}\sum_{i=0}^{t-1}(2\lambda-\lambda^{2})^{i}-p_{0}^{2}.\label{eq:var_p_t_sr}
+    \end{equation}
     As the sum in the formula equals $\frac{1-(2\lambda-\lambda^{2})^{t}}{1-(2\lambda-\lambda^{2})}$,
     it can be further simplified as
     \begin{gather*}
