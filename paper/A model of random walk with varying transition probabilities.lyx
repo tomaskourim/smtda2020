@@ -91,9 +91,10 @@ A model of random walk with varying transition probabilities
 This paper considers a model of the one-dimensional discrete time random
  walk in which the position of the walker is controlled by a varying transition
  probabilities.
- Namely, these probabilities depend on the last walker moves.
- Hence, transition probabilities evolve in time, they depend on the walk
- history, thus making the walk a non-Markovian stochastic process.
+ Namely, these probabilities depend explicityly on the previous move of
+ the walker and implicitly on the entire walk history.
+ Hence, transition probabilities evolve in time making the walk a non-Markovian
+ stochastic process.
  The paper follows on the recent work of the authors.
  Two basic version of the model are introduced, some their properties are
  recalled and new theoretical results derived.
@@ -101,8 +102,8 @@ This paper considers a model of the one-dimensional discrete time random
  Development of walks themselves as well as the properties of connected
  sequences of transition probabilities are illustrated also with the aid
  of simulation.
- Application to tennis results prediction is mentioned (described in short?),
- too.
+ Possible application of the model in real life situations are discussed
+ and briefly described, too.
 \end_layout
 
 \begin_layout Section
@@ -110,23 +111,91 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-Modelling sporting events and reliability analysis are two seemingly very
- different areas of mathematics, yet they offer many similarities.
- The key factor in both domains is a certain probability measure determining
- the development of observed phenomenon.
- This probability measure is called ``hazard rate'' in reliability analysis
- and simply ``probability of scoring'' in modelling of sport events.
- It is altered either continuously with time according to some underlying
- probability function or suddenly as a reaction to an event.
- Breakage or repair of a given machine in reliability analysis or scoring
- (goal, point, basket etc.) in sports modelling.
- The most prominent tool in reliability analysis is the Cox's model ZDROJ
- expressing the changes of a hazard rate with a base hazard rate and a covariate
- vector.
- This model, operating with continuous time, is often used for sports modelling
- as well.
- Many types of sport such as tennis or volleyball, however, are played in
- a strictly discrete matter with steps divided by individual 
+Stochastic processes and the corresponding mathematical theory represent
+ a significant part of mathematics.
+ One of the most prominent of such processes is the random walk, introduced
+ by K.
+ Pearson over hundred years ago 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{pearson1905problem}
+\end_layout
+
+\end_inset
+
+.
+ This concept has been then further elaborated by many authors creating
+ a number of different versions of a random walk 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{spitzer2013principles}
+\end_layout
+
+\end_inset
+
+ and there are still new possibilities and options how the classical random
+ walk can be altered and adapted to specific application field.
+ The model discussed in this paper follows on the work of Turban 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{turban2010random}
+\end_layout
+
+\end_inset
+
+ and represents yet another version of a random walk, walk with varying
+ transition probabilities.
+ The model falls within a rather broad class of processes presented in recent
+ work of Davis and Liu 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{davis2012theory}
+\end_layout
+
+\end_inset
+
+, but not all assumptions from 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{davis2012theory}
+\end_layout
+
+\end_inset
+
+ are met.
+ 
+\end_layout
+
+\begin_layout Standard
+The original inspiration for the model comes from one of its applications
+ - modelling of sports events.
+ Many types of sport, such as tennis or volleyball, are played in a strictly
+ discrete matter with steps divided by individual 
 \emph on
 points
 \emph default
@@ -139,19 +208,41 @@ or
 sets
 \emph default
 .
- Other real life situations with similar properties can be found as well,
- including the recurrence of diseases or recidivism in crime.
- Thus authors thus recently presented a novel discrete time random process
- model - discrete random walk with varying probabilities - which aims to
- serve as a discrete alternative to the standard Cox's model ZDROJ.
- In this paper selected properties of the model are presented and possible
- real life implementations of the model are discussed.
+ One sport match can be thus viewed as a random walk with individual parts
+ of the match representing the steps of the walk.
+ Success, i.e.
+ scoring a point or winning a set, then significantly affects further developmen
+t of the entire walk by changing the transition probability.
+ Other real life situations with similar properties can be found everywhere
+ in areas where both ``successes'' or ``failures'' occur.
+ In fact, also discrete time recurrent counts data occurence can be often
+ modelled in a similar way, when the event probability is affected by the
+ process recent history.
+ Such cases include the recurrence of diseases, recidivism in crime, as
+ well as repeated defects and maintenances of a technical device.
+ 
 \end_layout
 
 \begin_layout Standard
-The rest of the paper is organized as follows.
- Next section....
- The last section concludes this work.
+The present contribution continues on the recent authors' exploration of
+ the models of random walk with varying probabilities.
+ Selected properties of the model are presented and possible real life implement
+ations of the model are discussed.
+ The rest of the paper is organized as follows.
+ Next section introduces theoretical properties of the model and describes
+ in detail two main variants of the model.
+ Section 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "sec:Model-application"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ presents possible applications of the model and the last section concludes
+ this work.
 \end_layout
 
 \begin_layout Section
@@ -172,11 +263,8 @@ and
 success rewarding
 \emph default
 .
- The basic version of the model has 
-\begin_inset Formula $2$
-\end_inset
-
- parameters, starting success probability 
+ The basic version of the model operates with starting success probability
+ 
 \begin_inset Formula $p_{0}$
 \end_inset
 
@@ -184,7 +272,8 @@ success rewarding
 \begin_inset Formula $\lambda$
 \end_inset
 
- affecting the severity of probability change after a success.
+ affecting the severity of probability change after a success as input parameter
+s.
  Formally the walk is defined as follows:
 \end_layout
 
@@ -285,16 +374,14 @@ or (
 \color inherit
 success rewarding)
 \begin_inset Formula 
-\[
-P_{t}=\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1+X_{t}).
-\]
+\begin{equation}
+P_{t}=\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1+X_{t}).\label{eq:def_p_sr}
+\end{equation}
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Definition
+\emph default
 The sequence 
 \begin_inset Formula ${\{S_{n}\}}{}_{n=0}^{\infty},\;S_{N}=S_{0}+\sum_{i=1}^{N}X_{i}$
 \end_inset
@@ -328,11 +415,31 @@ random walk with varying probabilities
 \emph on
 success punishing
 \emph default
- REF or 
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:def_p_sp"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ or 
 \emph on
 success rewarding
 \emph default
- REF.
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:def_p_sr"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -363,7 +470,7 @@ cite{ja2019teze}
 \end_inset
 
 .
- More properties were then presented in 
+ Selected properties were then presented in 
 \begin_inset ERT
 status open
 
@@ -391,7 +498,12 @@ cite{ja2019mathsport_proc}
 \end_inset
 
 .
- Next let us recall the results of the previous work.
+ The basic results are recalled in the following sections and then variance
+ of 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+ is described in more detail.
 \end_layout
 
 \begin_layout Subsection
@@ -406,6 +518,8 @@ success punishing
 version of the walk are presented in this section.
  Previous results are presented as a set of expressions only, the reader
  is kindly asked to see referred papers for full proves of those expressions.
+ Newly described properties are then provided with full proves and all necessary
+ details.
 \end_layout
 
 \begin_layout Standard
@@ -483,7 +597,7 @@ EP_{t}=(2\lambda-1)^{t}p_{0}+\frac{1-(2\lambda-1)^{t}}{2},\label{eq:e_p_t_sp}
 
 \begin_inset Formula 
 \[
-Var\,P_{t}=(3\lambda^{2}-2\lambda)^{t}p_{0}^{2}+\sum_{i=0}^{t-1}K(i)(3\lambda^{2}-2\lambda)^{t-1-i}-k(t)^{2},
+Var\,P_{t}=(3\lambda^{2}-2\lambda)^{t}p_{0}^{2}+\sum_{i=0}^{t-1}K(i;p_{0},\lambda)(3\lambda^{2}-2\lambda)^{t-1-i}-k(t;p_{o},\lambda)^{2},
 \]
 
 \end_inset
@@ -491,7 +605,7 @@ Var\,P_{t}=(3\lambda^{2}-2\lambda)^{t}p_{0}^{2}+\sum_{i=0}^{t-1}K(i)(3\lambda^{2
 where
 \begin_inset Formula 
 \[
-k(t)=EP_{t}=(2\lambda-1)^{t}p_{0}+\frac{1-(2\lambda-1)^{t}}{2}
+k(t;p_{o},\lambda)^{2}=EP_{t}=(2\lambda-1)^{t}p_{0}+\frac{1-(2\lambda-1)^{t}}{2}
 \]
 
 \end_inset
@@ -499,7 +613,7 @@ k(t)=EP_{t}=(2\lambda-1)^{t}p_{0}+\frac{1-(2\lambda-1)^{t}}{2}
 and
 \begin_inset Formula 
 \[
-K(t)=k(t)\cdot(-3\lambda^{2}+4\lambda-1)+(1-\lambda)^{2}.
+K(t;p_{o},\lambda)^{2}=k(t;p_{o},\lambda)^{2}\cdot(-3\lambda^{2}+4\lambda-1)+(1-\lambda)^{2}.
 \]
 
 \end_inset
@@ -786,7 +900,7 @@ noprefix "false"
 
 \end_inset
 
- thus holds 
+ thus holds for 
 \begin_inset Formula $t=1$
 \end_inset
 
@@ -959,7 +1073,7 @@ where the fact that
 \end_inset
 
  was used.
- The theorem will be once again proved using mathematical induction.
+ The theorem will be proved using mathematical induction again .
  For 
 \begin_inset Formula $t=1$
 \end_inset
@@ -1119,6 +1233,138 @@ noprefix "false"
  then proves the theorem.
 \end_layout
 
+\begin_layout Corollary
+\begin_inset CommandInset label
+LatexCommand label
+name "cor:var_s_t_sp"
+
+\end_inset
+
+For 
+\begin_inset Formula $t\rightarrow+\infty$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Var\,S_{t}=+\infty
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+\lim_{t\rightarrow+\infty}(Var\,S_{t}-(c_{1}(p_{0},\lambda)t+c_{2}(p_{0},\lambda))=0,
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $c_{i}(p_{0},\lambda)$
+\end_inset
+
+ are some 
+\begin_inset Formula $t$
+\end_inset
+
+-independent constants.
+\end_layout
+
+\begin_layout Standard
+Corrolary 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cor:var_s_t_sp"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ shows that with 
+\begin_inset Formula $t\rightarrow+\infty$
+\end_inset
+
+ 
+\begin_inset Formula $Var\,S_{t}$
+\end_inset
+
+ behaves as a linear function with respect to 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ This can be seen also on Figure 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "fig:var_s_t_sp"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ together with a comparison of observed and theoretical values of 
+\begin_inset Formula $Var\,S_{t}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../simulations/e_position_1000_walks_20_steps_type_success_punished.pdf
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:var_s_t_sp"
+
+\end_inset
+
+Observed (dash-dotted) and theoretical (solid lines) values of 
+\begin_inset Formula $Var\,S_{t}$
+\end_inset
+
+ - 
+\emph on
+success punishing 
+\emph default
+model.
+ The data were obtained from 1000 walks generated with given parameters.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Success rewarding model
 \end_layout
@@ -1130,7 +1376,7 @@ success rewarding
 \emph default
 model.
  Once again for previous results only the formulas are presented with proofs
- in the referred literature.
+ in the referred literature, new properties are derived with full complexity.
  For the sake of clarity the set of expressions is presented in the same
  manner as in the previous section.
 \end_layout
@@ -1384,7 +1630,7 @@ E(P_{1}S_{1})=p_{0}(1-(1-p_{0})\lambda)(S_{0}+1)+(1-p_{0})\lambda p_{0}(S_{0}-1)
 
 \end_inset
 
-When substituting
+When substituting 
 \begin_inset Formula $t=1$
 \end_inset
 
@@ -1432,7 +1678,7 @@ noprefix "false"
 
 \end_inset
 
- thus holds 
+ thus holds for 
 \begin_inset Formula $t=1$
 \end_inset
 
@@ -1528,6 +1774,12 @@ E(P_{t+1}S_{t+1})=p_{0}S_{0}+p_{0}t+2\lambda p_{0}(p_{0}-1)\frac{1-(2\lambda-\la
 \end_layout
 
 \begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:var_s_t_sr"
+
+\end_inset
+
 For all 
 \begin_inset Formula $t\ge1$
 \end_inset
@@ -1611,7 +1863,7 @@ noprefix "false"
 \end_inset
 
 .
- Substituting 
+ By substituting 
 \begin_inset Formula $t=1$
 \end_inset
 
@@ -1739,8 +1991,555 @@ noprefix "false"
  into the definition of variance then proves the theorem.
 \end_layout
 
+\begin_layout Corollary
+\begin_inset CommandInset label
+LatexCommand label
+name "cor:var_s_t_sr"
+
+\end_inset
+
+For 
+\begin_inset Formula $t\rightarrow+\infty$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+\lim_{t\rightarrow+\infty}Var\,S_{t}=+\infty
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula 
+\[
+\lim_{t\rightarrow+\infty}(Var\,S_{t}-(4p_{0}(1-p_{0})t^{2}+a(p_{0},\lambda)t-\frac{a(p_{0,}\lambda)}{(1-\lambda)^{2}}))=0,
+\]
+
+\end_inset
+
+with 
+\begin_inset Formula $a(p_{0},\lambda)$
+\end_inset
+
+ as in Theorem 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "thm:var_s_t_sr"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, i.e.
+ 
+\begin_inset Formula $Var\,S_{t}$
+\end_inset
+
+ behaves as a quadratic function with 
+\begin_inset Formula $t\rightarrow+\infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Corrolary 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "cor:var_s_t_sr"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ shows that with 
+\begin_inset Formula $t\rightarrow+\infty$
+\end_inset
+
+ 
+\begin_inset Formula $Var\,S_{t}$
+\end_inset
+
+ behaves as a quadratic function with respect to 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ Similarly as with the 
+\emph on
+success punishing 
+\emph default
+model, such behaivor is illustrated on Figure 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "fig:var_s_t_sr"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, which also shows the comparision of the theoretical value of position
+ variance and an empirical one obtained using simulated data.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../simulations/e_position_1000_walks_20_steps_type_success_rewarded.pdf
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:var_s_t_sr"
+
+\end_inset
+
+Observed (dash-dotted) and theoretical (solid lines) values of 
+\begin_inset Formula $Var\,S_{t}$
+\end_inset
+
+ - 
+\emph on
+success rewarding 
+\emph default
+model.
+ The data were obtained from 1000 walks generated with given parameters.
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Two-parameter models
+\end_layout
+
+\begin_layout Standard
+The presented model can be further extended by adding additional levels
+ of complexity.
+ The first option is to use two separate 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ parameters for each direction of the walk.
+ Maintaining the two basic options - 
+\emph on
+success punishing
+\emph default
+ and 
+\emph on
+success rewarding
+\emph default
+ models, this level of complexity can defined as follows 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{ja2019apmat}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+Let 
+\begin_inset Formula $\ensuremath{p_{0},\lambda_{0},\lambda_{1}\in(0,\,1)}$
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+ be constant parameters, 
+\begin_inset Formula ${\{P_{n}\}}_{n=0}^{\infty}$
+\end_inset
+
+ and 
+\begin_inset Formula ${\{X_{n}\}}_{n=1}^{\infty}$
+\end_inset
+
+ sequences of discrete random variables with 
+\begin_inset Formula $P_{0}=p_{0}$
+\end_inset
+
+ and for 
+\begin_inset Formula $t\ge1$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P(X_{t}=1|P_{t-1}=p_{t-1})=p_{t-1},\,\,\,P(X_{t}=-1|P_{t-1}=p_{t-1})=1-p_{t-1},
+\]
+
+\end_inset
+
+and (
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+success punishing)
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\begin{equation}
+P_{t}=\frac{1}{2}[(1+X_{t})\lambda_{0}P_{t-1}+(1-X_{t})(1-\lambda_{1}(1-P_{t-1}))]\label{eq:def_2l_p_sp}
+\end{equation}
+
+\end_inset
+
+or (
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+success rewarding)
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+
+\begin_inset Formula 
+\begin{equation}
+P_{t}=\frac{1}{2}[(1-X_{t})\lambda_{0}P_{t-1}+(1+X_{t})(1-\lambda_{1}(1-P_{t-1}))].\label{eq:def_2l_p_sr}
+\end{equation}
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\xout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+The sequence 
+\begin_inset Formula ${\{S_{n}\}}{}_{n=0}^{\infty},\;S_{N}=S_{0}+\sum_{i=1}^{N}X_{i}$
+\end_inset
+
+ for 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+, with 
+\begin_inset Formula $S_{0}\in\mathbb{R}$
+\end_inset
+
+ some given starting position, is called a 
+\emph on
+random walk with varying probabilities - two-parameter model
+\emph default
+, with 
+\begin_inset Formula ${\{X_{n}\}}_{n=1}^{\infty}$
+\end_inset
+
+ being the steps of the walker and 
+\begin_inset Formula ${\{P_{n}\}}_{n=0}^{\infty}$
+\end_inset
+
+ transition probabilities.
+ Depending on the chosen formula to calculate 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+ the walk type is either 
+\emph on
+success punishing
+\emph default
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:def_2l_p_sp"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ or 
+\emph on
+success rewarding
+\emph default
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:def_2l_p_sr"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+The derivation of exact model properties is not so straightforward as in
+ the case with single lambda.
+ The properties were thus studied with the help of simulations.
+ Figures 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "fig:var_s_t_2l_sp"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "fig:var_s_t_2l_sr"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ present again the variance of 
+\begin_inset Formula $S_{t}$
+\end_inset
+
+.
+ It seems that the position variance of the 
+\emph on
+success punishing
+\emph default
+ model goes to infinity linearly and of the 
+\emph on
+success rewarding
+\emph default
+ model quadratically, similarly as in the corresponding single parameter
+ scenarios.
+\end_layout
+
+\begin_layout Definition
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../simulations/e_position_10000_walks_200_steps_type_success_punished_two_lambdas.pdf
+	width 100text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:var_s_t_2l_sp"
+
+\end_inset
+
+The observed position variance in the 
+\emph on
+two-parameter success punishing
+\emph default
+ model.
+ The data were gathered from 
+\begin_inset Formula $10000$
+\end_inset
+
+ simulations with given parameters.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename ../simulations/e_position_10000_walks_200_steps_type_success_rewarded_two_lambdas.pdf
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:var_s_t_2l_sr"
+
+\end_inset
+
+The observed position variance in the 
+\emph on
+two-parameter success rewarding
+\emph default
+ model.
+ The data were gathered from 
+\begin_inset Formula $10000$
+\end_inset
+
+ simulations with given parameters.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Other model alternatives
+\end_layout
+
+\begin_layout Standard
+There are many possibilities how to further enhance the model.
+ The model can be combined with a varying step size model from 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{turban2010random}
+\end_layout
+
+\end_inset
+
+, the 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ parameter can be handled as a function of time and position or a combination
+ of varying probability model with regression part (e.g.
+ logistic) can be considered, which seems especially promising from application
+ point of view.
+ This variations of the model will be subject of further study.
+ 
+\end_layout
+
 \begin_layout Section
 Model application
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Model-application"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1748,6 +2547,12 @@ The model is especially well suited for simulation of random processes where
  a single or just a few events significantly affect the process's future
  development.
  An example such a process can be found in sports modelling.
+ In such applications rather short walks occur, but they can be observed
+ repetetively.
+ For example in modelling tennis sets, the longest walk has only 5 steps
+ (occurring in men Grand Slam or Davis Cup matches), but there are many
+ matches played each year, which can be (uder some assumptions) considered
+ as multiple observations of the same walk.
  The authors recently presented a study where the model was used for modelling
  the men tennis Grand Slam matches with results suggesting the model might
  provide precious insight when modelling tennis.
@@ -1765,7 +2570,7 @@ success rewarding
 \begin_inset Formula $p_{0}$
 \end_inset
 
- was found using input bookmaker odds from 
+ was obtained using input bookmaker odds from 
 \emph on
 Pinnacle Sports
 \emph default
@@ -1805,12 +2610,12 @@ cite{ja2019mathsport_proc}
 \end_layout
 
 \begin_layout Standard
-The model was implemented and tested in real life setup where it actively
- bet 
+The quality of such 
 \emph on
 in-play
 \emph default
- against Tipsport, the biggest bookmaker in the Czech Republic.
+ predictions was tested on a small study in real life setting with active
+ betting against a bookmaker.
  The test was set up in the following manner.
  
 \end_layout
@@ -1819,8 +2624,8 @@ in-play
 An automated betting and odds scraping tool developed using the Python programmi
 ng language and Selenium framework running on a remote server (Digital Ocean)
  was developed and deployed.
- The tool operates with Tipsport’s website and scrapes it for both pre-match
- as well as in-play odds.
+ The tool operates with Tipsport’s website (the biggest Czech bookmaker)
+ and scrapes it for both pre-match as well as in-play odds.
  It was set up to continuously observe Tipsport’s odds offerings for 
 \begin_inset Formula $2019$
 \end_inset
@@ -1856,8 +2661,12 @@ cite{ja2019mathsport_proc}
 \end_inset
 
 .
- Every match was observed individually and after each finished set next
- set winning probabilities were computed using the presented model.
+ 
+\end_layout
+
+\begin_layout Standard
+Every match was observed individually and after each finished set next set
+ winning probabilities were computed using the presented model.
  Whenever the actual set winning odds offered by Tipsport for one of the
  players 
 \begin_inset Formula $a_{i}$
@@ -1898,34 +2707,37 @@ cite{ja2019mathsport_proc}
 \end_inset
 
  bet.
- The expected number of wins among these bets was 
-\begin_inset Formula $59.85$
+ However, as the bets were not placed simulatenously, but rather in a consecutiv
+e manner, the theoretical total bankroll neede for the betting was only
+ 
+\begin_inset Formula $0.52U$
 \end_inset
 
- whereas the actual number of wins was 
+ - the minimal actual account balnace over the entire US Open.
+ The actual number of wins was 
 \begin_inset Formula $57$
 \end_inset
 
-.
- The minimal account balance over the entire US Open was 
-\begin_inset Formula $−0.52U$
+, slightly below the number of expected wins, but thanks to the average
+ winning odds of 
+\begin_inset Formula $2.3$
 \end_inset
 
- and the final balance 
+ the final balance was 
 \begin_inset Formula $2.24U$
 \end_inset
 
-, creating a theoretical return on investment (ROI) of 
-\begin_inset Formula $430\%$
+, creating a theoretical win 
+\begin_inset Formula $\frac{2.24}{0.52}=4.3$
 \end_inset
 
- within only 2 weeks, which is an outstanding performance.
+ times the investment, which is an outstanding performance.
 \end_layout
 
 \begin_layout Standard
 This study just briefly shows the posibilities of the presented model.
  The testing dataset, consisting of only 128 bets, is too small to provide
- a strong evidence favoring the model over bookmaker's ods, but the results
+ a strong evidence favoring the model over bookmaker's odds, but the results
  are more than convincing.
  A more conclusive test on a bigger dataset will be subject of further study.
 \end_layout
@@ -1935,12 +2747,54 @@ Conclusion
 \end_layout
 
 \begin_layout Standard
-A specific model of a random walk with varying probabilities was considered
- in this paper.
- New properties of the model were derived and proved in Section XXX, providing
- another insight into the model behaivor.
- A model application from previous study was recalled and the model was
- tested on a new, real life dataset with convincing results.
+The present paper continues in the research on one specific set of models
+ of Bernoulli-like random walks, the models where the transition probabilities
+ depend on the walk history.
+ After rewieving basic models types and the results of previous studies
+ of their properties, new properties of the model characterizing the variability
+ of the walk were proved.
+ These properies were explored additionally with the aid of simulations
+ in order to compare derived theoretical results with empirical ones based
+ on simulated data.
+ The problem of parameters estimation was not addressed here, the properties
+ of the maximum likelihood estimate of both 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ and 
+\begin_inset Formula $p_{0}$
+\end_inset
+
+ were studied in depth in 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{ja2019apmat}
+\end_layout
+
+\end_inset
+
+ and utilized in the 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+cite{ja2019mathsport_proc}
+\end_layout
+
+\end_inset
+
+, a study devoted to one of possible model applications, namely the modelling
+ tennis matches development.
+ This kind of application was briefly recalled also in the present contribution
+ and partial results of model testing on a new dataset were reported.
  
 \end_layout
 
