@@ -19,8 +19,6 @@ def main(simulated_property="probability"):
     for step_count in STEP_COUNTS_TESTING:
         for repetitions in REPETITIONS_OF_WALK_S:
             for model_index, model_type in enumerate(MODEL_TYPES):
-                if model_type != 'success_punished_two_lambdas':
-                    continue
                 if 'two_lambdas' in model_type:
                     two_lambda = True
                 else:
@@ -64,8 +62,8 @@ def main(simulated_property="probability"):
                             variance = np.var(ps_all, axis=0)
                         else:
                             raise Exception("unexpected property type")
-                        # plt.plot(mean, mean_styles[index], label=label)
-                        plt.plot(variance, var_styles[index], label=label)
+                        plt.plot(mean, mean_styles[index], label=label)
+                        plt.plot(variance, var_styles[index])
                         if not two_lambda:
                             if simulated_property == "probability":
                                 plt.plot(exp_p_t_array(step_count, starting_probability, c_lambda, model_type),
@@ -74,8 +72,8 @@ def main(simulated_property="probability"):
                                          expected_styles[index], linewidth=0.7)
                             elif simulated_property == "position":
                                 s0 = 0
-                                # plt.plot(exp_s_t_array(step_count, starting_probability, c_lambda, s0, model_type),
-                                #          expected_styles[index], linewidth=0.7)
+                                plt.plot(exp_s_t_array(step_count, starting_probability, c_lambda, s0, model_type),
+                                         expected_styles[index], linewidth=0.7)
                                 plt.plot(var_s_t_array(step_count, starting_probability, c_lambda, s0, model_type),
                                          expected_styles[index], linewidth=0.7)
                             elif simulated_property == "p_s":
@@ -97,6 +95,6 @@ def main(simulated_property="probability"):
 if __name__ == '__main__':
     start_time, logger = create_logger()
     main(simulated_property="position")
-    # main(simulated_property="probability")
+    main(simulated_property="probability")
     # main(simulated_property="p_s")
     log_time(start_time, logger)
