@@ -1,0 +1,896 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\use_default_options true
+\maintain_unincluded_children false
+\language american
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+A model of random walk with varying transition probabilities
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Outline
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+
+\size larger
+Motivation
+\size default
+
+\begin_inset Argument item:2
+status open
+
+\begin_layout Plain Layout
+
+1-
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\size larger
+Model description
+\size default
+
+\begin_inset Argument item:2
+status open
+
+\begin_layout Plain Layout
+
+2-
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\size larger
+Model application
+\size default
+
+\begin_inset Argument item:2
+status open
+
+\begin_layout Plain Layout
+
+3-
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Random walk
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_deeper
+\begin_layout Definition
+A man starts from a point 
+\begin_inset Formula $O$
+\end_inset
+
+ and walks 
+\begin_inset Formula $l$
+\end_inset
+
+ yards in a straight line; he then turns through any angle whatever and
+ walks another 
+\begin_inset Formula $l$
+\end_inset
+
+ yards in a second straight line.
+ He repeats this process 
+\begin_inset Formula $n$
+\end_inset
+
+ times.
+ I require the probability that after these 
+\begin_inset Formula $n$
+\end_inset
+
+ stretches he is at a distance between 
+\begin_inset Formula $r$
+\end_inset
+
+ and 
+\begin_inset Formula $r+\delta r$
+\end_inset
+
+ from his starting point, 
+\begin_inset Formula $O.$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\size footnotesize
+\begin_inset VSpace medskip
+\end_inset
+
+
+\emph on
+[Karl Pearson: The problem of the random walk.
+ (1905)]
+\end_layout
+
+\end_deeper
+\begin_layout Definition
+
+\end_layout
+
+\begin_deeper
+\begin_layout Description
+Where is the 
+\emph on
+``Drunken sailor''
+\emph default
+?
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+
+2-
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Motivation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Failure of a machine
+\end_layout
+
+\begin_layout Frame
+- repair after failure
+\end_layout
+
+\begin_layout Frame
+- preventive maintenance
+\end_layout
+
+\begin_layout Frame
+- no action
+\end_layout
+
+\begin_layout Frame
+Occcurence of a disease
+\end_layout
+
+\begin_layout Frame
+- cure of the disease
+\end_layout
+
+\begin_layout Frame
+- prevention (i.e.
+ lifestyle change)
+\end_layout
+
+\begin_layout Frame
+- no action
+\end_layout
+
+\begin_layout Frame
+Development of sports match
+\end_layout
+
+\begin_layout Frame
+- goal scored, point achieved
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Random walk with varying probabilities
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Random walk with memory
+\end_layout
+
+\begin_layout Itemize
+Memory coefficient 
+\begin_inset Formula $\lambda\in(0,\,1)$
+\end_inset
+
+ affecting the transition probabilities
+\end_layout
+
+\begin_layout Itemize
+First step of the walk 
+\begin_inset Formula $X_{1}$
+\end_inset
+
+ depends on an initial transition probability 
+\begin_inset Formula $p_{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Further steps depending on a transition probability 
+\begin_inset Formula $p_{t}$
+\end_inset
+
+ evolving as
+\begin_inset Formula 
+\[
+X_{t-1}=1\rightarrow p_{t}=\lambda p_{t-1}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+X_{t-1}=-1\rightarrow p_{t}=1-\lambda(1-p_{t-1})
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+``Success punished''
+\begin_inset Argument item:2
+status open
+
+\begin_layout Plain Layout
+
+2-
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+X_{t-1}=1\rightarrow p_{t}=1-\lambda(1-p_{t-1})
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+X_{t-1}=-1\rightarrow p_{t}=\lambda p_{t-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+``Success rewarded
+\begin_inset Argument item:2
+status open
+
+\begin_layout Plain Layout
+
+4-
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Formal definition
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Definition
+Let 
+\begin_inset Formula $\ensuremath{p_{0},\lambda\in(0,\,1)}$
+\end_inset
+
+
+\family roman
+ be constant parameters, 
+\begin_inset Formula ${\{P_{n}\}}_{n=0}^{\infty}$
+\end_inset
+
+ and 
+\begin_inset Formula ${\{X_{n}\}}_{n=1}^{\infty}$
+\end_inset
+
+ sequences of discrete random variables with 
+\begin_inset Formula $P_{0}=p_{0}$
+\end_inset
+
+ and for 
+\begin_inset Formula $t\ge1$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+P(X_{t}=1|P_{t-1}=p_{t-1})=p_{t-1},\,\,\,P(X_{t}=-1|P_{t-1}=p_{t-1})=1-p_{t-1},
+\]
+
+\end_inset
+
+and (
+\family default
+\emph on
+success punishing)
+\family roman
+\emph default
+
+\begin_inset Formula 
+\[
+P_{t}=\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1-X_{t})
+\]
+
+\end_inset
+
+or (
+\family default
+\emph on
+success rewarding)
+\begin_inset Formula 
+\[
+P_{t}=\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1+X_{t}).
+\]
+
+\end_inset
+
+
+\emph default
+The sequence 
+\begin_inset Formula ${\{S_{n}\}}{}_{n=0}^{\infty},\;S_{N}=S_{0}+\sum_{i=1}^{N}X_{i}$
+\end_inset
+
+ for 
+\begin_inset Formula $n\in\mathbb{N}$
+\end_inset
+
+, with 
+\begin_inset Formula $S_{0}\in\mathbb{R}$
+\end_inset
+
+ some given starting position, is called a 
+\emph on
+random walk with varying probabilities
+\emph default
+, with 
+\begin_inset Formula ${\{X_{n}\}}_{n=1}^{\infty}$
+\end_inset
+
+ being the steps of the walker and 
+\begin_inset Formula ${\{P_{n}\}}_{n=0}^{\infty}$
+\end_inset
+
+ transition probabilities.
+ Depending on the chosen formula to calculate 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+ the walk type is either 
+\emph on
+success punishing
+\emph default
+ or 
+\emph on
+success rewarding
+\emph default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example - RW steps
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+obrazek
+\end_layout
+
+\begin_layout Frame
+ruzna lambda, p0, oddelena barevne
+\end_layout
+
+\begin_layout Frame
+jedno 
+\begin_inset Quotes eld
+\end_inset
+
+pozorovani
+\begin_inset Quotes erd
+\end_inset
+
+ a k tomu expected value a variance
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Walk step properties
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Exp X_t, Var X_t
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example - RW probabilities
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Stejny obrazek jako u steps, ale s probabilities
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Walk probabilities properties
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+stejne jako u steps
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example - RW position
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+dtto
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Walk position properties
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+dtto
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Success rewarding model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Stejne obrazky a slidy jako pro 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Overview
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Prehledova tabulka se vsemi vzorci pro porovnani
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Two-parameter model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Popis a definice 2lambda modelu
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example - two-parameter model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Jeden obrazek na SP, jeden na SR
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Real life applications
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+Zminit studii na US Open sazeni
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Summary
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+novy zajimavy model
+\end_layout
+
+\begin_layout Frame
+odvozene teoreticke vlastnosti
+\end_layout
+
+\begin_layout Frame
+ukazka na realnych datech
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\end_body
+\end_document
