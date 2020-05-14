@@ -113,8 +113,8 @@ def single_walk_simulation(model_type):
     else:
         two_lambda = False
     # TODO handle with dignity
-    max_y = 40
-    min_y = -300
+    max_y = 80
+    min_y = -20
 
     for p_index, starting_probability in enumerate(START_PROBABILITIES_TESTING):
         rand_numbers = np.random.uniform(size=step_count)
@@ -144,8 +144,8 @@ def single_walk_simulation(model_type):
 if __name__ == '__main__':
     start_time, logger = create_logger()
     # main(simulated_property="position")
-    main(simulated_property="probability")
+    # main(simulated_property="probability")
     # main(simulated_property="step")
     # main(simulated_property="p_s")
-    # single_walk_simulation("success_punished_two_lambdas")
+    single_walk_simulation("success_punished")
     log_time(start_time, logger)

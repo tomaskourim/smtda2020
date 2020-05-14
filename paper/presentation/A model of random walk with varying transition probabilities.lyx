@@ -597,25 +597,47 @@ Example - RW development
 \end_layout
 
 \begin_layout Frame
-obrazek jedne (mozna par) konkretni prochazky.
- Jeji vyvoj, pravdepodobnosti.
- Porovnani s normalni RW
+\begin_inset Graphics
+	filename ../../simulations/single_walk_1000_steps_type_success_punished.pdf
+	width 100text%
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Frame
-ruzna lambda, p0, oddelena barevne
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
 \end_layout
 
 \begin_layout Frame
-jedno 
-\begin_inset Quotes eld
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example - RW development
+\end_layout
+
 \end_inset
 
-pozorovani
-\begin_inset Quotes erd
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Graphics
+	filename ../../simulations/single_walk_1000_steps_type_success_punished_p0_0.55.pdf
+	width 100text%
+
 \end_inset
 
- a k tomu expected value a variance
+
 \end_layout
 
 \begin_layout Frame
@@ -986,6 +1008,18 @@ Two-parameter model
 
 \begin_deeper
 \begin_layout Itemize
+Two parameters 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, each affecting one direction of the walk.
+\end_layout
+
+\begin_layout Itemize
+Again two variants - success punishing and success rewarding
+\end_layout
+
+\begin_layout Itemize
 \begin_inset Formula $\frac{1}{2}[(1+X_{i})\lambda_{0}P_{i-1}+(1-X_{i})(1-\lambda_{1}(1-P_{i-1}))]$
 \end_inset
 
@@ -1081,7 +1115,13 @@ Example - two-parameter model
 \end_layout
 
 \begin_layout Frame
-Jeden obrazek na SP, jeden na SR
+\begin_inset Graphics
+	filename ../../simulations/single_walk_1000_steps_type_success_punished_two_lambdas.pdf
+	width 100text%
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -1166,7 +1206,7 @@ Using Akaike information criterion & numerical optimization
 status open
 
 \begin_layout Plain Layout
-Real life applications
+Real life application
 \end_layout
 
 \end_inset
@@ -1174,10 +1214,52 @@ Real life applications
 
 \end_layout
 
-\begin_layout Frame
-Zminit studii na US Open sazeni
+\begin_deeper
+\begin_layout Itemize
+Success rewarding model well suited for modelling tennis matches
 \end_layout
 
+\begin_layout Itemize
+Model trained on 2009 - 2018 men Grand Slam tournaments
+\end_layout
+
+\begin_layout Itemize
+Model applied on 2019 US Open
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Live betting against bookmaker
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $0.52$
+\end_inset
+
+ units total necessary bankroll
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $2.24$
+\end_inset
+
+ units total profit 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $430\%$
+\end_inset
+
+ ROI
+\end_layout
+
+\begin_layout Itemize
+Only 128 placed bets
+\end_layout
+
+\end_deeper
+\end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
@@ -1198,21 +1280,23 @@ Summary
 
 \end_layout
 
-\begin_layout Frame
-novy zajimavy model
+\begin_deeper
+\begin_layout Itemize
+A specific model of a random walk with memory
 \end_layout
 
-\begin_layout Frame
-odvozene teoreticke vlastnosti
+\begin_layout Itemize
+Model properties derived
 \end_layout
 
-\begin_layout Frame
-ukazka na realnych datech
+\begin_layout Itemize
+Application shows big future potencial of the model
 \end_layout
 
-\begin_layout Frame
-
+\begin_layout Itemize
+Possible applications in a set of real life scenarios
 \end_layout
 
+\end_deeper
 \end_body
 \end_document
