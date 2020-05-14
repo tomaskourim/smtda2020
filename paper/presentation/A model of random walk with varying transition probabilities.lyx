@@ -293,47 +293,51 @@ Motivation
 
 \end_layout
 
-\begin_layout Frame
+\begin_deeper
+\begin_layout Itemize
 Failure of a machine
 \end_layout
 
-\begin_layout Frame
-- repair after failure
+\begin_deeper
+\begin_layout Itemize
+repair after failure
 \end_layout
 
-\begin_layout Frame
-- preventive maintenance
+\begin_layout Itemize
+preventive maintenance
 \end_layout
 
-\begin_layout Frame
-- no action
-\end_layout
-
-\begin_layout Frame
+\end_deeper
+\begin_layout Itemize
 Occcurence of a disease
 \end_layout
 
-\begin_layout Frame
-- cure of the disease
+\begin_deeper
+\begin_layout Itemize
+cure of the disease
 \end_layout
 
-\begin_layout Frame
-- prevention (i.e.
+\begin_layout Itemize
+prevention (i.e.
  lifestyle change)
 \end_layout
 
-\begin_layout Frame
-- no action
-\end_layout
-
-\begin_layout Frame
+\end_deeper
+\begin_layout Itemize
 Development of sports match
 \end_layout
 
-\begin_layout Frame
-- goal scored, point achieved
+\begin_deeper
+\begin_layout Itemize
+goal scored, point achieved
 \end_layout
 
+\begin_layout Itemize
+period won
+\end_layout
+
+\end_deeper
+\end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
@@ -411,7 +415,7 @@ status open
 
 \begin_layout Plain Layout
 
-2-
+1-
 \end_layout
 
 \end_inset
@@ -442,7 +446,7 @@ status open
 
 \begin_layout Plain Layout
 
-4-
+1-
 \end_layout
 
 \end_inset
@@ -630,7 +634,7 @@ pozorovani
 status open
 
 \begin_layout Plain Layout
-Walk step properties
+Walk steps properties
 \end_layout
 
 \end_inset
@@ -697,7 +701,7 @@ Example - RW steps
 
 \begin_layout Frame
 \begin_inset Graphics
-	filename ../../simulations/e_step_10000_walks_50_steps_type_success_punished.pdf
+	filename ../../simulations/e_step_1000_walks_50_steps_type_success_punished.pdf
 	width 100text%
 
 \end_inset
@@ -788,7 +792,7 @@ Example - RW probabilities
 
 \begin_layout Frame
 \begin_inset Graphics
-	filename ../../simulations/e_probability_10000_walks_50_steps_type_success_punished.pdf
+	filename ../../simulations/e_probability_1000_walks_50_steps_type_success_punished.pdf
 	width 100text%
 
 \end_inset
@@ -879,7 +883,7 @@ Example - RW position
 
 \begin_layout Frame
 \begin_inset Graphics
-	filename ../../simulations/e_position_10000_walks_50_steps_type_success_punished.pdf
+	filename ../../simulations/e_position_1000_walks_50_steps_type_success_punished.pdf
 	width 100text%
 
 \end_inset
@@ -907,34 +911,59 @@ Success rewarding model
 
 \end_layout
 
-\begin_layout Frame
-Stejne obrazky a slidy jako pro 
-\end_layout
-
+\begin_deeper
 \begin_layout Standard
-\begin_inset Separator plain
+\begin_inset Formula 
+\[
+EX_{t}=2p_{0}-1,
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Var\,X_{t}=4p_{0}(1-p_{0}),
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+EP_{t}=p_{0},
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Var\,P_{t}=(2\lambda-\lambda^{2})^{t}p_{0}^{2}+p_{0}(1-\lambda)^{2}\sum_{i=0}^{t-1}(2\lambda-\lambda^{2})^{i}-p_{0}^{2},
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+ES_{t}=S_{0}+t(2p_{0}-1),
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Var\,S_{t}=4p_{0}(1-p_{0})t^{2}+a(p_{0},\lambda)t-a(p_{0},\lambda)\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}}.
+\]
+
 \end_inset
 
 
 \end_layout
 
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Overview
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-Prehledova tabulka se vsemi vzorci pro porovnani
-\end_layout
-
+\end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
@@ -955,10 +984,82 @@ Two-parameter model
 
 \end_layout
 
-\begin_layout Frame
-Popis a definice 2lambda modelu
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\frac{1}{2}[(1+X_{i})\lambda_{0}P_{i-1}+(1-X_{i})(1-\lambda_{1}(1-P_{i-1}))]$
+\end_inset
+
+
+\begin_inset Argument item:2
+status open
+
+\begin_layout Plain Layout
+
+1-
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Two parameter success punishing model 
+\begin_inset Argument item:2
+status open
+
+\begin_layout Plain Layout
+
+1-
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\frac{1}{2}[(1-X_{i})\lambda_{0}P_{i-1}+(1+X_{i})(1-\lambda_{1}(1-P_{i-1}))]$
+\end_inset
+
+
+\begin_inset Argument item:2
+status open
+
+\begin_layout Plain Layout
+
+1-
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Two parameter success rewarding model 
+\begin_inset Argument item:2
+status open
+
+\begin_layout Plain Layout
+
+1-
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
@@ -983,10 +1084,76 @@ Example - two-parameter model
 Jeden obrazek na SP, jeden na SR
 \end_layout
 
-\begin_layout Frame
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
 
 \end_layout
 
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Model fitting
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Find 
+\begin_inset Formula $\overrightarrow{\lambda}$
+\end_inset
+
+ with known 
+\begin_inset Formula $p_{0}$
+\end_inset
+
+, model type
+\end_layout
+
+\begin_layout Itemize
+Find 
+\begin_inset Formula $p_{0}$
+\end_inset
+
+ with known 
+\begin_inset Formula $\overrightarrow{\lambda}$
+\end_inset
+
+, model type
+\end_layout
+
+\begin_layout Itemize
+Find 
+\begin_inset Formula $p_{0},\,\overrightarrow{\lambda}$
+\end_inset
+
+ with known model type
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Using maximal likelihood estimate & numerical optimization
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Find model type without any prior knowledge
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Using Akaike information criterion & numerical optimization
+\end_layout
+
+\end_deeper
+\end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
