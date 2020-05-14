@@ -354,6 +354,7 @@ Random walk with varying probabilities
 
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 Random walk with memory
 \end_layout
@@ -402,6 +403,7 @@ X_{t-1}=-1\rightarrow p_{t}=1-\lambda(1-p_{t-1})
 
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 ``Success punished''
 \begin_inset Argument item:2
@@ -448,6 +450,8 @@ status open
 
 \end_layout
 
+\end_deeper
+\end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
@@ -634,10 +638,43 @@ Walk step properties
 
 \end_layout
 
-\begin_layout Frame
-Exp X_t, Var X_t
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+EX_{t}=(2\lambda-1)^{t-1}(2p_{0}-1),
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\lim_{t\to+\infty}EX_{t}=0.
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Var\,X_{t}=1-(2\lambda-1)^{2(t-1)}(2p_{0}-1)^{2},
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\lim_{t\to+\infty}Var\,X_{t}=1.
+\]
+
+\end_inset
+
+
 \end_layout
 
+\end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
@@ -650,7 +687,7 @@ Exp X_t, Var X_t
 status open
 
 \begin_layout Plain Layout
-Example - RW probabilities
+Example - RW steps
 \end_layout
 
 \end_inset
@@ -659,7 +696,17 @@ Example - RW probabilities
 \end_layout
 
 \begin_layout Frame
-Stejny obrazek jako u steps, ale s probabilities
+\begin_inset Graphics
+	filename ../../simulations/e_step_10000_walks_50_steps_type_success_punished.pdf
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
 \end_layout
 
 \begin_layout Standard
@@ -682,8 +729,132 @@ Walk probabilities properties
 
 \end_layout
 
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+EP_{t}=(2\lambda-1)^{t}p_{0}+\frac{1-(2\lambda-1)^{t}}{2},
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\lim_{t\to+\infty}EP_{t}=\frac{1}{2}.
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Var\,P_{t}=(3\lambda^{2}-2\lambda)^{t}p_{0}^{2}+\sum_{i=0}^{t-1}K(i;p_{0},\lambda)(3\lambda^{2}-2\lambda)^{t-1-i}-k(t;p_{o},\lambda)^{2},
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\lim_{t\to+\infty}Var\,P_{t}=\frac{\frac{1}{2}(1-\lambda^{2})}{-3\lambda^{2}+2\lambda+1}-\frac{1}{4}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
 \begin_layout Frame
-stejne jako u steps
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example - RW probabilities
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Graphics
+	filename ../../simulations/e_probability_10000_walks_50_steps_type_success_punished.pdf
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Walk position properties
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+ES_{t}=S_{0}+(2p_{0}-1)\frac{1-(2\lambda-1)^{t}}{2(1-\lambda)},
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\lim_{t\to+\infty}ES_{t}=S_{0}+\frac{(2p_{0}-1)}{2(1-\lambda)}.
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Var\,S_{t}=t+4\sum_{i=0}^{t-1}\sigma(i;p_{0},0,\lambda)-a(t;p_{0},\lambda),
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\lim_{t\to+\infty}Var\,S_{t}=c_{1}(p_{0},\lambda)t+c_{2}(p_{0},\lambda).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
 \end_layout
 
 \begin_layout Standard
@@ -707,31 +878,13 @@ Example - RW position
 \end_layout
 
 \begin_layout Frame
-dtto
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Walk position properties
-\end_layout
+\begin_inset Graphics
+	filename ../../simulations/e_position_10000_walks_50_steps_type_success_punished.pdf
+	width 100text%
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Frame
-dtto
 \end_layout
 
 \begin_layout Standard

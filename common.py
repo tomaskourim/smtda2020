@@ -217,9 +217,9 @@ def exp_s_t_squared(step: int, p0: float, c_lambda: float, s0: int, model_type: 
 
 def exp_x_t(step: int, p0: float, c_lambda: float, model_type: str) -> float:
     if model_type == 'success_punished':
-        return (2 * c_lambda - 1) ** (step - 1) * (2 * p0 - 1)
+        e = (2 * c_lambda - 1) ** (step - 1) * (2 * p0 - 1)
     elif model_type == 'success_rewarded':
-        e = 0
+        e = 2 * p0 - 1
     elif model_type == 'success_punished_two_lambdas':
         e = 0
     elif model_type == 'success_rewarded_two_lambdas':
@@ -252,14 +252,14 @@ def var_s_t_array(step_count: int, p0: float, c_lambda: float, s0: int, model_ty
     return var_array
 
 
-def exp_x_t_array(step_count: int, p0: float, c_lambda: float,  model_type: str) -> List[float]:
+def exp_x_t_array(step_count: int, p0: float, c_lambda: float, model_type: str) -> List[float]:
     e_array = []
     for step in range(0, step_count + 1):
         e_array.append(exp_x_t(step, p0, c_lambda, model_type))
     return e_array
 
 
-def var_x_t_array(step_count: int, p0: float, c_lambda: float,  model_type: str) -> List[float]:
+def var_x_t_array(step_count: int, p0: float, c_lambda: float, model_type: str) -> List[float]:
     var_array = [0]  # Var(X_0) = 0
     for step in range(1, step_count + 1):
         es2 = 1

@@ -105,8 +105,8 @@ def main(simulated_property="probability"):
 
 if __name__ == '__main__':
     start_time, logger = create_logger()
-    # main(simulated_property="position")
-    # main(simulated_property="probability")
+    main(simulated_property="position")
+    main(simulated_property="probability")
     main(simulated_property="step")
     # main(simulated_property="p_s")
     log_time(start_time, logger)
