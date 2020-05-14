@@ -11,6 +11,19 @@ from config import C_LAMBDAS, START_PROBABILITIES, STEP_COUNTS, C_LAMBDA_PAIRS, 
     REPETITIONS_OF_WALK_S, REPETITIONS_OF_WALK_SERIES
 
 
+def generate_random_walk_from_rand_array(rand_numbers: np.ndarray, model_type: str, starting_probability: float,
+                                         c_lambdas: List[float], walk_steps: int) -> CompleteWalk:
+    steps = [0]  # in the model, probabilities start with p0, but steps with x1
+    development = [0]
+    probabilities = [starting_probability]
+    for i in range(1, walk_steps + 1):
+        # next step using actual probability
+        steps.append(-1 if probabilities[i - 1] <= rand_numbers[i - 1] else 1)
+        development.append(development[i - 1] + steps[i])
+        probabilities.append(get_current_probability(c_lambdas, probabilities[i - 1], steps[i], model_type))
+    return CompleteWalk(probabilities, steps, development)
+
+
 def generate_random_walk(model_type: str, starting_probability: float, c_lambdas: List[float], walk_steps: int) -> \
         CompleteWalk:
     steps = [0]  # in the model, probabilities start with p0, but steps with x1
