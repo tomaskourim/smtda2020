@@ -78,23 +78,21 @@
             \item Memory coefficient $\lambda\in(0,\,1)$ affecting the transition probabilities
             \item First step of the walk $X_{1}$ depends on an initial transition probability $p_{0}$
             \item Further steps depend on a transition probability $p_{t}$ evolving as
-            \item[] <2->
-            \[
-                X_{t-1}=1\rightarrow p_{t}=\lambda p_{t-1}
-            \]
-            \[
-                X_{t-1}=-1\rightarrow p_{t}=1-\lambda(1-p_{t-1})
-            \]
-
+            \onslide<2->\begin{flalign*}
+                            X_{t-1} & =1\rightarrow p_{t}=\lambda p_{t-1} &
+                            X_{t-1} & =-1\rightarrow p_{t}=1-\lambda(1-p_{t-1}) &
+            \end{flalign*}
+            \vspace{-5mm}
             \begin{itemize}
-                \item[--]<2-> ``Success punished''
-                \item[] <3->\[
-                    X_{t-1}=1\rightarrow p_{t}=1-\lambda(1-p_{t-1})
-                \]
-                \[
-                    X_{t-1}=-1\rightarrow p_{t}=\lambda p_{t-1}
-                \]
-                \item[--]<3-> ``Success rewarded''
+                \item[-->]<3-> ``Success punished''
+            \end{itemize}
+            \onslide<4->\begin{flalign*}
+                            X_{t-1}&=1\rightarrow p_{t}=1-\lambda(1-p_{t-1})&
+                            X_{t-1}&=-1\rightarrow p_{t}=\lambda p_{t-1}&
+            \end{flalign*}
+            \vspace{-5mm}
+            \begin{itemize}
+                \item[-->]<5-> ``Success rewarded''
             \end{itemize}
         \end{itemize}
     \end{frame}
