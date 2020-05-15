@@ -108,19 +108,19 @@
     \begin{frame}{Walk steps properties}
 
         \begin{flalign*}
-            EX_{t} & =(2\lambda-1)^{t-1}(2p_{0}-1),&
+            EX_{t} & =(2\lambda-1)^{t-1}(2p_{0}-1)&
         \end{flalign*}
         \vspace{-5mm}
         \begin{flalign*}
-            \lim_{t\to+\infty}EX_{t}&=0.&
+            \lim_{t\to+\infty}EX_{t}&=0&
         \end{flalign*}
         \onslide<2->
         \begin{flalign*}
-            Var\,X_{t}&=1-(2\lambda-1)^{2(t-1)}(2p_{0}-1)^{2},&
+            Var\,X_{t}&=1-(2\lambda-1)^{2(t-1)}(2p_{0}-1)^{2}&
         \end{flalign*}
         \vspace{-5mm}
         \begin{flalign*}
-            \lim_{t\to+\infty}Var\,X_{t}&=1.&
+            \lim_{t\to+\infty}Var\,X_{t}&=1&
         \end{flalign*}
 
     \end{frame}
@@ -131,19 +131,19 @@
 
     \begin{frame}{Walk probabilities properties}
         \begin{flalign*}
-            EP_{t} & =(2\lambda-1)^{t}p_{0}+\frac{1-(2\lambda-1)^{t}}{2}, &
+            EP_{t} & =(2\lambda-1)^{t}p_{0}+\frac{1-(2\lambda-1)^{t}}{2} &
         \end{flalign*}
         \vspace{-5mm}
         \begin{flalign*}
-            \lim_{t\to+\infty}EP_{t} & =\frac{1}{2}. &
+            \lim_{t\to+\infty}EP_{t} & =\frac{1}{2} &
         \end{flalign*}
         \onslide<2->
         \begin{flalign*}
-            Var\,P_{t} & =(3\lambda^{2}-2\lambda)^{t}p_{0}^{2}+\sum_{i=0}^{t-1}K(i;p_{0},\lambda)(3\lambda^{2}-2\lambda)^{t-1-i}-k(t;p_{o},\lambda)^{2}, &
+            Var\,P_{t} & =(3\lambda^{2}-2\lambda)^{t}p_{0}^{2}+\sum_{i=0}^{t-1}K(i;p_{0},\lambda)(3\lambda^{2}-2\lambda)^{t-1-i}-k(t;p_{o},\lambda)^{2} &
         \end{flalign*}
         \vspace{-5mm}
         \begin{flalign*}
-            \lim_{t\to+\infty}Var\,P_{t} & =\frac{\frac{1}{2}(1-\lambda^{2})}{-3\lambda^{2}+2\lambda+1}-\frac{1}{4}. &
+            \lim_{t\to+\infty}Var\,P_{t} & =\frac{\frac{1}{2}(1-\lambda^{2})}{-3\lambda^{2}+2\lambda+1}-\frac{1}{4} &
         \end{flalign*}
     \end{frame}
 
@@ -153,19 +153,19 @@
 
     \begin{frame}{Walk position properties}
         \begin{flalign*}
-            ES_{t} & =S_{0}+(2p_{0}-1)\frac{1-(2\lambda-1)^{t}}{2(1-\lambda)}, &
+            ES_{t} & =S_{0}+(2p_{0}-1)\frac{1-(2\lambda-1)^{t}}{2(1-\lambda)} &
         \end{flalign*}
         \vspace{-5mm}
         \begin{flalign*}
-            \lim_{t\to+\infty}ES_{t} & =S_{0}+\frac{(2p_{0}-1)}{2(1-\lambda)}. &
+            \lim_{t\to+\infty}ES_{t} & =S_{0}+\frac{(2p_{0}-1)}{2(1-\lambda)} &
         \end{flalign*}
         \onslide<2->
         \begin{flalign*}
-            Var\,S_{t} & =t+4\sum_{i=0}^{t-1}\sigma(i;p_{0},0,\lambda)-a(t;p_{0},\lambda), &
+            Var\,S_{t} & =t+4\sum_{i=0}^{t-1}\sigma(i;p_{0},0,\lambda)-a(t;p_{0},\lambda) &
         \end{flalign*}
         \vspace{-5mm}
         \begin{flalign*}
-            \lim_{t\to+\infty}Var\,S_{t} & =c_{1}(p_{0},\lambda)t+c_{2}(p_{0},\lambda). &
+            \lim_{t\to+\infty}Var\,S_{t} & =c_{1}(p_{0},\lambda)t+c_{2}(p_{0},\lambda) &
         \end{flalign*}
     \end{frame}
 
@@ -175,31 +175,31 @@
 
     \begin{frame}{Success rewarding model}
         \begin{flalign*}
-            EX_{t} & =2p_{0}-1, &
+            EX_{t} & =2p_{0}-1 &
         \end{flalign*}
         \vspace{-8mm}
         \begin{flalign*}
-            Var\,X_{t} & =4p_{0}(1-p_{0}), &
+            Var\,X_{t} & =4p_{0}(1-p_{0}) &
         \end{flalign*}
         \begin{flalign*}
-            EP_{t} & =p_{0}, &
-        \end{flalign*}
-        \vspace{-8mm}
-        \begin{flalign*}
-            Var\,P_{t} & =(2\lambda-\lambda^{2})^{t}p_{0}^{2}+p_{0}(1-\lambda)^{2}\sum_{i=0}^{t-1}(2\lambda-\lambda^{2})^{i}-p_{0}^{2}, &
-        \end{flalign*}
-        \begin{flalign*}
-            ES_{t} & =S_{0}+t(2p_{0}-1), &
+            EP_{t} & =p_{0} &
         \end{flalign*}
         \vspace{-8mm}
         \begin{flalign*}
-            Var\,S_{t} & =4p_{0}(1-p_{0})t^{2}+a(p_{0},\lambda)t-a(p_{0},\lambda)\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}}. &
+            Var\,P_{t} & =(2\lambda-\lambda^{2})^{t}p_{0}^{2}+p_{0}(1-\lambda)^{2}\sum_{i=0}^{t-1}(2\lambda-\lambda^{2})^{i}-p_{0}^{2} &
+        \end{flalign*}
+        \begin{flalign*}
+            ES_{t} & =S_{0}+t(2p_{0}-1) &
+        \end{flalign*}
+        \vspace{-8mm}
+        \begin{flalign*}
+            Var\,S_{t} & =4p_{0}(1-p_{0})t^{2}+a(p_{0},\lambda)t-a(p_{0},\lambda)\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}} &
         \end{flalign*}
     \end{frame}
 
     \begin{frame}{Two-parameter model}
         \begin{itemize}
-            \item Two $\lambda$ parameters each affecting one direction of the walk.
+            \item Two $\lambda$ parameters each affecting one direction of the walk
             \item Again two variants -- success punishing and success rewarding
             \onslide<2->\begin{flalign*}
                             X_{t-1} & =1\rightarrow p_{t}=\lambda_{0} p_{t-1} &
@@ -207,7 +207,7 @@
             \end{flalign*}
             \vspace{-5mm}
             \begin{itemize}
-                \item[-->]<2-> ``Two parameter success punishing model''
+                \item[-->]<2-> ``Two-parameter success punishing model''
             \end{itemize}
             \onslide<3->\begin{flalign*}
                             X_{t-1}&=1\rightarrow p_{t}=1-\lambda_{0}(1-p_{t-1})&
@@ -215,7 +215,7 @@
             \end{flalign*}
             \vspace{-5mm}
             \begin{itemize}
-                \item[-->]<3-> ``Two parameter success rewarding model''
+                \item[-->]<3-> ``Two-parameter success rewarding model''
             \end{itemize}
         \end{itemize}
     \end{frame}
@@ -281,6 +281,18 @@
             \item Application shows big future potential of the model
             \item Possible applications in a set of real life scenarios
         \end{itemize}
+    \end{frame}
+
+    \begin{frame}[plain]
+        \begin{quote}
+            \begin{center}
+                \huge{Thank you.}
+            \end{center}
+            \vspace{10mm}
+            \begin{center}
+                \large{tom@skourim.com}
+            \end{center}
+        \end{quote}
     \end{frame}
 
 \end{document}
