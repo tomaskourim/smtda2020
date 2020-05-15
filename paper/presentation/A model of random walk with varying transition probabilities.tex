@@ -21,6 +21,7 @@
 \setbeamertemplate{itemize item}[circle]
 \setbeamertemplate{itemize subitem}[square]
 \setbeamercovered{transparent}
+%\logo{\includegraphics[height=1.3cm]{../CMSIM_Logo.pdf}}
 
 \begin{document}
     \maketitle
@@ -59,12 +60,12 @@
                 \item repair after failure
                 \item preventive maintenance
             \end{itemize}
-            \item Occurrence of a disease
+            \item<2-> Occurrence of a disease
             \begin{itemize}
                 \item cure of the disease
                 \item prevention (i.e. lifestyle change)
             \end{itemize}
-            \item Development of sports match
+            \item<3-> Development of sports match
             \begin{itemize}
                 \item goal scored, point achieved
                 \item period won
@@ -97,33 +98,33 @@
         \end{itemize}
     \end{frame}
 
-    \begin{frame}{Formal definition}
-        \begin{definition}
-            Let $\ensuremath{p_{0},\lambda\in(0,\,1)}$\textrm{ be constant parameters,
-                ${\{P_{n}\}}_{n=0}^{\infty}$ and ${\{X_{n}\}}_{n=1}^{\infty}$ sequences
-                of discrete random variables with $P_{0}=p_{0}$ and for $t\ge1$
-                \[
-                    P(X_{t}=1|P_{t-1}=p_{t-1})=p_{t-1},\,\,\,P(X_{t}=-1|P_{t-1}=p_{t-1})=1-p_{t-1},
-                \]
-                and (}\emph{success punishing)}
-            \[
-                P_{t}=\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1-X_{t})
-            \]
-            or (\emph{success rewarding)
-                \[
-                    P_{t}=\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1+X_{t}).
-                \]
-            }The sequence ${\{S_{n}\}}{}_{n=0}^{\infty},\;S_{N}=S_{0}+\sum_{i=1}^{N}X_{i}$
-            for $n\in\mathbb{N}$, with $S_{0}\in\mathbb{R}$ some given starting
-            position, is called a \emph{random walk with varying probabilities},
-            with ${\{X_{n}\}}_{n=1}^{\infty}$ being the steps of the walker and
-            ${\{P_{n}\}}_{n=0}^{\infty}$ transition probabilities.
-            Depending
-            on the chosen formula to calculate $P_{i}$ the walk type is either
-            \emph{success punishing} or \emph{success rewarding}.
-        \end{definition}
-
-    \end{frame}
+%    \begin{frame}{Formal definition}
+%        \begin{definition}
+%            Let $\ensuremath{p_{0},\lambda\in(0,\,1)}$\textrm{ be constant parameters,
+%                ${\{P_{n}\}}_{n=0}^{\infty}$ and ${\{X_{n}\}}_{n=1}^{\infty}$ sequences
+%                of discrete random variables with $P_{0}=p_{0}$ and for $t\ge1$
+%                \[
+%                    P(X_{t}=1|P_{t-1}=p_{t-1})=p_{t-1},\,\,\,P(X_{t}=-1|P_{t-1}=p_{t-1})=1-p_{t-1},
+%                \]
+%                and (}\emph{success punishing)}
+%            \[
+%                P_{t}=\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1-X_{t})
+%            \]
+%            or (\emph{success rewarding)
+%                \[
+%                    P_{t}=\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1+X_{t}).
+%                \]
+%            }The sequence ${\{S_{n}\}}{}_{n=0}^{\infty},\;S_{N}=S_{0}+\sum_{i=1}^{N}X_{i}$
+%            for $n\in\mathbb{N}$, with $S_{0}\in\mathbb{R}$ some given starting
+%            position, is called a \emph{random walk with varying probabilities},
+%            with ${\{X_{n}\}}_{n=1}^{\infty}$ being the steps of the walker and
+%            ${\{P_{n}\}}_{n=0}^{\infty}$ transition probabilities.
+%            Depending
+%            on the chosen formula to calculate $P_{i}$ the walk type is either
+%            \emph{success punishing} or \emph{success rewarding}.
+%        \end{definition}
+%
+%    \end{frame}
 
     \begin{frame}{Example - RW development}
         \includegraphics[width=1\textwidth]{../../simulations/single_walk_1000_steps_type_success_punished}
@@ -135,18 +136,21 @@
 
     \begin{frame}{Walk steps properties}
 
-        \[
-            EX_{t}=(2\lambda-1)^{t-1}(2p_{0}-1),
-        \]
-        \[
-            \lim_{t\to+\infty}EX_{t}=0.
-        \]
-        \[
-            Var\,X_{t}=1-(2\lambda-1)^{2(t-1)}(2p_{0}-1)^{2},
-        \]
-        \[
-            \lim_{t\to+\infty}Var\,X_{t}=1.
-        \]
+        \begin{flalign*}
+            EX_{t} & =(2\lambda-1)^{t-1}(2p_{0}-1),&
+        \end{flalign*}
+        \vspace{-5mm}
+        \begin{flalign*}
+            \lim_{t\to+\infty}EX_{t}&=0.&
+        \end{flalign*}
+        \onslide<2->
+        \begin{flalign*}
+            Var\,X_{t}&=1-(2\lambda-1)^{2(t-1)}(2p_{0}-1)^{2},&
+        \end{flalign*}
+        \vspace{-5mm}
+        \begin{flalign*}
+            \lim_{t\to+\infty}Var\,X_{t}&=1.&
+        \end{flalign*}
 
     \end{frame}
 
@@ -155,18 +159,21 @@
     \end{frame}
 
     \begin{frame}{Walk probabilities properties}
-        \[
-            EP_{t}=(2\lambda-1)^{t}p_{0}+\frac{1-(2\lambda-1)^{t}}{2},
-        \]
-        \[
-            \lim_{t\to+\infty}EP_{t}=\frac{1}{2}.
-        \]
-        \[
-            Var\,P_{t}=(3\lambda^{2}-2\lambda)^{t}p_{0}^{2}+\sum_{i=0}^{t-1}K(i;p_{0},\lambda)(3\lambda^{2}-2\lambda)^{t-1-i}-k(t;p_{o},\lambda)^{2},
-        \]
-        \[
-            \lim_{t\to+\infty}Var\,P_{t}=\frac{\frac{1}{2}(1-\lambda^{2})}{-3\lambda^{2}+2\lambda+1}-\frac{1}{4}.
-        \]
+        \begin{flalign*}
+            EP_{t} & =(2\lambda-1)^{t}p_{0}+\frac{1-(2\lambda-1)^{t}}{2}, &
+        \end{flalign*}
+        \vspace{-5mm}
+        \begin{flalign*}
+            \lim_{t\to+\infty}EP_{t} & =\frac{1}{2}. &
+        \end{flalign*}
+        \onslide<2->
+        \begin{flalign*}
+            Var\,P_{t} & =(3\lambda^{2}-2\lambda)^{t}p_{0}^{2}+\sum_{i=0}^{t-1}K(i;p_{0},\lambda)(3\lambda^{2}-2\lambda)^{t-1-i}-k(t;p_{o},\lambda)^{2}, &
+        \end{flalign*}
+        \vspace{-5mm}
+        \begin{flalign*}
+            \lim_{t\to+\infty}Var\,P_{t} & =\frac{\frac{1}{2}(1-\lambda^{2})}{-3\lambda^{2}+2\lambda+1}-\frac{1}{4}. &
+        \end{flalign*}
     \end{frame}
 
     \begin{frame}{Example - RW probabilities}
@@ -174,18 +181,21 @@
     \end{frame}
 
     \begin{frame}{Walk position properties}
-        \[
-            ES_{t}=S_{0}+(2p_{0}-1)\frac{1-(2\lambda-1)^{t}}{2(1-\lambda)},
-        \]
-        \[
-            \lim_{t\to+\infty}ES_{t}=S_{0}+\frac{(2p_{0}-1)}{2(1-\lambda)}.
-        \]
-        \[
-            Var\,S_{t}=t+4\sum_{i=0}^{t-1}\sigma(i;p_{0},0,\lambda)-a(t;p_{0},\lambda),
-        \]
-        \[
-            \lim_{t\to+\infty}Var\,S_{t}=c_{1}(p_{0},\lambda)t+c_{2}(p_{0},\lambda).
-        \]
+        \begin{flalign*}
+            ES_{t} & =S_{0}+(2p_{0}-1)\frac{1-(2\lambda-1)^{t}}{2(1-\lambda)}, &
+        \end{flalign*}
+        \vspace{-5mm}
+        \begin{flalign*}
+            \lim_{t\to+\infty}ES_{t} & =S_{0}+\frac{(2p_{0}-1)}{2(1-\lambda)}. &
+        \end{flalign*}
+        \onslide<2->
+        \begin{flalign*}
+            Var\,S_{t} & =t+4\sum_{i=0}^{t-1}\sigma(i;p_{0},0,\lambda)-a(t;p_{0},\lambda), &
+        \end{flalign*}
+        \vspace{-5mm}
+        \begin{flalign*}
+            \lim_{t\to+\infty}Var\,S_{t} & =c_{1}(p_{0},\lambda)t+c_{2}(p_{0},\lambda). &
+        \end{flalign*}
     \end{frame}
 
     \begin{frame}{Example - RW position}
@@ -193,24 +203,27 @@
     \end{frame}
 
     \begin{frame}{Success rewarding model}
-        \[
-            EX_{t}=2p_{0}-1,
-        \]
-        \[
-            Var\,X_{t}=4p_{0}(1-p_{0}),
-        \]
-        \[
-            EP_{t}=p_{0},
-        \]
-        \[
-            Var\,P_{t}=(2\lambda-\lambda^{2})^{t}p_{0}^{2}+p_{0}(1-\lambda)^{2}\sum_{i=0}^{t-1}(2\lambda-\lambda^{2})^{i}-p_{0}^{2},
-        \]
-        \[
-            ES_{t}=S_{0}+t(2p_{0}-1),
-        \]
-        \[
-            Var\,S_{t}=4p_{0}(1-p_{0})t^{2}+a(p_{0},\lambda)t-a(p_{0},\lambda)\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}}.
-        \]
+        \begin{flalign*}
+            EX_{t} & =2p_{0}-1, &
+        \end{flalign*}
+        \vspace{-8mm}
+        \begin{flalign*}
+            Var\,X_{t} & =4p_{0}(1-p_{0}), &
+        \end{flalign*}
+        \begin{flalign*}
+            EP_{t} & =p_{0}, &
+        \end{flalign*}
+        \vspace{-8mm}
+        \begin{flalign*}
+            Var\,P_{t} & =(2\lambda-\lambda^{2})^{t}p_{0}^{2}+p_{0}(1-\lambda)^{2}\sum_{i=0}^{t-1}(2\lambda-\lambda^{2})^{i}-p_{0}^{2}, &
+        \end{flalign*}
+        \begin{flalign*}
+            ES_{t} & =S_{0}+t(2p_{0}-1), &
+        \end{flalign*}
+        \vspace{-8mm}
+        \begin{flalign*}
+            Var\,S_{t} & =4p_{0}(1-p_{0})t^{2}+a(p_{0},\lambda)t-a(p_{0},\lambda)\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}}. &
+        \end{flalign*}
     \end{frame}
 
     \begin{frame}{Two-parameter model}
@@ -219,11 +232,11 @@
             \item Again two variants - success punishing and success rewarding
             \item<1-> $\frac{1}{2}[(1+X_{i})\lambda_{0}P_{i-1}+(1-X_{i})(1-\lambda_{1}(1-P_{i-1}))]$
             \begin{itemize}
-                \item<1-> Two parameter success punishing model \medskip{}
+                \item[-->]<1-> Two parameter success punishing model \medskip{}
             \end{itemize}
             \item<1-> $\frac{1}{2}[(1-X_{i})\lambda_{0}P_{i-1}+(1+X_{i})(1-\lambda_{1}(1-P_{i-1}))]$
             \begin{itemize}
-                \item<1-> Two parameter success rewarding model
+                \item[-->]<1-> Two parameter success rewarding model
             \end{itemize}
         \end{itemize}
     \end{frame}
