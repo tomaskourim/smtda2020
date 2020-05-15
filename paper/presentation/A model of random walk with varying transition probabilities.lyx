@@ -293,47 +293,51 @@ Motivation
 
 \end_layout
 
-\begin_layout Frame
+\begin_deeper
+\begin_layout Itemize
 Failure of a machine
 \end_layout
 
-\begin_layout Frame
-- repair after failure
+\begin_deeper
+\begin_layout Itemize
+repair after failure
 \end_layout
 
-\begin_layout Frame
-- preventive maintenance
+\begin_layout Itemize
+preventive maintenance
 \end_layout
 
-\begin_layout Frame
-- no action
-\end_layout
-
-\begin_layout Frame
+\end_deeper
+\begin_layout Itemize
 Occcurence of a disease
 \end_layout
 
-\begin_layout Frame
-- cure of the disease
+\begin_deeper
+\begin_layout Itemize
+cure of the disease
 \end_layout
 
-\begin_layout Frame
-- prevention (i.e.
+\begin_layout Itemize
+prevention (i.e.
  lifestyle change)
 \end_layout
 
-\begin_layout Frame
-- no action
-\end_layout
-
-\begin_layout Frame
+\end_deeper
+\begin_layout Itemize
 Development of sports match
 \end_layout
 
-\begin_layout Frame
-- goal scored, point achieved
+\begin_deeper
+\begin_layout Itemize
+goal scored, point achieved
 \end_layout
 
+\begin_layout Itemize
+period won
+\end_layout
+
+\end_deeper
+\end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
@@ -354,6 +358,7 @@ Random walk with varying probabilities
 
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 Random walk with memory
 \end_layout
@@ -402,6 +407,7 @@ X_{t-1}=-1\rightarrow p_{t}=1-\lambda(1-p_{t-1})
 
 \end_layout
 
+\begin_deeper
 \begin_layout Itemize
 ``Success punished''
 \begin_inset Argument item:2
@@ -409,7 +415,7 @@ status open
 
 \begin_layout Plain Layout
 
-2-
+1-
 \end_layout
 
 \end_inset
@@ -440,7 +446,7 @@ status open
 
 \begin_layout Plain Layout
 
-4-
+1-
 \end_layout
 
 \end_inset
@@ -448,6 +454,8 @@ status open
 
 \end_layout
 
+\end_deeper
+\end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
@@ -580,6 +588,131 @@ success rewarding
 status open
 
 \begin_layout Plain Layout
+Example - RW development
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Graphics
+	filename ../../simulations/single_walk_1000_steps_type_success_punished.pdf
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example - RW development
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Graphics
+	filename ../../simulations/single_walk_1000_steps_type_success_punished_p0_0.55.pdf
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Walk steps properties
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+EX_{t}=(2\lambda-1)^{t-1}(2p_{0}-1),
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\lim_{t\to+\infty}EX_{t}=0.
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Var\,X_{t}=1-(2\lambda-1)^{2(t-1)}(2p_{0}-1)^{2},
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\lim_{t\to+\infty}Var\,X_{t}=1.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
 Example - RW steps
 \end_layout
 
@@ -589,75 +722,17 @@ Example - RW steps
 \end_layout
 
 \begin_layout Frame
-obrazek
-\end_layout
+\begin_inset Graphics
+	filename ../../simulations/e_step_1000_walks_50_steps_type_success_punished.pdf
+	width 100text%
 
-\begin_layout Frame
-ruzna lambda, p0, oddelena barevne
-\end_layout
-
-\begin_layout Frame
-jedno 
-\begin_inset Quotes eld
 \end_inset
 
-pozorovani
-\begin_inset Quotes erd
-\end_inset
-
- a k tomu expected value a variance
-\end_layout
-
-\begin_layout Frame
 
 \end_layout
 
 \begin_layout Standard
-\begin_inset Separator plain
-\end_inset
 
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Walk step properties
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-Exp X_t, Var X_t
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Example - RW probabilities
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-Stejny obrazek jako u steps, ale s probabilities
 \end_layout
 
 \begin_layout Standard
@@ -680,8 +755,132 @@ Walk probabilities properties
 
 \end_layout
 
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+EP_{t}=(2\lambda-1)^{t}p_{0}+\frac{1-(2\lambda-1)^{t}}{2},
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\lim_{t\to+\infty}EP_{t}=\frac{1}{2}.
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Var\,P_{t}=(3\lambda^{2}-2\lambda)^{t}p_{0}^{2}+\sum_{i=0}^{t-1}K(i;p_{0},\lambda)(3\lambda^{2}-2\lambda)^{t-1-i}-k(t;p_{o},\lambda)^{2},
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\lim_{t\to+\infty}Var\,P_{t}=\frac{\frac{1}{2}(1-\lambda^{2})}{-3\lambda^{2}+2\lambda+1}-\frac{1}{4}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
 \begin_layout Frame
-stejne jako u steps
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Example - RW probabilities
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Graphics
+	filename ../../simulations/e_probability_1000_walks_50_steps_type_success_punished.pdf
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Walk position properties
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+ES_{t}=S_{0}+(2p_{0}-1)\frac{1-(2\lambda-1)^{t}}{2(1-\lambda)},
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\lim_{t\to+\infty}ES_{t}=S_{0}+\frac{(2p_{0}-1)}{2(1-\lambda)}.
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Var\,S_{t}=t+4\sum_{i=0}^{t-1}\sigma(i;p_{0},0,\lambda)-a(t;p_{0},\lambda),
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\lim_{t\to+\infty}Var\,S_{t}=c_{1}(p_{0},\lambda)t+c_{2}(p_{0},\lambda).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Frame
+
 \end_layout
 
 \begin_layout Standard
@@ -705,31 +904,13 @@ Example - RW position
 \end_layout
 
 \begin_layout Frame
-dtto
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Walk position properties
-\end_layout
+\begin_inset Graphics
+	filename ../../simulations/e_position_1000_walks_50_steps_type_success_punished.pdf
+	width 100text%
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Frame
-dtto
 \end_layout
 
 \begin_layout Standard
@@ -752,34 +933,59 @@ Success rewarding model
 
 \end_layout
 
-\begin_layout Frame
-Stejne obrazky a slidy jako pro 
-\end_layout
-
+\begin_deeper
 \begin_layout Standard
-\begin_inset Separator plain
+\begin_inset Formula 
+\[
+EX_{t}=2p_{0}-1,
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Var\,X_{t}=4p_{0}(1-p_{0}),
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+EP_{t}=p_{0},
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Var\,P_{t}=(2\lambda-\lambda^{2})^{t}p_{0}^{2}+p_{0}(1-\lambda)^{2}\sum_{i=0}^{t-1}(2\lambda-\lambda^{2})^{i}-p_{0}^{2},
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+ES_{t}=S_{0}+t(2p_{0}-1),
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Var\,S_{t}=4p_{0}(1-p_{0})t^{2}+a(p_{0},\lambda)t-a(p_{0},\lambda)\frac{1-(2\lambda-\lambda^{2})^{t}}{(1-\lambda)^{2}}.
+\]
+
 \end_inset
 
 
 \end_layout
 
-\begin_layout Frame
-\begin_inset Argument 4
-status open
-
-\begin_layout Plain Layout
-Overview
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Frame
-Prehledova tabulka se vsemi vzorci pro porovnani
-\end_layout
-
+\end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
@@ -800,10 +1006,94 @@ Two-parameter model
 
 \end_layout
 
-\begin_layout Frame
-Popis a definice 2lambda modelu
+\begin_deeper
+\begin_layout Itemize
+Two parameters 
+\begin_inset Formula $\lambda$
+\end_inset
+
+, each affecting one direction of the walk.
 \end_layout
 
+\begin_layout Itemize
+Again two variants - success punishing and success rewarding
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\frac{1}{2}[(1+X_{i})\lambda_{0}P_{i-1}+(1-X_{i})(1-\lambda_{1}(1-P_{i-1}))]$
+\end_inset
+
+
+\begin_inset Argument item:2
+status open
+
+\begin_layout Plain Layout
+
+1-
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Two parameter success punishing model 
+\begin_inset Argument item:2
+status open
+
+\begin_layout Plain Layout
+
+1-
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $\frac{1}{2}[(1-X_{i})\lambda_{0}P_{i-1}+(1+X_{i})(1-\lambda_{1}(1-P_{i-1}))]$
+\end_inset
+
+
+\begin_inset Argument item:2
+status open
+
+\begin_layout Plain Layout
+
+1-
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Two parameter success rewarding model 
+\begin_inset Argument item:2
+status open
+
+\begin_layout Plain Layout
+
+1-
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
@@ -825,10 +1115,12 @@ Example - two-parameter model
 \end_layout
 
 \begin_layout Frame
-Jeden obrazek na SP, jeden na SR
-\end_layout
+\begin_inset Graphics
+	filename ../../simulations/single_walk_1000_steps_type_success_punished_two_lambdas.pdf
+	width 100text%
 
-\begin_layout Frame
+\end_inset
+
 
 \end_layout
 
@@ -844,7 +1136,7 @@ Jeden obrazek na SP, jeden na SR
 status open
 
 \begin_layout Plain Layout
-Real life applications
+Model fitting
 \end_layout
 
 \end_inset
@@ -852,10 +1144,122 @@ Real life applications
 
 \end_layout
 
-\begin_layout Frame
-Zminit studii na US Open sazeni
+\begin_deeper
+\begin_layout Itemize
+Find 
+\begin_inset Formula $\overrightarrow{\lambda}$
+\end_inset
+
+ with known 
+\begin_inset Formula $p_{0}$
+\end_inset
+
+, model type
 \end_layout
 
+\begin_layout Itemize
+Find 
+\begin_inset Formula $p_{0}$
+\end_inset
+
+ with known 
+\begin_inset Formula $\overrightarrow{\lambda}$
+\end_inset
+
+, model type
+\end_layout
+
+\begin_layout Itemize
+Find 
+\begin_inset Formula $p_{0},\,\overrightarrow{\lambda}$
+\end_inset
+
+ with known model type
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Using maximal likelihood estimate & numerical optimization
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Find model type without any prior knowledge
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Using Akaike information criterion & numerical optimization
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Real life application
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Success rewarding model well suited for modelling tennis matches
+\end_layout
+
+\begin_layout Itemize
+Model trained on 2009 - 2018 men Grand Slam tournaments
+\end_layout
+
+\begin_layout Itemize
+Model applied on 2019 US Open
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Live betting against bookmaker
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $0.52$
+\end_inset
+
+ units total necessary bankroll
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $2.24$
+\end_inset
+
+ units total profit 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ 
+\begin_inset Formula $430\%$
+\end_inset
+
+ ROI
+\end_layout
+
+\begin_layout Itemize
+Only 128 placed bets
+\end_layout
+
+\end_deeper
+\end_deeper
 \begin_layout Standard
 \begin_inset Separator plain
 \end_inset
@@ -876,21 +1280,23 @@ Summary
 
 \end_layout
 
-\begin_layout Frame
-novy zajimavy model
+\begin_deeper
+\begin_layout Itemize
+A specific model of a random walk with memory
 \end_layout
 
-\begin_layout Frame
-odvozene teoreticke vlastnosti
+\begin_layout Itemize
+Model properties derived
 \end_layout
 
-\begin_layout Frame
-ukazka na realnych datech
+\begin_layout Itemize
+Application shows big future potencial of the model
 \end_layout
 
-\begin_layout Frame
-
+\begin_layout Itemize
+Possible applications in a set of real life scenarios
 \end_layout
 
+\end_deeper
 \end_body
 \end_document

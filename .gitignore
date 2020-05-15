@@ -9,4 +9,4 @@ venv/
 paper/aux_files
 simulations_test
 out/
-paper/A model of random walk with varying transition probabilities.synctex.gz
+*.synctex.gz
