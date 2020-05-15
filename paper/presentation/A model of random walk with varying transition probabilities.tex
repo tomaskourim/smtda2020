@@ -1,14 +1,28 @@
 \documentclass[american]{beamer}
 \usepackage[T1]{fontenc}
-\usepackage[latin9]{inputenc}
+\usepackage[utf8]{inputenc}
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{babel}
+\usepackage{amsmath}
+
+\usetheme{Szeged}
+\usecolortheme{beaver}
+
+
+\title{A model of random walk with varying transition probabilities}
+\institute[FNSPE CTU]{\inst{1} Faculty of Nuclear Sciences and Physical Engineering, CTU Prague \and
+    \inst{2} Institute of Information Theory and Automation, CAS CR Prague}
+%\date{16.9.2019}
+\author[Tomáš~Kouřim]{Tomáš~Kouřim \inst{1} \and Petr Volf \inst{2}}
+\newcommand{\nologo}{\setbeamertemplate{logo}{}} % command to set the logo to nothing
+\setbeamertemplate{itemize item}[circle]
+\setbeamertemplate{itemize subitem}[square]
+\setbeamercovered{transparent}
 
 \begin{document}
-    \title{A model of random walk with varying transition probabilities}
     \maketitle
 
     \begin{frame}{Outline}
@@ -63,7 +77,8 @@
             \item Random walk with memory
             \item Memory coefficient $\lambda\in(0,\,1)$ affecting the transition probabilities
             \item First step of the walk $X_{1}$ depends on an initial transition probability $p_{0}$
-            \item Further steps depending on a transition probability $p_{t}$ evolving as
+            \item Further steps depend on a transition probability $p_{t}$ evolving as
+            \item[] <2->
             \[
                 X_{t-1}=1\rightarrow p_{t}=\lambda p_{t-1}
             \]
@@ -72,14 +87,14 @@
             \]
 
             \begin{itemize}
-                \item<1-> ``Success punished''
-                \[
+                \item[--]<2-> ``Success punished''
+                \item[] <3->\[
                     X_{t-1}=1\rightarrow p_{t}=1-\lambda(1-p_{t-1})
                 \]
                 \[
                     X_{t-1}=-1\rightarrow p_{t}=\lambda p_{t-1}
                 \]
-                \item<1-> ``Success rewarded''
+                \item[--]<3-> ``Success rewarded''
             \end{itemize}
         \end{itemize}
     \end{frame}
@@ -92,11 +107,11 @@
                 \[
                     P(X_{t}=1|P_{t-1}=p_{t-1})=p_{t-1},\,\,\,P(X_{t}=-1|P_{t-1}=p_{t-1})=1-p_{t-1},
                 \]
-                and (}\emph{success punishing)}\textrm{
-                \[
-                    P_{t}=\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1-X_{t})
-                \]
-                or (}\emph{success rewarding)
+                and (}\emph{success punishing)}
+            \[
+                P_{t}=\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1-X_{t})
+            \]
+            or (\emph{success rewarding)
                 \[
                     P_{t}=\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1+X_{t}).
                 \]
