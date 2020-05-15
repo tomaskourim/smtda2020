@@ -8,29 +8,11 @@
 \usepackage{amssymb}
 \usepackage{graphicx}
 
-\makeatletter
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
-%% A simple dot to overcome graphicx limitations
-\newcommand{\lyxdot}{.}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
-% this default might be overridden by plain title style
-\newcommand\makebeamertitle{\frame{\maketitle}}%
-% (ERT) argument for the TOC
-\AtBeginDocument{%
-  \let\origtableofcontents=\tableofcontents
-  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
-  \def\gobbletableofcontents#1{\origtableofcontents}
-}
-
-\makeatother
 
 \usepackage{babel}
 \begin{document}
 \title{A model of random walk with varying transition probabilities}
-\makebeamertitle
+\maketitle
 \begin{frame}{Outline}
 
 \begin{enumerate}
@@ -44,8 +26,10 @@
 
 \begin{definition}
 A man starts from a point $O$ and walks $l$ yards in a straight
-line; he then turns through any angle whatever and walks another $l$
-yards in a second straight line. He repeats this process $n$ times.
+line;
+he then turns through any angle whatever and walks another $l$
+yards in a second straight line.
+He repeats this process $n$ times.
 I require the probability that after these $n$ stretches he is at
 a distance between $r$ and $r+\delta r$ from his starting point,
 $O.$
@@ -144,7 +128,7 @@ on the chosen formula to calculate $P_{i}$ the walk type is either
 %
 \begin{frame}{Example - RW development}
 
-\includegraphics[width=1\textwidth]{../../simulations/single_walk_1000_steps_type_success_punished_p0_0\lyxdot 55}
+\includegraphics[width=1\textwidth]{../../simulations/single_walk_1000_steps_type_success_punished_p0_0.55}
 
 \end{frame}
 %
