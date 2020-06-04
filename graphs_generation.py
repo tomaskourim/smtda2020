@@ -6,7 +6,8 @@ import numpy as np
 from common import exp_p_t_array, var_p_t_array, log_time, create_logger, exp_s_t_array, exp_p_s_t_array, var_s_t_array, \
     exp_x_t_array, var_x_t_array
 from config import MODEL_TYPES, REPETITIONS_OF_WALK_S, \
-    C_LAMBDAS_TESTING, START_PROBABILITIES_TESTING, STEP_COUNTS_TESTING, C_LAMBDA_PAIRS_TESTING
+    C_LAMBDAS_TESTING, START_PROBABILITIES_TESTING, STEP_COUNTS_TESTING, C_LAMBDA_PAIRS_TESTING, TICKS_SIZE, LABEL_SIZE, \
+    TITLE_SIZE
 from data_generation import generate_random_walks, list_walks2list_lists, generate_random_walk_from_rand_array
 
 
@@ -113,17 +114,17 @@ def single_walk_simulation(model_type):
     else:
         two_lambda = False
     # TODO handle with dignity
-    max_y = 80
-    min_y = -20
+    max_y = 1
+    min_y = 0
 
     for p_index, starting_probability in enumerate(START_PROBABILITIES_TESTING):
         rand_numbers = np.random.uniform(size=step_count)
         plt.subplot(plt_rows, plt_columns, p_index + 1)
-        plt.title(r'$p_{0}=%.2f$' % starting_probability, fontsize=20)
-        plt.axis([1, step_count, min_y, max_y])
-        plt.xlabel('steps', fontsize=18)
-        plt.xticks(fontsize=14)
-        plt.yticks(fontsize=14)
+        plt.title(r'$p_{0}=%.2f$' % starting_probability, fontsize=TITLE_SIZE)
+        plt.axis([0, step_count, min_y, max_y])
+        plt.xlabel('steps', fontsize=LABEL_SIZE)
+        plt.xticks(fontsize=TICKS_SIZE)
+        plt.yticks(fontsize=TICKS_SIZE)
         for index, c_lambda in enumerate(C_LAMBDAS_TESTING):
             if two_lambda:
                 c_lambdas = C_LAMBDA_PAIRS_TESTING[index]
@@ -131,9 +132,9 @@ def single_walk_simulation(model_type):
             else:
                 c_lambdas = [c_lambda]
                 label = r'$\lambda=%.2f$' % c_lambda
-            development = generate_random_walk_from_rand_array(rand_numbers, model_type, starting_probability,
-                                                               c_lambdas, step_count).development
-            plt.plot(development, styles[index], label=label)
+            data_to_plot = generate_random_walk_from_rand_array(rand_numbers, model_type, starting_probability,
+                                                               c_lambdas, step_count).probabilities
+            plt.plot(data_to_plot, styles[index], label=label)
         plt.legend(loc='best', fontsize='xx-large', markerscale=3)
     fig = plt.gcf()
     fig.set_size_inches(18.5, 10.5)
@@ -147,5 +148,5 @@ if __name__ == '__main__':
     # main(simulated_property="probability")
     # main(simulated_property="step")
     # main(simulated_property="p_s")
-    single_walk_simulation("success_punished")
+    single_walk_simulation("success_punished_two_lambdas")
     log_time(start_time, logger)
