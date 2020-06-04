@@ -33,11 +33,11 @@ def main(simulated_property="probability"):
                     model_max_y[model_index]
                 for p_index, starting_probability in enumerate(START_PROBABILITIES_TESTING):
                     plt.subplot(plt_rows, plt_columns, p_index + 1)
-                    plt.title(r'$p_{0}=%.2f$' % starting_probability, fontsize=20)
+                    plt.title(r'$p_{0}=%.2f$' % starting_probability, fontsize=TITLE_SIZE)
                     plt.axis([1, step_count, min_y, max_y])
-                    plt.xlabel('steps', fontsize=18)
-                    plt.xticks(fontsize=14)
-                    plt.yticks(fontsize=14)
+                    plt.xlabel('steps', fontsize=LABEL_SIZE)
+                    plt.xticks(fontsize=TICKS_SIZE)
+                    plt.yticks(fontsize=TICKS_SIZE)
                     for index, c_lambda in enumerate(C_LAMBDAS_TESTING):
                         if two_lambda:
                             c_lambdas = C_LAMBDA_PAIRS_TESTING[index]
