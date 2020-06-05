@@ -12,10 +12,10 @@
 \usecolortheme{beaver}
 
 
-\title{A model of random walk with varying transition probabilities}
-\institute[FNSPE CTU]{\inst{1} Faculty of Nuclear Sciences and Physical Engineering, CTU Prague \and
+\title{A Model of a Random Walk with Varying Transition Probabilities}
+\institute[Tomáš Kouřim (tom@skourim.com)]{\inst{1} Faculty of Nuclear Sciences and Physical Engineering, CTU Prague \and
     \inst{2} Institute of Information Theory and Automation, CAS CR Prague}
-%\date{16.9.2019}
+\date{SMTDA 2020}
 \author[Tomáš~Kouřim]{Tomáš~Kouřim \inst{1} \and Petr Volf \inst{2}}
 \newcommand{\nologo}{\setbeamertemplate{logo}{}} % command to set the logo to nothing
 \setbeamertemplate{itemize item}[circle]
@@ -26,13 +26,7 @@
 \begin{document}
     \maketitle
 
-    \begin{frame}{Outline}
-        \begin{enumerate}
-            \item<1-> {\Large{}Motivation}\bigskip{}
-            \item<2-> {\Large{}Model description}\bigskip{}
-            \item<3-> {\Large{}Model application}
-        \end{enumerate}
-    \end{frame}
+    \section{Motivation}\label{sec:motivation}
 
     \begin{frame}{Random walk}
         \begin{definition}
@@ -50,6 +44,10 @@
                 \item[]<2-> \large{Where is the \emph{drunken sailor}?}
             \end{itemize}
         \end{definition}
+    \end{frame}
+
+    \begin{frame}{Motivation - Random process with varying probability}
+        \includegraphics[width=1\textwidth]{../../simulations/probability_25_steps_type_success_punished_two_lambdas}
     \end{frame}
 
     \begin{frame}{Motivation}
@@ -72,27 +70,32 @@
         \end{itemize}
     \end{frame}
 
+    \begin{frame}{Motivation - Random process with varying probability}
+        \includegraphics[width=1\textwidth]{../../simulations/probability_dots_25_steps_type_success_punished_two_lambdas}
+    \end{frame}
+
+    \section{Model description}\label{sec:model-description}
     \begin{frame}{Random walk with varying probabilities}
         \begin{itemize}
-            \item Random walk with memory
-            \item Memory coefficient $\lambda\in(0,\,1)$ affecting the transition probabilities
-            \item First step of the walk $X_{1}$ depends on an initial transition probability $p_{0}$
-            \item Further steps depend on a transition probability $p_{t}$ evolving as
-            \onslide<2->\begin{flalign*}
-                            X_{t-1} & =1\rightarrow p_{t}=\lambda p_{t-1} &
-                            X_{t-1} & =-1\rightarrow p_{t}=1-\lambda(1-p_{t-1}) &
-            \end{flalign*}
-            \vspace{-5mm}
-            \begin{itemize}
-                \item[-->]<3-> ``Success punished''
-            \end{itemize}
+            \item<1-> Random walk with memory based the on standard Bernoulli random walk
+            \item<2-> Given starting probability $p_0$
+            \item<3-> $X_t\in\{-1,1\}$ with $X_t \sim {\textrm{Bernoulli} }(p_{t-1})$
+            \item<4-> Memory coefficient $\lambda\in(0,\,1)$ affecting the development of probabilities $p_{t}$ as
             \onslide<4->\begin{flalign*}
-                            X_{t-1}&=1\rightarrow p_{t}=1-\lambda(1-p_{t-1})&
-                            X_{t-1}&=-1\rightarrow p_{t}=\lambda p_{t-1}&
+                            X_{t} & =1\rightarrow p_{t}=\lambda p_{t-1} &
+                            X_{t} & =-1\rightarrow p_{t}=1-\lambda(1-p_{t-1}) &
             \end{flalign*}
             \vspace{-5mm}
             \begin{itemize}
-                \item[-->]<5-> ``Success rewarded''
+                \item[-->]<5-> ``Success punishing''
+            \end{itemize}
+            \onslide<6->\begin{flalign*}
+                            X_{t}&=1\rightarrow p_{t}=1-\lambda(1-p_{t-1})&
+                            X_{t}&=-1\rightarrow p_{t}=\lambda p_{t-1}&
+            \end{flalign*}
+            \vspace{-5mm}
+            \begin{itemize}
+                \item[-->]<6-> ``Success rewarding''
             \end{itemize}
         \end{itemize}
     \end{frame}
@@ -174,6 +177,7 @@
     \end{frame}
 
     \begin{frame}{Success rewarding model}
+        \onslide<2->
         \begin{flalign*}
             EX_{t} & =2p_{0}-1 &
         \end{flalign*}
@@ -181,10 +185,12 @@
         \begin{flalign*}
             Var\,X_{t} & =4p_{0}(1-p_{0}) &
         \end{flalign*}
+        \onslide<1->
         \begin{flalign*}
             EP_{t} & =p_{0} &
         \end{flalign*}
         \vspace{-8mm}
+        \onslide<2->
         \begin{flalign*}
             Var\,P_{t} & =(2\lambda-\lambda^{2})^{t}p_{0}^{2}+p_{0}(1-\lambda)^{2}\sum_{i=0}^{t-1}(2\lambda-\lambda^{2})^{i}-p_{0}^{2} &
         \end{flalign*}
@@ -197,9 +203,9 @@
         \end{flalign*}
     \end{frame}
 
-    \begin{frame}{Two-parameter model}
+    \begin{frame}{More complex models}
         \begin{itemize}
-            \item Two $\lambda$ parameters each affecting one direction of the walk
+            \item Two memory coefficients $\lambda$ each affecting one direction of the walk
             \item Again two variants -- success punishing and success rewarding
             \onslide<2->\begin{flalign*}
                             X_{t-1} & =1\rightarrow p_{t}=\lambda_{0} p_{t-1} &
@@ -217,6 +223,7 @@
             \begin{itemize}
                 \item[-->]<3-> ``Two-parameter success rewarding model''
             \end{itemize}
+            \item<4-> $M$ steps, $\lambda(t)$, $n$-dimensional walk
         \end{itemize}
     \end{frame}
 
@@ -224,38 +231,39 @@
         \includegraphics[width=1\textwidth]{../../simulations/single_walk_1000_steps_type_success_punished_two_lambdas}
     \end{frame}
 
+    \section{Model application}\label{sec:model-application}
     \begin{frame}{Model fitting}
         \begin{enumerate}
-            \item Find $\overrightarrow{\lambda}$ with known $p_{0}$, model type
-            \item Find $p_{0}$ with known $\overrightarrow{\lambda}$, model type
-            \item Find $p_{0},\,\overrightarrow{\lambda}$ with known model type
-            \item Find model type without any prior knowledge
+            \item Find $\lambda$ with known $p_{0}$, model type
+            \item Find $p_{0}$ with known $\lambda$, model type
+            \item Find $p_{0},\,\lambda$ with known model type
+            \item Find model type and all parameters without any prior knowledge
         \end{enumerate}
     \end{frame}
 
     \begin{frame}{Model fitting}
         \begin{enumerate}
-            \item Find $\overrightarrow{\lambda}$ with known $p_{0}$, model type
-            \item Find $p_{0}$ with known $\overrightarrow{\lambda}$, model type
-            \item Find $p_{0},\,\overrightarrow{\lambda}$ with known model type
+            \item Find $\lambda$ with known $p_{0}$, model type
+            \item Find $p_{0}$ with known $\lambda$, model type
+            \item Find $p_{0},\,\lambda$ with known model type
             \begin{itemize}
-                \item Using maximal likelihood estimate \& numerical optimization
+                \item (1-3) maximal likelihood estimate \& numerical optimization
             \end{itemize}
-            \item Find model type without any prior knowledge
+            \item Find model type and all parameters without any prior knowledge
         \end{enumerate}
     \end{frame}
 
     \begin{frame}{Model fitting}
         \begin{enumerate}
-            \item Find $\overrightarrow{\lambda}$ with known $p_{0}$, model type
-            \item Find $p_{0}$ with known $\overrightarrow{\lambda}$, model type
-            \item Find $p_{0},\,\overrightarrow{\lambda}$ with known model type
+            \item Find $\lambda$ with known $p_{0}$, model type
+            \item Find $p_{0}$ with known $\lambda$, model type
+            \item Find $p_{0},\,\lambda$ with known model type
             \begin{itemize}
-                \item Using maximal likelihood estimate \& numerical optimization
+                \item (1-3) maximal likelihood estimate \& numerical optimization
             \end{itemize}
-            \item Find model type without any prior knowledge
+            \item Find model type and all parameters without any prior knowledge
             \begin{itemize}
-                \item Using Akaike information criterion \& numerical optimization
+                \item (4) Akaike information criterion \& numerical optimization
             \end{itemize}
         \end{enumerate}
     \end{frame}
@@ -266,10 +274,10 @@
             \item Model trained on 2009--2018 men Grand Slam tournaments
             \item<2-> Model applied on 2019 US Open
             \begin{itemize}
-                \item<2-> Live betting against bookmaker
-                \item<2-> $0.52$ units total necessary bankroll
-                \item<2-> $2.24$ units total profit $\rightarrow$ $430\%$ ROI
-                \item<3-> Only 128 bets placed
+                \item<3-> Live betting against bookmaker
+                \item<4-> Bankroll: $52$ units
+                \item<5-> Profit: $224$ units $\rightarrow$ $430\%$ ROI
+                \item<6-> Only 128 bets placed
             \end{itemize}
         \end{itemize}
     \end{frame}
@@ -278,8 +286,8 @@
         \begin{itemize}
             \item A specific model of a random walk with memory
             \item Model properties derived
-            \item Application shows big future potential of the model
             \item Possible applications in a set of real life scenarios
+            \item Initial results show big potential of the model
         \end{itemize}
     \end{frame}
 
