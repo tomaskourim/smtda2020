@@ -312,7 +312,7 @@
         \begin{equation}
             =ES_{t-1}^{2}+4E(P_{t-1}S_{t-1})-2ES_{t-1}+1,\label{eq:e_s2_t-1_t_sp}
         \end{equation}
-        where the fact that $EX_{t}^{2}=1$ was used.
+        where the fact that $EX_{t}^{2}=1$ for all $t$ was used.
         The theorem will be proved using mathematical induction again.
         For $t=1$ we get from the definition of the walk
         \[
@@ -545,7 +545,7 @@
     \begin{definition}
         Let $\ensuremath{p_{0},\lambda_{0},\lambda_{1}\in(0,\,1)}$ be constant
         parameters, ${\{P_{n}\}}_{n=0}^{\infty}$ and ${\{X_{n}\}}_{n=1}^{\infty}$
-        sequences of discrete random variables with $P_{0}=p_{0}$.
+        sequences of discrete random variables, $X_t\in\{-1,1\}$ and $P_t\in(0,1)$ for each $t$, and $P_{0}=p_{0}$.
         For $t\ge1$ let
         \[
             P(X_{t}=1|P_{t-1}=p_{t-1})=p_{t-1},\,\,\,P(X_{t}=-1|P_{t-1}=p_{t-1})=1-p_{t-1},
@@ -558,7 +558,7 @@
         \begin{equation}
             P_{t}=\frac{1}{2}[(1-X_{t})\lambda_{0}P_{t-1}+(1+X_{t})(1-\lambda_{1}(1-P_{t-1}))].\label{eq:def_2l_p_sr}
         \end{equation}
-        The sequence ${\{S_{n}\}}{}_{n=0}^{\infty},\;S_{N}=S_{0}+\sum_{i=1}^{N}X_{i}$
+        The sequence ${\{S_{n}\}}{}_{n=0}^{\infty},\;S_{n}=S_{0}+\sum_{i=1}^{n}X_{i}$
         for $n\in\mathbb{N}$, with $S_{0}\in\mathbb{R}$ some given starting
         position, is called a \emph{random walk with varying probabilities
         -- two-parameter model}, with ${\{X_{n}\}}_{n=1}^{\infty}$ being the
@@ -603,19 +603,19 @@
     The model can be combined with a varying step size model from~\cite{turban2010random},
     the $\lambda$ parameter can be handled as a function of time and position,
     or a combination of varying probability model with regression
-    part (e.g. logistic) can be considered, which seems especially promising from application point of view.
+    part (e.g. logistic) can be considered, which seems especially promising from the application point of view.
     These variations of the model will be subject of further study.
 
 
     \section{Model application}\label{sec:Model-application}
 
     The model is especially well suited for simulation of random processes where a single or just a few events significantly affect the process's future development.
-    An example such a process can be found in sports modelling.
+    An example such a process can be found in sports modeling.
     In such applications rather short walks occur, but they can be observed repetitively.
-    For example in modelling tennis sets, the longest walk has only 5 steps (occurring in men Grand Slam or Davis Cup matches), but there are many matches played each year,
+    For example in modeling tennis sets, the longest walk has only 5 steps (occurring in men Grand Slam or Davis Cup matches), but there are many matches played each year,
     which can be (under some assumptions) considered as multiple observations of the same walk.
-    The authors recently presented a study where the model was used for modelling the men tennis Grand Slam matches with results suggesting the model might provide precious insights when modelling tennis.
-    Here is a brief summary of the modelling approach.
+    The authors recently presented a study where the model was used for modeling the men tennis Grand Slam matches with results suggesting the model might provide precious insights when modeling tennis.
+    Here is a brief summary of the modeling approach.
 
     The \emph{success rewarding} version of the model was selected as the historical results show that the development of a tennis match follows such pattern.
     The $p_{0}$ parameter was obtained using input bookmaker odds from \emph{Pinnacle Sports}, an industry leading bookmaker.
@@ -651,7 +651,7 @@
     estimation was not addressed here, the properties of the maximum likelihood
     estimate of both $\lambda$ and $p_{0}$ were studied in depth in~\cite{ja2019apmat} and utilized in~\cite{ja2019mathsport_proc},
     a study devoted to one of possible model applications, namely the
-    modelling of tennis matches development.
+    modeling of tennis matches development.
     This kind of application was briefly recalled also in the present contribution and aggregated results of model testing on a new small dataset were reported.
 
     \paragraph{Acknowledgement.}
