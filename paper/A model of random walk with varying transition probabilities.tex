@@ -73,7 +73,7 @@
     Stochastic processes and the corresponding mathematical theory represent
     a significant part of mathematics.
     One of the most prominent of such
-    processes is the random walk, introduced by K. Pearson over hundred
+    processes is the random walk, introduced by Pearson over hundred
     years ago~\cite{pearson1905problem}.
     This concept has been then further
     elaborated by many authors creating a number of different versions
@@ -87,9 +87,9 @@
     The model falls within a rather broad class
     of processes presented in recent work of Davis and Liu~\cite{davis2012theory}, but not all assumptions from~\cite{davis2012theory} are met.
 
-    The original inspiration for the model comes from one of its applications -- modelling of sports events.
+    The original inspiration for the model comes from one of its applications -- modeling of sports events.
     Many types of sport, such as tennis
-    or volleyball, are played in a strictly discrete matter with steps
+    or volleyball, are played in a strictly discrete manner with steps
     divided by individual \emph{points},\emph{ games }or \emph{sets}.
     One sport match can be thus viewed as a random walk with individual
     parts of the match representing the steps of the walk.
@@ -98,15 +98,14 @@
     Other real life situations with similar properties can be found everywhere
     in areas where both ``successes'' or ``failures'' occur.
     In fact,
-    also discrete time recurrent counts data occurrence can be often modelled
-    in a similar way, when the event probability is affected by the process
-    recent history.
+    also discrete time recurrent counts data occurrence can be often modeled
+    in a similar way, when the event probability is affected by the recent history of the process.
     Such cases include the recurrence of diseases, recidivism
     in crime or repeated defects and maintenance of a technical
     device.
 
     The present contribution continues on the recent authors' exploration
-    of the model of random walk with varying probabilities.
+    of the model of a random walk with varying probabilities.
     Selected
     properties of the model are presented and possible real life implementations
     of the model are discussed.
@@ -121,11 +120,11 @@
 
     \section{Theoretical properties}\label{sec:theoretical-properties}
 
-    As already mentioned, modelling sport events served as a motivation for the presented model.
+    As already mentioned, modeling sport events served as a motivation for the presented model.
     The probability of a success (i.e. scoring a goal, achieving
-    a point etc.) is at the center of interest in such modelling.
+    a point etc.) is at the center of interest in such modeling.
     After each occurrence
-    of such success this probability either decreases or increases, and
+    of such success its probability either decreases or increases, and
     thus two basic model alternatives exist -- \emph{success punishing} and \emph{success rewarding}.
     The basic version of the model operates
     with starting success probability $p_{0}$ and a memory coefficient
@@ -135,7 +134,7 @@
     \begin{definition}
         \label{def:walk_definition}Let $\ensuremath{p_{0}\in(0,\,1),\,\lambda\in(0,\,1)}$
         be constant parameters, ${\{P_{n}\}}_{n=0}^{\infty}$ and ${\{X_{n}\}}_{n=1}^{\infty}$
-        sequences of discrete random variables with $P_{0}=p_{0}$.
+        sequences of discrete random variables, $X_t\in\{-1,1\}$ and $P_t\in(0,1)$ for each $t$, and $P_{0}=p_{0}$.
         For $t\ge1$ let
         \[
             P(X_{t}=1|P_{t-1}=p_{t-1})=p_{t-1},\,\,\,P(X_{t}=-1|P_{t-1}=p_{t-1})=1-p_{t-1},
@@ -148,7 +147,7 @@
             \begin{equation}
                 P_{t}=\lambda P_{t-1}+\frac{1}{2}(1-\lambda)(1+X_{t}).\label{eq:def_p_sr}
             \end{equation}
-        }The sequence ${\{S_{n}\}}{}_{n=0}^{\infty},\;S_{N}=S_{0}+\sum_{i=1}^{N}X_{i}$
+        }The sequence ${\{S_{n}\}}{}_{n=0}^{\infty},\;S_{n}=S_{0}+\sum_{i=1}^{n}X_{i}$
         for $n\in\mathbb{N}$, with $S_{0}\in\mathbb{R}$ some given starting
         position, is called a \emph{random walk with varying probabilities},
         with ${\{X_{n}\}}_{n=1}^{\infty}$ being the steps of the walker and
@@ -162,7 +161,7 @@
     description was provided in~\cite{ja2019teze}.
     Selected properties
     were then presented in~\cite{ja2019apmat} and a practical implementation
-    of the model in modelling tennis matches was presented in~\cite{ja2019mathsport_proc}.
+    of the model in modeling tennis matches was presented in~\cite{ja2019mathsport_proc}.
     The basic results are recalled in the following sections and then
     variance of $S_{t}$ is derived and described in more detail.
 
@@ -313,7 +312,7 @@
         \begin{equation}
             =ES_{t-1}^{2}+4E(P_{t-1}S_{t-1})-2ES_{t-1}+1,\label{eq:e_s2_t-1_t_sp}
         \end{equation}
-        where the fact that $EX_{t}^{2}=1$ was used.
+        where the fact that $EX_{t}^{2}=1$ for all $t$ was used.
         The theorem will be proved using mathematical induction again.
         For $t=1$ we get from the definition of the walk
         \[
@@ -546,7 +545,7 @@
     \begin{definition}
         Let $\ensuremath{p_{0},\lambda_{0},\lambda_{1}\in(0,\,1)}$ be constant
         parameters, ${\{P_{n}\}}_{n=0}^{\infty}$ and ${\{X_{n}\}}_{n=1}^{\infty}$
-        sequences of discrete random variables with $P_{0}=p_{0}$.
+        sequences of discrete random variables, $X_t\in\{-1,1\}$ and $P_t\in(0,1)$ for each $t$, and $P_{0}=p_{0}$.
         For $t\ge1$ let
         \[
             P(X_{t}=1|P_{t-1}=p_{t-1})=p_{t-1},\,\,\,P(X_{t}=-1|P_{t-1}=p_{t-1})=1-p_{t-1},
@@ -559,7 +558,7 @@
         \begin{equation}
             P_{t}=\frac{1}{2}[(1-X_{t})\lambda_{0}P_{t-1}+(1+X_{t})(1-\lambda_{1}(1-P_{t-1}))].\label{eq:def_2l_p_sr}
         \end{equation}
-        The sequence ${\{S_{n}\}}{}_{n=0}^{\infty},\;S_{N}=S_{0}+\sum_{i=1}^{N}X_{i}$
+        The sequence ${\{S_{n}\}}{}_{n=0}^{\infty},\;S_{n}=S_{0}+\sum_{i=1}^{n}X_{i}$
         for $n\in\mathbb{N}$, with $S_{0}\in\mathbb{R}$ some given starting
         position, is called a \emph{random walk with varying probabilities
         -- two-parameter model}, with ${\{X_{n}\}}_{n=1}^{\infty}$ being the
@@ -604,19 +603,19 @@
     The model can be combined with a varying step size model from~\cite{turban2010random},
     the $\lambda$ parameter can be handled as a function of time and position,
     or a combination of varying probability model with regression
-    part (e.g. logistic) can be considered, which seems especially promising from application point of view.
+    part (e.g. logistic) can be considered, which seems especially promising from the application point of view.
     These variations of the model will be subject of further study.
 
 
     \section{Model application}\label{sec:Model-application}
 
     The model is especially well suited for simulation of random processes where a single or just a few events significantly affect the process's future development.
-    An example such a process can be found in sports modelling.
+    An example such a process can be found in sports modeling.
     In such applications rather short walks occur, but they can be observed repetitively.
-    For example in modelling tennis sets, the longest walk has only 5 steps (occurring in men Grand Slam or Davis Cup matches), but there are many matches played each year,
+    For example in modeling tennis sets, the longest walk has only 5 steps (occurring in men Grand Slam or Davis Cup matches), but there are many matches played each year,
     which can be (under some assumptions) considered as multiple observations of the same walk.
-    The authors recently presented a study where the model was used for modelling the men tennis Grand Slam matches with results suggesting the model might provide precious insights when modelling tennis.
-    Here is a brief summary of the modelling approach.
+    The authors recently presented a study where the model was used for modeling the men tennis Grand Slam matches with results suggesting the model might provide precious insights when modeling tennis.
+    Here is a brief summary of the modeling approach.
 
     The \emph{success rewarding} version of the model was selected as the historical results show that the development of a tennis match follows such pattern.
     The $p_{0}$ parameter was obtained using input bookmaker odds from \emph{Pinnacle Sports}, an industry leading bookmaker.
@@ -652,7 +651,7 @@
     estimation was not addressed here, the properties of the maximum likelihood
     estimate of both $\lambda$ and $p_{0}$ were studied in depth in~\cite{ja2019apmat} and utilized in~\cite{ja2019mathsport_proc},
     a study devoted to one of possible model applications, namely the
-    modelling of tennis matches development.
+    modeling of tennis matches development.
     This kind of application was briefly recalled also in the present contribution and aggregated results of model testing on a new small dataset were reported.
 
     \paragraph{Acknowledgement.}
